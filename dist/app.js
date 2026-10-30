@@ -133,15 +133,7 @@ function render() {
       ) +
       '<div class="grid"><div><h3>Email</h3><p>Awaiting confirmation</p></div><div><h3>Phone</h3><p>Awaiting confirmation</p></div><div><h3>Address</h3><p>Awaiting confirmation</p></div></div><p class="note">There is no contact form or message delivery integration in this preview.</p></section>';
   if (["vendors", "apply"].includes(route))
-    main.innerHTML = `<section class="vendor-hero" aria-label="Sell at the Rose Bowl"><img src="assets/vendor-aerial.jpg" width="2000" height="1498" alt="Aerial view of vendor stalls surrounding the Rose Bowl stadium and the Pasadena hills" fetchpriority="high"><div class="vendor-hero-title"><p class="eyebrow">Every second Sunday · Pasadena, California</p><h1>Your finds.<br>Their next favorite.</h1></div></section><section class="content vendor-entry"><p class="eyebrow">Sell at the Rose Bowl</p><h2>Let’s get you to the market.</h2><p>First time here or ready for another market day?</p><div class="vendor-paths"><a class="button" href="#new-vendor">New Vendor →</a><a class="button secondary" href="#returning-vendor">Returning Vendor →</a></div></section>`;
-  if (route === "returning-vendor")
-    main.innerHTML =
-      intro(
-        "Returning vendor",
-        "Welcome back.",
-        "Pick up with your selling and contact details, then choose your next market.",
-      ) +
-      `<div class="returning-preview"><h2>Your vendor profile</h2><p>In the finished website, you’ll sign in securely to access information from your previous application.</p><p class="note">Design preview: no account or saved application is connected. The next screen uses fictional sample details that you can review and edit.</p><a class="button" href="#returning-application">Preview with sample profile →</a><p><a class="back-link" href="#apply">← Choose a different path</a></p></div></section>`;
+    main.innerHTML = `<section class="vendor-hero" aria-label="Sell at the Rose Bowl"><img src="assets/vendor-aerial.jpg" width="2000" height="1498" alt="Aerial view of vendor stalls surrounding the Rose Bowl stadium and the Pasadena hills" fetchpriority="high"><div class="vendor-hero-title"><p class="eyebrow">Every second Sunday · Pasadena, California</p><h1>Your finds.<br>Their next favorite.</h1></div></section><section class="content vendor-entry"><p class="eyebrow">Sell at the Rose Bowl</p><h2>Let’s get you to the market.</h2><p>First time here or ready for another market day?</p><div class="vendor-paths"><a class="button" href="#new-vendor">New Vendor →</a><a class="button secondary" href="#returning-application">Returning Vendor →</a></div></section>`;
   if (["spaces", "requirements", "policies"].includes(route)) {
     const text = {
       spaces: [
@@ -196,15 +188,17 @@ function render() {
             "Blue/Gold requires a valid California Seller’s Permit showing 1001 Rose Bowl Drive, Pasadena, CA 91103. Orange and Pearl offer permit-holder or qualifying occasional-seller verification. The application presents the requirements for your selected area.",
           ],
           [
-            "Can I update my returning-vendor details?",
-            "Yes. Prefilled information remains editable. Review every section and complete all required fields for the selected event.",
+            "How is the returning-vendor application different?",
+            "Both applications start blank and require the same information. Returning vendors have one additional Payment Preference step. No account or sign-in is required.",
           ],
         ];
     main.innerHTML =
       intro("FAQs", attendee ? "Attendee FAQs" : "Vendor FAQs", "") +
       `<div class="faq-questions">${questions.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join("")}</div><p>Need more help? <a href="#contact">Contact us</a>.</p></section>`;
   }
-  if (["new-vendor", "returning-application"].includes(route)) {
+  if (
+    ["new-vendor", "returning-vendor", "returning-application"].includes(route)
+  ) {
     VendorFlow.selectPath(route === "new-vendor" ? "new" : "returning");
     main.innerHTML = VendorFlow.render();
     VendorFlow.bind(render);

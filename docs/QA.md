@@ -1,3 +1,5 @@
+> Current returning-vendor requirement (October 30, 2026): no login, saved profile, or prefilled vendor information. Both paths start blank and use identical fields; returning adds only Payment Preference. This supersedes earlier profile-related notes below.
+
 # Verification record
 
 Date: October 30, 2026. Scope: static prototype and five-step vendor flow. Tests use synthetic vendor information only.
@@ -155,3 +157,7 @@ Replaced the native Choose File control with a standard red button labeled “Up
 ### FAQ navigation — October 30, 2026
 
 Added shared-header FAQs disclosure with Attendees and Vendors destinations. Opens with mouse hover or native keyboard/tap activation; Escape, outside click and focus leaving close it. Mobile submenu remains in normal layout. FAQ pages reuse previously confirmed schedule, location, ticket/parking information and owner-approved application workflow; no new policies inferred. Syntax and formatting checks passed.
+
+### Returning-vendor simplification — October 30, 2026
+
+Removed the profile gateway, sample identity and prefilled values. Returning Vendor now opens the blank contact step directly; the old #returning-vendor link is an alias for the same form. Both paths retain their separate in-memory in-progress drafts. Payment Preference is the only extra step. Vendor FAQ copy updated. Automatic permit extraction remains user-initiated in both paths. Syntax, formatting and all 24 tests passed, including field parity between the two paths.

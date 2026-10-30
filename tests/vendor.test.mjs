@@ -59,15 +59,15 @@ test("length limits apply even if client input constraints are bypassed", () => 
 test("new and returning paths keep separate drafts and never reuse event choices", () => {
   flow.selectPath("returning");
   const returning = flow.snapshot();
-  assert.equal(returning.data.email, "alex@example.com");
+  assert.equal(Object.keys(returning.data).length, 0);
   assert.equal(returning.data.event, undefined);
   assert.equal(returning.data.area, undefined);
   returning.data.email = "changed@example.com";
-  assert.equal(flow.snapshot().data.email, "alex@example.com");
+  assert.equal(flow.snapshot().data.email, undefined);
   flow.selectPath("new");
   assert.equal(Object.keys(flow.snapshot().data).length, 0);
   flow.selectPath("returning");
-  assert.equal(flow.snapshot().data.first, "Alex");
+  assert.equal(flow.snapshot().data.first, undefined);
   assert.throws(() => flow.selectPath("invalid"));
 });
 
@@ -167,4 +167,16 @@ test("permit upload is required independently of entered permit details", () => 
   assert.ok(flow.validate(field, undefined));
   assert.ok(flow.validate(field, "file-name-only"));
   assert.equal(flow.validate(field, { name: "synthetic.png" }), "");
+});
+
+test("both application paths share blank fields; only returning adds payment preference", () => {
+  flow.selectPath("new");
+  const newFields = [0, 1, 2, 3, 4].map((i) => JSON.stringify(flow.fields(i)));
+  flow.selectPath("returning");
+  const returningFields = [0, 1, 2, 3, 5].map((i) =>
+    JSON.stringify(flow.fields(i)),
+  );
+  assert.deepEqual(returningFields, newFields);
+  assert.doesNotMatch(flow.render(), /Sample profile|prefilled|saved details/);
+  assert.equal(flow.fields(4)[0].id, "paymentPreference");
 });

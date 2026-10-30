@@ -1,3 +1,5 @@
+> Current returning-vendor requirement (October 30, 2026): no login, saved profile, or prefilled vendor information. Both paths start blank and use identical fields; returning adds only Payment Preference. This supersedes earlier profile-related notes below.
+
 # Decisions and outstanding information
 
 Updated October 30, 2026.
@@ -57,3 +59,7 @@ Owner authorized permit upload with automatic field filling. Both paths now requ
 This adapter is for local preview, not a portable production upload service. Production still needs authenticated storage, document retention/deletion rules, malware scanning, access control, rate limiting, server-side revalidation, and a supported OCR adapter for the hosting environment. File reading failures allow manual field completion with review; this does not mean the attached document has been validated. Final submission remains disabled.
 
 Validation: Swift compilation, JavaScript syntax, formatting and 23 tests passed. Browser test with a synthetic image extracted `123456789-001` and the complete Rose Bowl address; review remained unchecked. No real vendor permit used. Real-world OCR accuracy has not been measured; unusual permit layouts may require manual entry.
+
+### Returning-vendor simplification — October 30, 2026
+
+Removed the profile gateway, sample identity and prefilled values. Returning Vendor now opens the blank contact step directly; the old #returning-vendor link is an alias for the same form. Both paths retain their separate in-memory in-progress drafts. Payment Preference is the only extra step. Vendor FAQ copy updated. Automatic permit extraction remains user-initiated in both paths. Syntax, formatting and all 24 tests passed, including field parity between the two paths.

@@ -51,7 +51,7 @@ Keep these documents current with each meaningful implementation change. Never c
 
 ## Vendor entry paths
 
-`#vendors` and `#apply` open the aerial hero and New Vendor / Returning Vendor choices. New vendors start blank; returning vendors explicitly open a fictional sample profile for UX review. Both paths use the existing five-step flow with separate in-memory drafts. No real account, previous submission lookup or durable storage is connected.
+`#vendors` and `#apply` open the aerial hero and New Vendor / Returning Vendor choices. Both paths start blank with separate in-memory drafts and no sign-in or profile retrieval. New vendors have five steps; returning vendors have the same steps plus Payment Preference before Review & Submit.
 
 Vendor applications now show live-form space choices, quantity (1–5) and a calculated estimate. New vendors provide no payment information. Returning vendors select an unselected-by-default payment preference (existing method or new method after acceptance). Both paths explain email/phone follow-up and confirmation only after payment.
 
@@ -67,7 +67,7 @@ Both paths now end with required signer full name, position/title, and two unche
 
 ### Returning-vendor sequence — October 30, 2026
 
-Returning vendors now follow Seller / Business Contact → Space / Plot Request → Selling Details → Permit Verification → Payment Preference → Review & Submit. The same editable fields and validation are used for both paths; returning vendors receive synthetic saved contact/merchandise values for convenience, not a bypass. Each section must be completed. Real authenticated profiles remain unconnected; event choices, payment preference and signature consent are never preselected from an earlier event. Syntax, formatting and all 19 tests passed.
+Returning vendors now follow Seller / Business Contact → Space / Plot Request → Selling Details → Permit Verification → Payment Preference → Review & Submit. The same editable fields and validation are used for both paths; both paths start blank. Each section must be completed. No login or saved-profile retrieval is planned; event choices, payment preference and signature consent are never preselected from an earlier event. Syntax, formatting and all 19 tests passed.
 
 ### Local permit upload and extraction — October 30, 2026
 
