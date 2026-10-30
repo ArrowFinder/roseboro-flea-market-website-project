@@ -41,3 +41,5 @@ New vendors apply without payment information, see an estimated total based on s
 Owner directed use of existing website pricing. Live application rates and quantity options retrieved October 30, 2026 now replace the unpriced area-only prototype. Availability and price changes remain subject to staff confirmation.
 
 Owner specified a factual business form without introductions: contact first, then space/plot, then required forms, then submit. Implemented a four-step new-vendor sequence and removed its subnavigation and marketing introduction. Submission remains disabled until the existing documented production requirements are completed.
+
+Owner requested Selling Details as new step 3, moving merchandise description off Required Forms. Required Forms becomes step 4. Owner-directed policy: Blue/Gold must provide valid CA permit details with the Rose Bowl location before progressing; Orange/Pearl may use permit details or occasional verification. This supersedes the prior prototype’s broader status list and allowance for pending location answers. Special services/exemption exceptions need office handling rather than an unsupported application path.

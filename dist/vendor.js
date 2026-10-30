@@ -5,12 +5,14 @@ const VendorFlow = (() => {
     new: [
       { section: 2, title: "Seller / Business Contact" },
       { section: 0, title: "Space / Plot Request" },
+      { section: 5, title: "Selling Details" },
       { section: 1, title: "Required Forms" },
       { section: 4, title: "Review & Submit" },
     ],
     returning: [
       { section: 0, title: "Event & area" },
-      { section: 1, title: "Selling details" },
+      { section: 5, title: "Selling Details" },
+      { section: 1, title: "Required Forms" },
       { section: 2, title: "Contact" },
       { section: 3, title: "Payment preference" },
       { section: 4, title: "Review" },
@@ -21,13 +23,58 @@ const VendorFlow = (() => {
     ["orange", "Orange"],
     ["pearl", "Pearl / White"],
   ];
-  const statuses = [
-    ["permit", "California Seller’s Permit holder"],
-    ["occasional", "Occasional seller of personal used belongings"],
-    ["services", "Services / no merchandise sales"],
-    ["exempt", "Retail product sales not subject to tax"],
-    ["retailer", "Section 6015 retailer representative"],
-  ];
+  const merchandise = {
+    stadium: [
+      "New Merchandise",
+      "Arts & Crafts",
+      "Services",
+      "New Clothing",
+      "New Jewelry",
+      "New Footwear",
+      "Beauty",
+      "Electronics",
+      "Home Goods",
+      "Gift & Novelty",
+      "New Furniture",
+      "Technology",
+      "Sports & Recreation",
+      "Outdoor & Garden",
+      "Other / Not Listed \u2014 describe in notes below",
+    ],
+    orange: [
+      "Antiques",
+      "Antiques & Collectibles",
+      "Collectibles",
+      "Antique Furniture",
+      "Vintage Jewelry",
+      "Vintage Lighting",
+      "Vintage Musical Instruments",
+      "Vintage Linens",
+      "Art",
+      "Miscellaneous Antiques / Collectibles",
+      "Other / Not Listed \u2014 describe in notes below",
+    ],
+    pearl: [
+      "Vintage Clothing",
+      "Vintage Footwear",
+      "Vintage Jewelry",
+      "Vintage Linens",
+      "Textiles",
+      "Accessories",
+      "General Merchandise",
+      "Vintage Musical Instruments",
+      "Home Goods",
+      "Miscellaneous",
+      "Other / Not Listed \u2014 describe in notes below",
+    ],
+  };
+  const sellerOptions = (area) =>
+    area === "stadium"
+      ? [["permit", "California Seller’s Permit holder"]]
+      : [
+          ["permit", "California Seller’s Permit holder"],
+          ["occasional", "Occasional seller verification"],
+        ];
   let data = {};
   let mode = "new";
   // Synthetic fixture only. Production profiles must come from an authenticated service.
@@ -195,29 +242,121 @@ const VendorFlow = (() => {
             ]
           : []),
       ];
-    if (index === 1)
+    if (index === 5)
       return [
+        field(
+          "category",
+          "Type of merchandise",
+          "select",
+          true,
+          (merchandise[data.area] || []).map((label) => [label, label]),
+          "Options reflect your selected selling area.",
+        ),
         field(
           "goods",
           "Describe the items or activity you will offer",
           "textarea",
           true,
           [],
-          "Include enough detail for staff to review the fit for your selling area.",
+          "List the actual items or activity. Occasional sellers: describe your personal used belongings.",
         ),
-        field("status", "Seller status", "select", true, statuses),
+      ];
+    if (index === 1)
+      return [
+        field(
+          "status",
+          "Seller documentation",
+          "select",
+          true,
+          sellerOptions(data.area),
+        ),
         ...(data.status === "permit"
           ? [
               field(
+                "permitNumber",
+                "California Seller’s Permit number",
+                "text",
+                true,
+                [],
+                "Preview: use a sample number only. Include the location suffix if shown.",
+              ),
+              field(
                 "registered",
-                "Is the Rose Bowl location registered under your permit?",
+                "Does your valid permit show the Rose Bowl selling location?",
+                "select",
+                true,
+                [
+                  ["yes", "Yes — 1001 Rose Bowl Drive, Pasadena, CA 91103"],
+                  ["pending", "Not yet / update pending"],
+                ],
+                "A valid California Seller’s Permit showing this address is required to continue. Staff must verify the permit before approval.",
+              ),
+            ]
+          : []),
+        ...(data.status === "occasional"
+          ? [
+              field(
+                "occasionalExempt",
+                "My sales qualify as exempt occasional sales",
                 "select",
                 true,
                 [
                   ["yes", "Yes"],
-                  ["pending", "Update pending"],
-                  ["no", "Not yet"],
+                  ["no", "No"],
                 ],
+              ),
+              field(
+                "personalUse",
+                "I am selling my own used belongings acquired for personal use",
+                "select",
+                true,
+                [
+                  ["yes", "Yes"],
+                  ["no", "No"],
+                ],
+              ),
+              field(
+                "notResale",
+                "The items were not purchased for resale and are not retail business inventory",
+                "select",
+                true,
+                [
+                  ["yes", "Yes"],
+                  ["no", "No"],
+                ],
+              ),
+              field(
+                "priorSales",
+                "Other selling occasions in the 12 months before this event",
+                "select",
+                true,
+                [
+                  ["0", "0"],
+                  ["1", "1"],
+                  ["2_plus", "2 or more"],
+                  ["unsure", "Not sure"],
+                ],
+                "Count occasions at all locations, including planned occasions before this event. Exclude this requested event; use a rolling 12-month period.",
+              ),
+              ...(data.priorSales === "1"
+                ? [
+                    field(
+                      "priorDetails",
+                      "Date and location of the other selling occasion",
+                      "textarea",
+                    ),
+                  ]
+                : []),
+              field(
+                "twoSaleLimit",
+                "Including this event, I will have no more than two qualifying selling occasions in any 12-month period",
+                "select",
+                true,
+                [
+                  ["yes", "Yes"],
+                  ["no", "No"],
+                ],
+                "Selling used goods alone does not establish eligibility.",
               ),
             ]
           : []),
@@ -261,8 +400,19 @@ const VendorFlow = (() => {
       return "Enter a phone number with at least 7 digits.";
     if (v.length > (f.type === "textarea" ? 1500 : 200))
       return "Please shorten this entry.";
-    if (f.id === "status" && data.area === "stadium" && v === "occasional")
-      return "Occasional-seller requests are accepted in Orange or Pearl only. Go back to change the area, or contact the office for help.";
+    if (f.id === "permitNumber" && (!/[0-9]/.test(v) || v.length > 32))
+      return "Enter a permit number of up to 32 characters, including its location suffix if shown.";
+    if (f.id === "registered" && v !== "yes")
+      return "Your valid permit must show 1001 Rose Bowl Drive, Pasadena, CA 91103 before you can continue. Contact the office if you need help.";
+    if (
+      ["occasionalExempt", "personalUse", "notResale", "twoSaleLimit"].includes(
+        f.id,
+      ) &&
+      v !== "yes"
+    )
+      return "This confirmation is required for occasional-seller verification. Select the permit-holder option or contact the office.";
+    if (f.id === "priorSales" && !["0", "1"].includes(v))
+      return "Contact the office to review eligibility before continuing, or use the permit-holder option.";
     return "";
   }
   function fieldMarkup(f) {
@@ -277,21 +427,8 @@ const VendorFlow = (() => {
   }
   function guidance() {
     if (sectionIndex() === 0) return "";
-    if (sectionIndex() === 1) {
-      const descriptions = {
-        permit:
-          "The existing application requires a permit number and a private permit document showing the Rose Bowl location. Those sensitive fields and uploads are not collected in this preview.",
-        occasional:
-          "The existing application requires event-specific statements about personal belongings and selling occasions in a rolling 12-month period. Full eligibility questions and certification still need to be implemented; selecting this option does not establish eligibility.",
-        services:
-          "Staff must review the activity and selling-area fit. The existing application includes a declaration about not making or soliciting merchandise sales.",
-        exempt:
-          "The existing application requires the specific products and exemption basis for staff review. This selection does not approve an exemption.",
-        retailer:
-          "The existing application requires the approved retailer’s name and a specific seller certification. Those questions remain to be implemented.",
-      };
-      return `<aside class="note" id="status-guidance" aria-live="polite">${descriptions[data.status] || "Choose your seller status to see which supporting information will be needed."}</aside>`;
-    }
+    if (sectionIndex() === 1)
+      return `<aside class="note" aria-live="polite">${data.area === "stadium" ? "Blue/Gold requires a valid California Seller’s Permit showing 1001 Rose Bowl Drive, Pasadena, CA 91103. Occasional-seller verification is not available for this area." : "Orange and Pearl vendors must provide a valid California Seller’s Permit showing the Rose Bowl location or complete occasional-seller verification."}<p>Preview only: these answers are not a permit validation or signed certification. Secure document upload and staff verification are not connected.</p></aside>`;
     if (sectionIndex() === 3) return estimate() + nextSteps();
     return "";
   }
@@ -346,7 +483,19 @@ const VendorFlow = (() => {
       });
     document.querySelector("#area")?.addEventListener("change", () => {
       capture();
-      delete data.space; // A space option is only valid within its selected area.
+      delete data.space; // Dependent choices must be made again after an area change.
+      delete data.category;
+      delete data.status;
+      [
+        "permitNumber",
+        "registered",
+        "occasionalExempt",
+        "personalUse",
+        "notResale",
+        "priorSales",
+        "priorDetails",
+        "twoSaleLimit",
+      ].forEach((key) => delete data[key]);
       redraw();
       document.querySelector("#area").focus();
     });
@@ -359,9 +508,24 @@ const VendorFlow = (() => {
     );
     document.querySelector("#status")?.addEventListener("change", () => {
       capture();
-      if (data.status !== "permit") delete data.registered;
+      [
+        "permitNumber",
+        "registered",
+        "occasionalExempt",
+        "personalUse",
+        "notResale",
+        "priorSales",
+        "priorDetails",
+        "twoSaleLimit",
+      ].forEach((key) => delete data[key]);
       redraw();
       document.querySelector("#status").focus();
+    });
+    document.querySelector("#priorSales")?.addEventListener("change", () => {
+      capture();
+      if (data.priorSales !== "1") delete data.priorDetails;
+      redraw();
+      document.querySelector("#priorSales").focus();
     });
     document.querySelectorAll("[data-review]").forEach((el) => {
       const f = paths[mode]
@@ -410,5 +574,15 @@ const VendorFlow = (() => {
       if (!isReview()) move(step + 1);
     });
   }
-  return { render, bind, validate, fields, selectPath, snapshot, quote };
+  return {
+    render,
+    bind,
+    validate,
+    fields,
+    selectPath,
+    snapshot,
+    quote,
+    sellerOptions,
+    merchandise,
+  };
 })();

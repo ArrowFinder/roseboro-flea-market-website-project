@@ -58,3 +58,5 @@ Vendor applications now show live-form space choices, quantity (1–5) and a cal
 New-vendor sequence: Seller / Business Contact → Space / Plot Request → Required Forms → Review & Submit. Returning vendors retain their five-step path and payment preference. The required-forms stage currently contains seller-status guidance; complete legacy certifications and secure uploads remain release blockers.
 
 Space Request now pairs the form with a selection-linked map. Blue/Gold options highlight numbered sections; Orange/Pearl highlight their general area. A full-size image link is available.
+
+New-vendor sequence is now Contact → Space / Plot Request → Selling Details → Required Forms → Review & Submit. Merchandise options follow the live site’s area-specific lists. Required Forms offers permit details for Blue/Gold and permit or occasional-seller verification for Orange/Pearl. Use sample permit details only in this local preview.

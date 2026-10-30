@@ -95,3 +95,5 @@ Browser confirmed revised map heading, stronger Gold 800 highlight, absent Space
 Field focus styling: syntax and formatting checked. Pointer-selected fields no longer use a red outline; keyboard navigation retains a neutral outline.
 
 Browser verified click focus has no added ring, Tab switches to keyboard focus styling, and a subsequent pointer click removes that styling. Screenshot inspected.
+
+Selling Details/Required Forms update: syntax, formatting and 18 tests pass. Browser verified Blue/Gold category list and permit-only documentation option; missing permit details blocked Continue, pending address blocked Continue, sample number + address confirmation reached review. Switching to Orange cleared category/status and showed Orange categories; occasional verification missing answers blocked Continue. Unit checks cover Pearl categories, permitted status options, permit-number checks and occasional eligibility answers. No real documents, permit number or application sent. Full production verification remains pending.
