@@ -68,3 +68,7 @@ Map refinement: removed the Space location eyebrow; heading is now Rose Bowl Fle
 Field focus: removed the red ring on pointer-selected inputs, textareas and dropdowns. Tab navigation uses a neutral black focus outline; link/button indicators remain unchanged.
 
 Renamed the documentation step to Permit Verification. Its gray guidance box explicitly lists the permit and occasional-seller paths for the selected Orange/Pearl area, with eligibility limits; Blue/Gold remains permit-only.
+
+### Button and map refinement — October 30, 2026
+
+Removed directional arrows from action labels. Shared buttons now use 8px corners, hover lift/shadow, pressed feedback and distinct secondary hover states. Reduced-motion users receive color feedback without movement. Vendor map uses a grayscale/faded base with a full-color image clipped to selected section geometry, retaining the existing 44% white fill and black outline. No selection leaves the full map unchanged; whole-area rules for Orange/Pearl remain.

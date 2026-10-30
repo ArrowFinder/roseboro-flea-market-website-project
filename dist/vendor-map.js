@@ -66,7 +66,7 @@ const VendorMap = (() => {
   function render(area, space, label = "") {
     const selected = selection(area, space);
     // Labels originate only from the static space catalog, never user-entered text.
-    return `<aside class="vendor-map" aria-label="Space request map"><h3>Rose Bowl Flea Market Vendor Map</h3><div class="vendor-map-image"><img src="assets/vendor-map.jpg" width="1800" height="1867" alt="General Rose Bowl vendor map: Pearl west of the canal, Orange beside the canal, and Blue and Gold sections around the stadium."><svg viewBox="0 0 1542 1600" aria-hidden="true" focusable="false">${Object.entries(
+    return `<aside class="vendor-map" aria-label="Space request map"><h3>Rose Bowl Flea Market Vendor Map</h3><div class="vendor-map-image ${selected.keys.length ? "has-selection" : ""}"><img src="assets/vendor-map.jpg" width="1800" height="1867" alt="General Rose Bowl vendor map: Pearl west of the canal, Orange beside the canal, and Blue and Gold sections around the stadium."><svg viewBox="0 0 1542 1600" aria-hidden="true" focusable="false">${selected.keys.length ? `<defs><clipPath id="selected-map-area">${selected.keys.map((key) => `<path d="${shapes[key]}"></path>`).join("")}</clipPath></defs><image href="assets/vendor-map.jpg" width="1542" height="1600" preserveAspectRatio="none" clip-path="url(#selected-map-area)"></image>` : ""}${Object.entries(
       shapes,
     )
       .map(
@@ -75,7 +75,7 @@ const VendorMap = (() => {
       )
       .join(
         "",
-      )}</svg></div><div class="map-selection" aria-live="polite">${label ? `<strong>${label}</strong>` : ""}<p>${selected.description}</p></div><a href="assets/vendor-map.jpg" target="_blank" rel="noopener">Open full-size map ↗</a><p class="muted">Location guide only. Highlighting does not indicate availability or reserve a space.</p></aside>`;
+      )}</svg></div><div class="map-selection" aria-live="polite">${label ? `<strong>${label}</strong>` : ""}<p>${selected.description}</p></div><a href="assets/vendor-map.jpg" target="_blank" rel="noopener">Open full-size map</a><p class="muted">Location guide only. Highlighting does not indicate availability or reserve a space.</p></aside>`;
   }
   return { render, selection };
 })();

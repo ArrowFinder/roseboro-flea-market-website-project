@@ -5,7 +5,7 @@ const business = {
 };
 // Route templates contain trusted static copy only. Form values are handled in vendor.js.
 const main = document.querySelector("main");
-const ticket = '<button class="button ticket">Buy Tickets ↗</button>';
+const ticket = '<button class="button ticket">Buy Tickets</button>';
 // Decorative inline icons keep visitor cards crisp at every screen size.
 const visitorIcons = {
   location:
@@ -32,12 +32,12 @@ const visitorPages = {
   location: [
     "Find your way here.",
     "1001 Rose Bowl Drive, Pasadena, CA 91103.",
-    `<p>The flea market takes place at the Rose Bowl in Pasadena. Rideshare drop-off is at Gate C.</p><a class="button" href="https://www.google.com/maps/search/?api=1&query=1001+Rose+Bowl+Drive+Pasadena+CA+91103">Get directions ↗</a>`,
+    `<p>The flea market takes place at the Rose Bowl in Pasadena. Rideshare drop-off is at Gate C.</p><a class="button" href="https://www.google.com/maps/search/?api=1&query=1001+Rose+Bowl+Drive+Pasadena+CA+91103">Get directions</a>`,
   ],
   hours: [
     "Make a Sunday of it.",
     "The flea market is always on the second Sunday of every month.",
-    `<p>General admission begins at 9 a.m. Pacific. The current website lists VIP early entry from 5 a.m. to 8:45 a.m.</p><p>Lighting is limited during early entry, and vehicles may still be moving during setup. Closing time is awaiting confirmation.</p><a href="#calendar">View the next market date →</a>`,
+    `<p>General admission begins at 9 a.m. Pacific. The current website lists VIP early entry from 5 a.m. to 8:45 a.m.</p><p>Lighting is limited during early entry, and vehicles may still be moving during setup. Closing time is awaiting confirmation.</p><a href="#calendar">View the next market date</a>`,
   ],
   admission: [
     "Your next great find awaits.",
@@ -47,7 +47,7 @@ const visitorPages = {
   parking: [
     "Park. Explore. Discover.",
     "Free parking is available at the Rose Bowl Flea Market.",
-    `<p>Preferred paid parking is also offered. The current website lists preferred parking at $20, payable by cash or card.</p><p>Accessible parking and restrooms are available. Wheelchair and stroller rentals are not offered.</p><a href="#location">See location and directions →</a>`,
+    `<p>Preferred paid parking is also offered. The current website lists preferred parking at $20, payable by cash or card.</p><p>Accessible parking and restrooms are available. Wheelchair and stroller rentals are not offered.</p><a href="#location">See location and directions</a>`,
   ],
 };
 // Schedule repeats monthly; a ticket URL belongs only to its supplied event date.
@@ -99,11 +99,11 @@ function render() {
   if (route === "home") {
     main.innerHTML = `
       <section class="photo-hero">
-        <div class="hero-copy"><p class="hero-tagline">“The Flea market to the Stars”</p><h1>The thrill<br>of the <em>find.</em></h1><p>Vintage treasures. Unexpected favorites. A whole Sunday of discovery at the Rose Bowl Flea Market.</p><div class="actions">${ticket}<a class="hero-plan" href="#vendors">Become a Vendor ↗</a></div><p class="hero-footnote">A little curiosity goes a long way.</p></div>
+        <div class="hero-copy"><p class="hero-tagline">“The Flea market to the Stars”</p><h1>The thrill<br>of the <em>find.</em></h1><p>Vintage treasures. Unexpected favorites. A whole Sunday of discovery at the Rose Bowl Flea Market.</p><div class="actions">${ticket}<a class="hero-plan" href="#vendors">Become a Vendor</a></div><p class="hero-footnote">A little curiosity goes a long way.</p></div>
         <figure class="hero-photo"><img src="assets/market-entrance.jpg" width="2000" height="1333" alt="Shoppers arriving at the Rose Bowl beneath the yellow and red flea market entrance banner" fetchpriority="high"></figure>
       </section>
       ${countdown}
-      <section class="content market-visit"><div class="section-head"><div><p class="eyebrow">Save your Sunday</p><h2>See you at the market.</h2></div><a href="#calendar">Event Calendar ↗</a></div><div class="market-details">${event()}${visit}</div></section>`;
+      <section class="content market-visit"><div class="section-head"><div><p class="eyebrow">Save your Sunday</p><h2>See you at the market.</h2></div><a href="#calendar">Event Calendar</a></div><div class="market-details">${event()}${visit}</div></section>`;
     stopCountdown = MarketCalendar.mount(document.querySelector(".countdown"));
   }
   if (route === "calendar")
@@ -120,7 +120,7 @@ function render() {
     const [title, description, details] = visitorPages[route];
     main.innerHTML =
       intro("Plan your visit · " + route, title, description) +
-      `<div class="visitor-details">${details}<p class="muted">Visitor information follows the <a href="https://www.rgcshows.com/rose-bowl/">current market website</a>. Check the event listing before your visit.</p><a class="back-link" href="#home">← Back to the market</a></div>${visit}</section>`;
+      `<div class="visitor-details">${details}<p class="muted">Visitor information follows the <a href="https://www.rgcshows.com/rose-bowl/">current market website</a>. Check the event listing before your visit.</p><a class="back-link" href="#home">Back to the market</a></div>${visit}</section>`;
   }
   if (route === "about")
     main.innerHTML =
@@ -139,7 +139,7 @@ function render() {
       ) +
       '<div class="grid"><div><h3>Email</h3><p>Awaiting confirmation</p></div><div><h3>Phone</h3><p>Awaiting confirmation</p></div><div><h3>Address</h3><p>Awaiting confirmation</p></div></div><p class="note">There is no contact form or message delivery integration in this preview.</p></section>';
   if (["vendors", "apply"].includes(route))
-    main.innerHTML = `<section class="vendor-hero" aria-label="Sell at the Rose Bowl"><img src="assets/vendor-aerial.jpg" width="2000" height="1498" alt="Aerial view of vendor stalls surrounding the Rose Bowl stadium and the Pasadena hills" fetchpriority="high"><div class="vendor-hero-title"><p class="eyebrow">Every second Sunday · Pasadena, California</p><h1>Your finds.<br>Their next favorite.</h1></div></section><section class="content vendor-entry"><p class="eyebrow">Sell at the Rose Bowl</p><h2>Let’s get you to the market.</h2><p>First time here or ready for another market day?</p><div class="vendor-paths"><a class="button" href="#new-vendor">New Vendor →</a><a class="button secondary" href="#returning-application">Returning Vendor →</a></div></section>`;
+    main.innerHTML = `<section class="vendor-hero" aria-label="Sell at the Rose Bowl"><img src="assets/vendor-aerial.jpg" width="2000" height="1498" alt="Aerial view of vendor stalls surrounding the Rose Bowl stadium and the Pasadena hills" fetchpriority="high"><div class="vendor-hero-title"><p class="eyebrow">Every second Sunday · Pasadena, California</p><h1>Your finds.<br>Their next favorite.</h1></div></section><section class="content vendor-entry"><p class="eyebrow">Sell at the Rose Bowl</p><h2>Let’s get you to the market.</h2><p>First time here or ready for another market day?</p><div class="vendor-paths"><a class="button" href="#new-vendor">New Vendor</a><a class="button secondary" href="#returning-application">Returning Vendor</a></div></section>`;
   if (["spaces", "requirements", "policies"].includes(route)) {
     const text = {
       spaces: [
@@ -157,7 +157,7 @@ function render() {
     };
     main.innerHTML =
       intro("Vendors", text[route][0], text[route][1]) +
-      '<nav class="vendor-nav" aria-label="Vendor sections"><a class="button" href="#apply">Vendor Application →</a><a href="#spaces">Space Options</a><a href="#requirements">Requirements</a><a href="#policies">Policies & FAQs</a><a href="#vendors">Vendor overview</a></nav><p class="note">Details under review. No application, reservation, or payment is processed here.</p></section>';
+      '<nav class="vendor-nav" aria-label="Vendor sections"><a class="button" href="#apply">Vendor Application</a><a href="#spaces">Space Options</a><a href="#requirements">Requirements</a><a href="#policies">Policies & FAQs</a><a href="#vendors">Vendor overview</a></nav><p class="note">Details under review. No application, reservation, or payment is processed here.</p></section>';
   }
   if (["attendee-faqs", "vendor-faqs"].includes(route)) {
     const attendee = route === "attendee-faqs";

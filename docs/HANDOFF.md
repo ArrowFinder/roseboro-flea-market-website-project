@@ -156,3 +156,7 @@ Added the owner-confirmed policy: service animals are welcome; personal pets are
 ### Event date tile — October 30, 2026
 
 Shared calendar/home event tile now shows the actual upcoming month, large ordinal date and Sunday rather than the generic 2nd Sunday label. Uses the existing Pasadena-time schedule and semantic time element. Syntax and formatting checks passed.
+
+### Button and map refinement — October 30, 2026
+
+Removed directional arrows from action labels. Shared buttons now use 8px corners, hover lift/shadow, pressed feedback and distinct secondary hover states. Reduced-motion users receive color feedback without movement. Vendor map uses a grayscale/faded base with a full-color image clipped to selected section geometry, retaining the existing 44% white fill and black outline. No selection leaves the full map unchanged; whole-area rules for Orange/Pearl remain.

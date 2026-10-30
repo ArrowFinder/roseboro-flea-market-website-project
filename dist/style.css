@@ -1029,7 +1029,7 @@ footer a:focus-visible {
   height: 100%;
   pointer-events: none;
 }
-.vendor-map-image path {
+.vendor-map-image svg > path {
   fill: transparent;
   stroke: transparent;
 }
@@ -1185,4 +1185,67 @@ section.calendar-content {
 .date small {
   text-transform: uppercase;
   letter-spacing: 0.4px;
+}
+
+/* Shared interaction treatment: quiet lift, clear press, no motion requirement. */
+.button,
+#menu,
+.hero-plan,
+.text-button {
+  border-radius: 8px;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+.button {
+  min-height: 46px;
+}
+.button.secondary:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+@media (hover: hover) {
+  .button:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px #11111124;
+  }
+  .hero-plan:hover,
+  .text-button:hover {
+    color: #9d211b;
+    background: #bf2c250b;
+    transform: translateY(-1px);
+  }
+  #menu:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
+}
+.button:not(:disabled):active,
+#menu:active,
+.hero-plan:active,
+.text-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+.button:disabled {
+  transform: none;
+  box-shadow: none;
+}
+.vendor-map-image.has-selection {
+  background: #e6e6e6;
+}
+.vendor-map-image.has-selection > img {
+  filter: grayscale(1);
+  opacity: 0.4;
+}
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  #menu,
+  .hero-plan,
+  .text-button {
+    transition: none;
+    transform: none !important;
+  }
 }
