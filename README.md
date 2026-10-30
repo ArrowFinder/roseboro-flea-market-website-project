@@ -20,7 +20,7 @@ Vendor preview: Contact → Selling details → Space & policies → Review. Pro
 
 ## Repository
 
-Requested private repository: `roseboro-flea-market-website-project`. GitHub connection and CLI were unavailable during initial setup. This local Git repository is prepared; no GitHub repository has been created. Connect GitHub and confirm the destination owner before creating the private remote. Never commit vendor records, credentials, or payment information; `.gitignore` excludes typical secret files but does not replace review.
+Requested private repository: `roseboro-flea-market-website-project`. Existing GitHub command-line authentication has been verified as ArrowFinder. The requested private remote is ArrowFinder/roseboro-flea-market-website-project. Never commit vendor records, credentials, or payment information; `.gitignore` excludes typical secret files but does not replace review.
 
 See docs/DECISIONS.md for pending information and review checks.
 
