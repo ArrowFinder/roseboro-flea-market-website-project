@@ -1092,18 +1092,18 @@ section.calendar-content {
   margin: 0 0 18px;
 }
 
+/* Icons replace heading arrows, keeping the visitor tiles compact. */
+.visit-card h3 {
+  align-items: center;
+}
 .visit-icon {
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  margin-bottom: 16px;
-  border-radius: 16px;
-  background: var(--white);
+  display: inline-flex;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
   color: var(--red);
-  border-bottom: 3px solid var(--yellow);
 }
 .visit-icon svg {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }

@@ -25,7 +25,7 @@ const visit = `<div class="visit-grid" aria-label="Plan your visit">${[
 ]
   .map(
     ([route, title, description]) =>
-      `<a class="visit-card" href="#${route}"><span class="visit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">${visitorIcons[route]}</svg></span><h3>${title} <span aria-hidden="true">↗</span></h3><p>${description}</p><span class="visit-more">View details</span></a>`,
+      `<a class="visit-card" href="#${route}"><h3>${title}<span class="visit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">${visitorIcons[route]}</svg></span></h3><p>${description}</p><span class="visit-more">View details</span></a>`,
   )
   .join("")}</div>`;
 const visitorPages = {

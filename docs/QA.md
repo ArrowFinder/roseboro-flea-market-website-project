@@ -131,3 +131,7 @@ Removed the underlined vendor-section navigation above the returning application
 ### Visitor card icons — October 30, 2026
 
 Added consistent inline outline map, clock, ticket and car icons to the shared visitor cards (homepage, calendar and visitor details). Decorative SVGs are hidden from assistive technology; text labels and full-card links remain accessible. Red linework and yellow accents use the approved palette. Syntax and formatting checks passed.
+
+### Compact visitor icons — October 30, 2026
+
+Moved each decorative icon into its card heading in place of the arrow. Removed the separate icon row and badge spacing to reduce tile height. Syntax and formatting checks passed.
