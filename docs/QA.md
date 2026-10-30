@@ -187,3 +187,5 @@ Removed directional arrows from action labels. Shared buttons now use 8px corner
 Verified in the in-app browser at 320, 390, 768, and 1024 CSS pixels: homepage, calendar, vendor landing, returning application entry, attendee FAQs, and vendor FAQs had no horizontal document overflow. Visually inspected phone homepage, contact form, selected map, FAQ navigation, and confirmation.
 
 Completed both new and returning occasional-seller flows with synthetic contact details through preview confirmation at phone sizes; returning included its payment preference. Checked 320×568 confirmation, 390×844 form/map, and 1024px map restoration after resize. Selection and draft survived breakpoint changes. Mobile menu/FAQ submenu tested after correcting hover/tap interference. All 25 existing tests, syntax checks, and formatting checks passed. Physical-device/assistive-technology testing remains outstanding; no live submission was made.
+
+Navigation alignment correction: top-level links now share the FAQ disclosure’s 44px target and vertical centering, fixing the desktop baseline regression from the mobile pass.

@@ -168,3 +168,5 @@ Removed directional arrows from action labels. Shared buttons now use 8px corner
 - Dialogs use bounded dynamic viewport height and scrolling. At 360px and below, form actions stack with the primary action visually first.
 - FAQ hover opening is restricted to desktop hover-capable layouts; compact navigation uses the native disclosure tap interaction.
 - Remaining verification: physical iOS Safari/Android Chrome keyboards, native file pickers, VoiceOver/TalkBack, and landscape keyboard overlap. Browser viewport testing is not physical-device certification.
+
+Navigation alignment correction: top-level links now share the FAQ disclosure’s 44px target and vertical centering, fixing the desktop baseline regression from the mobile pass.
