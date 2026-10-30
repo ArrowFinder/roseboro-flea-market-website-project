@@ -77,3 +77,7 @@ Vendor entry visually checked on desktop and in a 390px iframe viewport; hero lo
 15 automated tests pass, with new checks for returning-only required preference, missing/invalid preferences, valid option values, estimate multiplication, invalid quantities, and cross-area choices. Browser verified Orange North End × 2 = $250; returning preference blocks Continue when empty and displays selected new-method choice on review. Neither path contains payment credential controls. Formatting and syntax checks pass. No application, charge, or contact message sent.
 
 New-vendor browser journey also verified through step 4 using synthetic contact data: Pearl rear non-corner × 1 = $100, with zero payment preference/credential fields. Returning preference persisted when reopening its Edit section.
+
+Vendor landing simplification: removed the four underlined links from the shared #vendors/#apply template. Syntax and formatting checks run; no form logic changed.
+
+Browser verified the vendor landing main content contains only the two path links beneath the hero; screenshot inspected.

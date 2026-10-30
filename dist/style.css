@@ -935,11 +935,6 @@ footer a:focus-visible {
 .vendor-paths .button {
   min-width: 230px;
 }
-.vendor-entry .vendor-nav {
-  justify-content: center;
-  border-top: 1px solid var(--line);
-  padding-top: 28px;
-}
 .returning-preview {
   max-width: 720px;
   padding: 30px;

@@ -66,3 +66,5 @@ Production requirement: authenticated vendor identity and authorized server-side
 Step 4 is Space estimate for new vendors, with no payment field. Returning vendors get Payment preference, a required select with no default; choices are `on-file` and `new-after-acceptance`. Review includes the chosen preference and allows editing. Preferences remain isolated with each in-memory draft. This is intent only: no payment token, account lookup, card details or authorization is collected. Production must verify an existing method through the authenticated customer record and obtain appropriate post-acceptance authorization before charging. All payment collection is outside the application phase.
 
 The new owner instruction supersedes generic legacy payment-process copy. Historical release blockers about pricing now concern price freshness, inventory, and unresolved source differences, rather than absence of base rates.
+
+Vendor landing (#vendors and #apply) now exposes only the two entry paths beneath the hero. Existing application subnavigation and information routes are unchanged.
