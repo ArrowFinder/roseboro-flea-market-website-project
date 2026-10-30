@@ -803,3 +803,24 @@ dialog::backdrop {
     font-size: 64px;
   }
 }
+
+/* Preserve the official logo artwork and aspect ratio; never recolor to UI tokens. */
+.header-logo {
+  flex-shrink: 0;
+}
+.header-logo img {
+  display: block;
+  width: 230px;
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 850px) {
+  .header-logo img {
+    width: 185px;
+  }
+}
+@media (max-width: 580px) {
+  .header-logo img {
+    width: 190px;
+  }
+}

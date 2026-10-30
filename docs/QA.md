@@ -50,3 +50,7 @@ No production-readiness claim is made. Keep this record aligned with actual test
 ## Palette refinement
 
 Owner requested primary red, secondary black, yellow accents and crisp white. Updated all shared surfaces and controls, including secondary-button text for contrast. Calculated solid-pair ratios are recorded in DESIGN.md. This is a styling-only change; existing behavior tests remain unchanged.
+
+## Official header logo
+
+Replaced the provisional top-left wordmark with the owner-supplied logo. Resized derivative preserves aspect ratio and original colors; alt text and home-link label are explicit. Shared responsive sizing covers desktop and mobile.

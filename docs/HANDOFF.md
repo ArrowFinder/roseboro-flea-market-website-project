@@ -38,7 +38,7 @@ See DESIGN.md for photo provenance, palette and countdown semantics. `MarketCale
 3. Submission backend: server validation, authorized staff access, durable records, retention/deletion, upload restrictions/scanning, spam/rate controls, email delivery and error/retry behavior. Backend success must precede any receipt message.
 4. Payment arrangement choices and approved authorization. No live payment provider selected; existing process is staff review followed by payment.
 5. Source conflicts about move-in times, vehicle/trailer rules and delivery routes. Resolve with business owner; see SOURCE-REVIEW.md.
-6. Final logo, finished About content, complete visitor details, final Eventbrite date management and expiry behavior.
+6. Finished About content, complete visitor details, final Eventbrite date management and expiry behavior.
 7. Full responsive/accessibility and browser regression pass. Current checks are limited; see QA.md.
 
 ## Integration boundaries

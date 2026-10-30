@@ -16,7 +16,7 @@ Updated October 30, 2026.
 
 ## Still needed
 
-- Final logo and any required photographer credit. Nine photos were supplied in chat; five resized derivatives are tracked (four displayed, one palette reference).
+- Any required photographer credit. Nine photos were supplied in chat; five resized derivatives are tracked (four displayed, one palette reference). Official raster logo is supplied and used in the header; optional vector artwork remains useful.
 - Actual space inventory, dates, sizes, quantities, pricing, preferred-space behavior and administrative source of truth.
 - Resolution of conflicting move-in and vehicle/trailer instructions and legacy mail-versus-email delivery information.
 - Full conditional seller requirements and certification mapped to the new form and reviewed by the business owner.

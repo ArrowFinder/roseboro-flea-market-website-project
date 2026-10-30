@@ -1,6 +1,6 @@
 # Visual direction and asset register
 
-Updated October 30, 2026. Owner supplied nine photographs in chat and requested a palette drawn from them. These are visually selected, web-ready approximations of the photographed colors, not certified original logo ink values. The actual vector logo/brand standards remain pending.
+Updated October 30, 2026. Owner supplied nine photographs in chat and requested a palette drawn from them. These are visually selected, web-ready approximations of the photographed colors, not certified original logo ink values. The owner supplied the official raster logo on October 30, 2026; vector artwork and broader brand standards remain pending.
 
 **Approved and locked by the owner on October 30, 2026.** Red is primary, black secondary, yellow is limited to accents, and the base is crisp white. Preserve these values and roles in future work; changing them requires a new owner request.
 
@@ -13,11 +13,15 @@ Updated October 30, 2026. Owner supplied nine photographs in chat and requested 
 
 Supporting panels and borders use neutral grays. Contrast ratios: black/white 18.88:1; red/white 5.83:1; yellow/black 13.38:1. These checks do not constitute a full accessibility audit.
 
+## Official logo
+
+Source: `Logn Logo RGC.jpg` supplied by the owner. Web derivative: `dist/assets/official-logo.jpg`, maximum 800px, generated with macOS sips. The top-left image links home, has descriptive alternative text, and preserves the original aspect ratio and artwork colors. Display width is 230px on desktop and approximately 190px on phones. The approved UI palette remains locked; original colors within the official artwork are preserved.
+
 ## Photography
 
 The wide entrance image is the hero: it establishes the venue and shows shoppers and the original colorful signage. The desktop layout gives it 62% of the hero width. Phone layout puts the photo first. The countdown sits immediately below the hero in a separate black band with large white numbers and restrained yellow accents, deliberately subordinate to the photograph.
 
-Original files remain unchanged in the owner's Downloads directory. Web derivatives were resized with macOS sips; no AI imagery or retouching was used. No standalone logo was extracted from the photos. Text wordmark remains provisional.
+Original files remain unchanged in the owner's Downloads directory. Web derivatives were resized with macOS sips; no AI imagery or retouching was used. No standalone logo was extracted from the photos. The header now uses the official owner-supplied logo, resized without recoloring or cropping; footer text remains a plain home link.
 
 | Source filename                         | Tracked derivative                | Placement                                   |
 | --------------------------------------- | --------------------------------- | ------------------------------------------- |
