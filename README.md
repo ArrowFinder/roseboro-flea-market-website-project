@@ -1,4 +1,4 @@
-# Roseboro Flea Market Website Project
+# Rose Bowl Flea Market Website Project
 
 Local-only first version. No publication, production domain changes, live payments, application delivery, or reservations.
 
@@ -23,3 +23,7 @@ Vendor preview: Contact → Selling details → Space & policies → Review. Pro
 Requested private repository: `roseboro-flea-market-website-project`. GitHub connection and CLI were unavailable during initial setup. This local Git repository is prepared; no GitHub repository has been created. Connect GitHub and confirm the destination owner before creating the private remote. Never commit vendor records, credentials, or payment information; `.gitignore` excludes typical secret files but does not replace review.
 
 See docs/DECISIONS.md for pending information and review checks.
+
+## Source review update
+
+Brand is now confirmed as Rose Bowl Flea Market. Ticket buttons use the exact owner-supplied November 8, 2026 Eventbrite URL; ticket availability has not been verified. Vendors now has Application, Space Options, Requirements, and Policies & FAQs subnavigation. See docs/SOURCE-REVIEW.md for the actual booking sequence, source conflicts, and the proposed complete flow. Earlier pending-link descriptions above describe the first scaffold and are superseded by this update.
