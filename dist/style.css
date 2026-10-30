@@ -1111,3 +1111,60 @@ section.calendar-content {
 #permit-file-name {
   overflow-wrap: anywhere;
 }
+
+/* Native disclosure supports tap and keyboard; mouse hover opens it in app.js. */
+#nav .faq-menu {
+  position: relative;
+  border: 0;
+  padding: 0;
+}
+#nav .faq-menu > summary {
+  cursor: pointer;
+  list-style: none;
+  font: inherit;
+}
+#nav .faq-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.faq-submenu {
+  position: absolute;
+  top: 100%;
+  left: -16px;
+  z-index: 20;
+  min-width: 170px;
+  padding: 10px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 24px #11111114;
+}
+#nav .faq-submenu a {
+  display: block;
+  padding: 12px;
+}
+#nav .faq-submenu a:hover {
+  background: var(--panel);
+  color: var(--red);
+}
+.faq-questions {
+  max-width: 850px;
+  margin: 28px 0;
+}
+.faq-questions summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.faq-questions p a {
+  text-decoration: underline;
+}
+@media (max-width: 850px) {
+  #nav .faq-menu > summary {
+    padding: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .faq-submenu {
+    position: static;
+    box-shadow: none;
+    border: 0;
+    padding: 0 0 0 16px;
+  }
+}

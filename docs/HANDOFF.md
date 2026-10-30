@@ -132,3 +132,7 @@ Validation: Swift compilation, JavaScript syntax, formatting and 23 tests passed
 ### Permit upload button — October 30, 2026
 
 Replaced the native Choose File control with a standard red button labeled “Upload CA Seller's Permit.” The button opens the same restricted file picker; missing-file validation focuses this keyboard-accessible button. Syntax and formatting checks passed.
+
+### FAQ navigation — October 30, 2026
+
+Added shared-header FAQs disclosure with Attendees and Vendors destinations. Opens with mouse hover or native keyboard/tap activation; Escape, outside click and focus leaving close it. Mobile submenu remains in normal layout. FAQ pages reuse previously confirmed schedule, location, ticket/parking information and owner-approved application workflow; no new policies inferred. Syntax and formatting checks passed.

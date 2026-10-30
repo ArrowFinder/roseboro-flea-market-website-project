@@ -14,7 +14,7 @@ Build a maintainable, local-only replacement for Rose Bowl Flea Market. The priv
 
 ## Design
 
-Shopper-first homepage. Navigation order: Event Calendar, About Us, Vendors, Contact, Buy Tickets. Tickets link to the owner-supplied Eventbrite listing. Vendor Application is the primary vendor subpage. Photography/logo must be approved assets; temporary imagery is labeled.
+Shopper-first homepage. Navigation order: Event Calendar, About Us, Vendors, FAQs (Attendees / Vendors), Contact, Buy Tickets. Tickets link to the owner-supplied Eventbrite listing. Vendor Application is the primary vendor subpage. Photography/logo must be approved assets; temporary imagery is labeled.
 
 ## Approved palette
 

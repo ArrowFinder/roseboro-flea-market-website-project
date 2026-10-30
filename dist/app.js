@@ -77,6 +77,8 @@ function render() {
       "spaces",
       "requirements",
       "policies",
+      "attendee-faqs",
+      "vendor-faqs",
       ...Object.keys(visitorPages),
     ].includes(route)
   )
@@ -159,6 +161,49 @@ function render() {
       intro("Vendors", text[route][0], text[route][1]) +
       '<nav class="vendor-nav" aria-label="Vendor sections"><a class="button" href="#apply">Vendor Application →</a><a href="#spaces">Space Options</a><a href="#requirements">Requirements</a><a href="#policies">Policies & FAQs</a><a href="#vendors">Vendor overview</a></nav><p class="note">Details under review. No application, reservation, or payment is processed here.</p></section>';
   }
+  if (["attendee-faqs", "vendor-faqs"].includes(route)) {
+    const attendee = route === "attendee-faqs";
+    const questions = attendee
+      ? [
+          [
+            "When is the flea market?",
+            "The Rose Bowl Flea Market takes place on the second Sunday of every month. General admission begins at 9 a.m. Pacific. <a href='#calendar'>View the event calendar</a>.",
+          ],
+          [
+            "Where is the market?",
+            "1001 Rose Bowl Drive, Pasadena, CA 91103. <a href='#location'>Location and directions</a>.",
+          ],
+          [
+            "Where can I buy tickets?",
+            "Use Buy Tickets to visit the available Eventbrite listing. Check the event date before purchasing. <a href='#admission'>Admission information</a>.",
+          ],
+          [
+            "Where can I park?",
+            "Free parking and preferred paid parking are available. <a href='#parking'>Parking details</a>.",
+          ],
+        ]
+      : [
+          [
+            "How do I apply for a space?",
+            "Choose New Vendor or Returning Vendor, then complete contact information, your space request, selling details and permit verification. <a href='#vendors'>Choose your application path</a>.",
+          ],
+          [
+            "Do I pay when I apply?",
+            "No payment is collected during the application. If accepted, you will be contacted by email or phone to arrange payment and finalize your space. Returning vendors can indicate whether to use their existing payment method or provide a new one upon acceptance.",
+          ],
+          [
+            "Which seller documentation do I need?",
+            "Blue/Gold requires a valid California Seller’s Permit showing 1001 Rose Bowl Drive, Pasadena, CA 91103. Orange and Pearl offer permit-holder or qualifying occasional-seller verification. The application presents the requirements for your selected area.",
+          ],
+          [
+            "Can I update my returning-vendor details?",
+            "Yes. Prefilled information remains editable. Review every section and complete all required fields for the selected event.",
+          ],
+        ];
+    main.innerHTML =
+      intro("FAQs", attendee ? "Attendee FAQs" : "Vendor FAQs", "") +
+      `<div class="faq-questions">${questions.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join("")}</div><p>Need more help? <a href="#contact">Contact us</a>.</p></section>`;
+  }
   if (["new-vendor", "returning-application"].includes(route)) {
     VendorFlow.selectPath(route === "new-vendor" ? "new" : "returning");
     main.innerHTML = VendorFlow.render();
@@ -168,9 +213,29 @@ function render() {
     if (a.hash === "#" + route) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
+  document.querySelector("#faq-menu").open = false;
   document.querySelector("nav").classList.remove("open");
   document.querySelector("#menu").setAttribute("aria-expanded", "false");
 }
+const faqMenu = document.querySelector("#faq-menu");
+faqMenu.addEventListener("pointerenter", (event) => {
+  if (event.pointerType === "mouse") faqMenu.open = true;
+});
+faqMenu.addEventListener("pointerleave", () => {
+  if (!faqMenu.contains(document.activeElement)) faqMenu.open = false;
+});
+faqMenu.addEventListener("focusout", (event) => {
+  if (!faqMenu.contains(event.relatedTarget)) faqMenu.open = false;
+});
+faqMenu.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    faqMenu.open = false;
+    faqMenu.querySelector("summary").focus();
+  }
+});
+document.addEventListener("click", (event) => {
+  if (!faqMenu.contains(event.target)) faqMenu.open = false;
+});
 document.querySelector("#menu").addEventListener("click", (e) => {
   const open = document.querySelector("nav").classList.toggle("open");
   e.currentTarget.setAttribute("aria-expanded", String(open));
