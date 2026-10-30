@@ -97,3 +97,7 @@ Field focus styling: syntax and formatting checked. Pointer-selected fields no l
 Browser verified click focus has no added ring, Tab switches to keyboard focus styling, and a subsequent pointer click removes that styling. Screenshot inspected.
 
 Selling Details/Required Forms update: syntax, formatting and 18 tests pass. Browser verified Blue/Gold category list and permit-only documentation option; missing permit details blocked Continue, pending address blocked Continue, sample number + address confirmation reached review. Switching to Orange cleared category/status and showed Orange categories; occasional verification missing answers blocked Continue. Unit checks cover Pearl categories, permitted status options, permit-number checks and occasional eligibility answers. No real documents, permit number or application sent. Full production verification remains pending.
+
+Permit Verification rename: syntax, formatting and regression checks run; source heading and progress/review label use the shared title. Orange/Pearl guidance now explicitly lists permit-with-address or qualifying occasional-sales verification.
+
+Browser verified step 4 Permit Verification, both Orange documentation options, and area-specific guidance. All 18 tests pass.

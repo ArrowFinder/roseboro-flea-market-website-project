@@ -6,13 +6,13 @@ const VendorFlow = (() => {
       { section: 2, title: "Seller / Business Contact" },
       { section: 0, title: "Space / Plot Request" },
       { section: 5, title: "Selling Details" },
-      { section: 1, title: "Required Forms" },
+      { section: 1, title: "Permit Verification" },
       { section: 4, title: "Review & Submit" },
     ],
     returning: [
       { section: 0, title: "Event & area" },
       { section: 5, title: "Selling Details" },
-      { section: 1, title: "Required Forms" },
+      { section: 1, title: "Permit Verification" },
       { section: 2, title: "Contact" },
       { section: 3, title: "Payment preference" },
       { section: 4, title: "Review" },
@@ -428,7 +428,7 @@ const VendorFlow = (() => {
   function guidance() {
     if (sectionIndex() === 0) return "";
     if (sectionIndex() === 1)
-      return `<aside class="note" aria-live="polite">${data.area === "stadium" ? "Blue/Gold requires a valid California Seller’s Permit showing 1001 Rose Bowl Drive, Pasadena, CA 91103. Occasional-seller verification is not available for this area." : "Orange and Pearl vendors must provide a valid California Seller’s Permit showing the Rose Bowl location or complete occasional-seller verification."}<p>Preview only: these answers are not a permit validation or signed certification. Secure document upload and staff verification are not connected.</p></aside>`;
+      return `<aside class="note" aria-live="polite">${data.area === "stadium" ? "Blue/Gold requires a valid California Seller’s Permit showing 1001 Rose Bowl Drive, Pasadena, CA 91103. Occasional-seller verification is not available for this area." : `<strong>${data.area === "orange" ? "Orange" : "Pearl"} Area — two verification options</strong><ul><li><strong>California Seller’s Permit:</strong> provide details of a valid permit showing 1001 Rose Bowl Drive, Pasadena, CA 91103 as a selling location.</li><li><strong>Occasional-seller verification:</strong> for qualifying sales of your own personal used belongings. Items must have been acquired for personal use, not for resale or as retail business inventory. Complete the eligibility confirmations and selling-history questions, including the limit of two qualifying selling occasions in any 12-month period.</li></ul><p>Select the option that accurately describes your selling activity. Choosing occasional-seller verification does not by itself establish eligibility; staff must review your information.</p>`}<p>Preview only: these answers are not a permit validation or signed certification. Secure document upload and staff verification are not connected.</p></aside>`;
     if (sectionIndex() === 3) return estimate() + nextSteps();
     return "";
   }

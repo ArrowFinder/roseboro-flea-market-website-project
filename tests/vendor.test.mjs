@@ -109,7 +109,8 @@ test("new vendor sequence is contact, space request, selling details, required f
       markup.indexOf("Space / Plot Request"),
   );
   assert.ok(
-    markup.indexOf("Space / Plot Request") < markup.indexOf("Required Forms"),
+    markup.indexOf("Space / Plot Request") <
+      markup.indexOf("Permit Verification"),
   );
   assert.doesNotMatch(
     markup,
