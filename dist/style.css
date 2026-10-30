@@ -1108,19 +1108,6 @@ section.calendar-content {
   height: 28px;
 }
 
-/* The selected filename lives outside the input so it survives step redraws. */
-input[type="file"] {
-  color: transparent;
-}
-input[type="file"]::file-selector-button {
-  color: var(--white);
-  background: var(--red);
-  border: 0;
-  padding: 10px 16px;
-  border-radius: 0;
-  font: inherit;
-  cursor: pointer;
-}
 #permit-file-name {
   overflow-wrap: anywhere;
 }

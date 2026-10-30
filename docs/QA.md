@@ -147,3 +147,7 @@ This adapter is for local preview, not a portable production upload service. Pro
 Validation: Swift compilation, JavaScript syntax, formatting and 23 tests passed. Browser test with a synthetic image extracted `123456789-001` and the complete Rose Bowl address; review remained unchecked. No real vendor permit used. Real-world OCR accuracy has not been measured; unusual permit layouts may require manual entry.
 
 Browser verification also confirmed unchecked review blocks progression, confirmation allows progression, Back retains the attachment, and editing the permit number clears confirmation. Endpoint tests cover cross-origin, unsupported type, invalid file signature and oversized body rejection. PDF extraction is implemented but has not yet been exercised with representative permit PDFs.
+
+### Permit upload button — October 30, 2026
+
+Replaced the native Choose File control with a standard red button labeled “Upload CA Seller's Permit.” The button opens the same restricted file picker; missing-file validation focuses this keyboard-accessible button. Syntax and formatting checks passed.

@@ -453,7 +453,7 @@ const VendorFlow = (() => {
   function fieldMarkup(f) {
     const attrs = `id="${f.id}" name="${f.id}" ${f.required ? "required" : ""} aria-describedby="${f.id}-help ${f.id}-error"`;
     if (f.type === "file")
-      return `<div class="field"><label for="${f.id}">${f.label} <span class="field-requirement">(required)</span></label><input ${attrs} type="file" accept="application/pdf,image/jpeg,image/png"><p class="field-help" id="${f.id}-help">${f.help}</p><p id="permit-file-name"></p><p id="permit-read-status" role="status"></p><span class="error" id="${f.id}-error"></span></div>`;
+      return `<div class="field"><label for="${f.id}">${f.label} <span class="field-requirement">(required)</span></label><input ${attrs} type="file" accept="application/pdf,image/jpeg,image/png" hidden><button type="button" class="button" id="permit-upload-button" aria-describedby="${f.id}-help ${f.id}-error">Upload CA Seller's Permit</button><p class="field-help" id="${f.id}-help">${f.help}</p><p id="permit-file-name"></p><p id="permit-read-status" role="status"></p><span class="error" id="${f.id}-error"></span></div>`;
     if (f.type === "checkbox")
       return `<div class="field certification-check"><label for="${f.id}"><input ${attrs} type="checkbox"> <span>${f.label} <span class="field-requirement">(required)</span></span></label><p class="field-help" id="${f.id}-help">${f.help}</p><span class="error" id="${f.id}-error"></span></div>`;
     const control =
@@ -525,6 +525,9 @@ const VendorFlow = (() => {
       });
     const upload = document.querySelector("#permitFile");
     if (upload) {
+      document
+        .querySelector("#permit-upload-button")
+        .addEventListener("click", () => upload.click());
       document.querySelector("#permit-file-name").textContent = data.permitFile
         ? "Selected permit: " + data.permitFile.name
         : "No permit selected.";
@@ -698,7 +701,13 @@ const VendorFlow = (() => {
         ? `Please correct ${errors.length} ${errors.length === 1 ? "field" : "fields"} before continuing.`
         : "";
       if (errors.length) {
-        document.getElementById(errors[0][0].id).focus();
+        document
+          .getElementById(
+            errors[0][0].type === "file"
+              ? "permit-upload-button"
+              : errors[0][0].id,
+          )
+          .focus();
         return;
       }
       if (!isReview()) move(step + 1);
