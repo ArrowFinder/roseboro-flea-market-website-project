@@ -64,3 +64,5 @@ Owner-specified source: https://www.rgcshows.com/wp-content/uploads/rose-bowl-Ge
 Blue/Gold numbered sections are mapped using the inspected price page. Orange/Pearl individual plots and services placement are not defined on this overview; highlights remain at area/side level and explicitly state that limitation.
 
 Map refinement: removed the Space location eyebrow; heading is now Rose Bowl Flea Market Vendor Map. Highlight fill opacity increased from 25% to 44% and outline from 5 to 9 SVG units. Removed the requested-space estimate panel from Space Request; existing estimate remains in review (and returning payment preference).
+
+Field focus: removed the red ring on pointer-selected inputs, textareas and dropdowns. Tab navigation uses a neutral black focus outline; link/button indicators remain unchanged.

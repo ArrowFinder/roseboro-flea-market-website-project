@@ -48,12 +48,21 @@ button:disabled {
   cursor: not-allowed;
 }
 button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
+a:focus-visible {
   outline: 3px solid var(--red);
   outline-offset: 4px;
+}
+/* Pointer focus uses the field's existing border/caret; keyboard focus stays visible. */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+.keyboard-navigation input:focus,
+.keyboard-navigation textarea:focus,
+.keyboard-navigation select:focus {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 .preview {
   text-align: center;

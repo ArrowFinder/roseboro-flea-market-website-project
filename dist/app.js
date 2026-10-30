@@ -186,3 +186,17 @@ window.addEventListener("hashchange", () => {
   window.scrollTo(0, 0);
 });
 render();
+
+// Text inputs can match :focus-visible after a click. Track Tab navigation explicitly
+// so pointer users see no extra ring while keyboard users retain a clear indicator.
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Tab")
+    document.documentElement.classList.add("keyboard-navigation");
+});
+document.addEventListener(
+  "pointerdown",
+  () => {
+    document.documentElement.classList.remove("keyboard-navigation");
+  },
+  true,
+);

@@ -91,3 +91,7 @@ Contact-first flow: all 16 tests and syntax checks pass. Browser completed all f
 Map refinement: syntax, formatting and existing regression suite checked after removing the Space Request estimate panel and its DOM update. Map title simplified and selected outline/fill strengthened.
 
 Browser confirmed revised map heading, stronger Gold 800 highlight, absent Space Request estimate panel, and working space/quantity selection after panel removal. All 17 regression tests pass.
+
+Field focus styling: syntax and formatting checked. Pointer-selected fields no longer use a red outline; keyboard navigation retains a neutral outline.
+
+Browser verified click focus has no added ring, Tab switches to keyboard focus styling, and a subsequent pointer click removes that styling. Screenshot inspected.

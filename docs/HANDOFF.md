@@ -78,3 +78,5 @@ Path-specific step definitions now map visual order to stable section IDs in ven
 Maintain explicit Blue/Gold price-to-section mappings when updating the catalog. Orange/Pearl subtype mappings require a more detailed owner-approved map before exact plots can be highlighted.
 
 Space Request no longer mounts #space-quote. Selection changes continue updating the map; estimated pricing is still computed for review and returning payment preference. Do not restore the removed estimate DOM update without restoring its target.
+
+app.js tracks Tab versus pointer input with the keyboard-navigation root class. This avoids text inputs showing a focus-visible ring after pointer clicks while preserving keyboard focus visibility.
