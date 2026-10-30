@@ -167,3 +167,7 @@ Removed the profile gateway, sample identity and prefilled values. Returning Ven
 Both application paths now offer Submit application (preview) on final review. All required sections and certification fields are revalidated before opening a native modal receipt. The modal says Application submitted and explains that the team will contact the applicant shortly using the provided contact information. A prominent preview-only notice states that no application has been sent. Close window (or Escape) dismisses the modal and restores the form; this closes the confirmation window rather than the browser tab. No network submission, office notification, payment or persisted signature is performed. This supersedes earlier notes that the final button is disabled. Production must show the receipt only after successful durable backend submission, and handle errors/retries without duplicate applications.
 
 Validation: JavaScript syntax, formatting and all 24 tests passed. A browser walkthrough with synthetic returning-vendor data reached the confirmation after all sections and certifications were completed. The modal focused Close window, displayed the preview-only notice, and dismissed successfully via that button. Both paths share the same final validation and dialog code.
+
+### Attendee animal FAQ — October 30, 2026
+
+Added the owner-confirmed policy: service animals are welcome; personal pets are not permitted. Appears under Are pets allowed? on Attendee FAQs. Syntax and formatting checks passed.

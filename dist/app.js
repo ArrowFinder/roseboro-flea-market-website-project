@@ -170,6 +170,10 @@ function render() {
             "Use Buy Tickets to visit the available Eventbrite listing. Check the event date before purchasing. <a href='#admission'>Admission information</a>.",
           ],
           [
+            "Are pets allowed?",
+            "Service animals are welcome. Personal pets are not permitted — service animals only.",
+          ],
+          [
             "Where can I park?",
             "Free parking and preferred paid parking are available. <a href='#parking'>Parking details</a>.",
           ],
