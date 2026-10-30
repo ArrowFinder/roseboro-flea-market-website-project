@@ -60,3 +60,7 @@ New-vendor sequence: Seller / Business Contact → Space / Plot Request → Requ
 Space Request now pairs the form with a selection-linked map. Blue/Gold options highlight numbered sections; Orange/Pearl highlight their general area. A full-size image link is available.
 
 New-vendor sequence is now Contact → Space / Plot Request → Selling Details → Required Forms → Review & Submit. Merchandise options follow the live site’s area-specific lists. Required Forms offers permit details for Blue/Gold and permit or occasional-seller verification for Orange/Pearl. Use sample permit details only in this local preview.
+
+### Seller certification — October 30, 2026
+
+Both paths now end with required signer full name, position/title, and two unchecked certifications using the owner's supplied wording. New vendors see an explicit note that no payment instructions are selected. Consent is cleared when leaving review to edit earlier answers; signer details remain in tab memory. Checkbox validation accepts only explicit boolean consent. Submission stays disabled; no signature is transmitted, stored persistently, or legally validated. Production must validate the complete application server-side and record the event, final answers, certification version, signer and consent evidence together.

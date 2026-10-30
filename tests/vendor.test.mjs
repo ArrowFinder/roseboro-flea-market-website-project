@@ -73,7 +73,7 @@ test("new and returning paths keep separate drafts and never reuse event choices
 
 test("payment preference is required only for returning vendors and is never preselected", () => {
   flow.selectPath("new");
-  assert.equal(flow.fields(4).length, 0);
+  assert.equal(flow.fields(4)[0].id, "signerName");
   assert.match(flow.render(), /No payment is collected during the application/);
   flow.selectPath("returning");
   const preference = flow.fields(4)[0];
@@ -84,7 +84,7 @@ test("payment preference is required only for returning vendors and is never pre
   assert.equal(flow.validate(preference, "on-file"), "");
   assert.equal(flow.validate(preference, "new-after-acceptance"), "");
   flow.selectPath("new");
-  assert.equal(flow.fields(4).length, 0);
+  assert.equal(flow.fields(4)[0].id, "signerName");
 });
 
 test("space estimates use live-form prices and reject invalid cross-area choices", () => {
@@ -102,7 +102,7 @@ test("new vendor sequence is contact, space request, selling details, required f
   assert.equal(flow.fields(1)[0].id, "event");
   assert.equal(flow.fields(2)[0].id, "category");
   assert.equal(flow.fields(3)[0].id, "status");
-  assert.equal(flow.fields(4).length, 0);
+  assert.equal(flow.fields(4)[0].id, "signerName");
   const markup = flow.render();
   assert.ok(
     markup.indexOf("Seller / Business Contact") <
@@ -138,4 +138,22 @@ test("selling categories and documentation rules follow the chosen area", () => 
   assert.equal(flow.validate({ ...required, id: "registered" }, "yes"), "");
   assert.ok(flow.validate({ ...required, id: "priorSales" }, "2_plus"));
   assert.ok(flow.validate({ ...required, id: "personalUse" }, "no"));
+});
+
+test("final certification is required and checkbox consent must be explicit", () => {
+  for (const [path, index] of [
+    ["new", 4],
+    ["returning", 5],
+  ]) {
+    flow.selectPath(path);
+    const fields = flow.fields(index);
+    assert.equal(fields.length, 4);
+    for (const field of fields) assert.ok(flow.validate(field, ""));
+    for (const field of fields.filter((f) => f.type === "checkbox")) {
+      for (const value of [false, undefined, "true", "on"])
+        assert.ok(flow.validate(field, value));
+      assert.equal(flow.validate(field, true), "");
+      assert.equal(flow.snapshot().data[field.id], undefined);
+    }
+  }
 });

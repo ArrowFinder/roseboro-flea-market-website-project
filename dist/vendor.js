@@ -386,9 +386,28 @@ const VendorFlow = (() => {
           "Choose a preference only. No payment is collected now. If you choose a new method, staff will arrange it after acceptance. This preview is not connected to a payment account.",
         ),
       ];
+    if (index === 4)
+      return [
+        field("signerName", "Full name", "text", true),
+        field("signerTitle", "Position or title", "text", true),
+        field(
+          "certifiedCorrect",
+          "The above statements are certified to be correct to the best of my knowledge and belief.",
+          "checkbox",
+          true,
+        ),
+        field(
+          "electronicConsent",
+          "I am the seller or an authorized representative. By typing my full name and submitting this request, I intend to sign this seller certification and the payment instructions I selected electronically for the selected event, and agree to the use of an electronic record and signature.",
+          "checkbox",
+          true,
+        ),
+      ];
     return [];
   }
   function validate(f, value) {
+    if (f.type === "checkbox")
+      return value === true ? "" : "This confirmation is required.";
     const v = String(value || "").trim();
     if (f.required && !v) return `Enter ${f.label.toLowerCase()}.`;
     if (!v) return "";
@@ -417,6 +436,8 @@ const VendorFlow = (() => {
   }
   function fieldMarkup(f) {
     const attrs = `id="${f.id}" name="${f.id}" ${f.required ? "required" : ""} aria-describedby="${f.id}-help ${f.id}-error"`;
+    if (f.type === "checkbox")
+      return `<div class="field certification-check"><label for="${f.id}"><input ${attrs} type="checkbox"> <span>${f.label} <span class="field-requirement">(required)</span></span></label><p class="field-help" id="${f.id}-help">${f.help}</p><span class="error" id="${f.id}-error"></span></div>`;
     const control =
       f.type === "select"
         ? `<select ${attrs}><option value="">Choose an option</option>${f.options.map(([value, label]) => `<option value="${value}">${label}</option>`).join("")}</select>`
@@ -448,7 +469,7 @@ const VendorFlow = (() => {
       )
       .join(
         "",
-      )}${estimate()}${nextSteps()}<div class="note"><strong>Draft review only</strong><p>No request has been sent and no space is reserved. Final availability, full seller certification, private documentation, and a submission service are still required before this application can accept requests.</p></div>`;
+      )}${estimate()}${nextSteps()}<div class="note"><strong>Draft review only</strong><p>No request has been sent and no space is reserved. Final availability, private documentation, and a submission service are still required before this application can accept requests. No electronic signature is submitted or recorded in this preview.</p></div><section class="seller-certification" aria-labelledby="certification-title"><h3 id="certification-title">Seller certification</h3>${mode === "new" ? "<p>No payment instructions are selected for new vendors. Payment will be arranged after acceptance.</p>" : ""}${fields().map(fieldMarkup).join("")}</section>`;
   }
   function mapMarkup() {
     const option = spaceOptions[data.area]?.find(
@@ -469,7 +490,7 @@ const VendorFlow = (() => {
         "#vendor-form input, #vendor-form select, #vendor-form textarea",
       )
       .forEach((el) => {
-        data[el.name] = el.value;
+        data[el.name] = el.type === "checkbox" ? el.checked : el.value;
       });
   }
   function bind(redraw) {
@@ -478,7 +499,8 @@ const VendorFlow = (() => {
         "#vendor-form input, #vendor-form select, #vendor-form textarea",
       )
       .forEach((el) => {
-        el.value = data[el.name] || "";
+        if (el.type === "checkbox") el.checked = data[el.name] === true;
+        else el.value = data[el.name] || "";
         el.addEventListener("input", capture);
       });
     document.querySelector("#area")?.addEventListener("change", () => {
@@ -539,6 +561,11 @@ const VendorFlow = (() => {
     });
     function move(index) {
       capture();
+      // Returning to earlier answers requires fresh consent to the revised application.
+      if (isReview() && index !== step) {
+        delete data.certifiedCorrect;
+        delete data.electronicConsent;
+      }
       step = index;
       redraw();
       document.querySelector("#step-title").focus();
