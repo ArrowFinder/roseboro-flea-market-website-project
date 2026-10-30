@@ -19,6 +19,7 @@ http
             ".css": "text/css",
             ".js": "text/javascript",
             ".svg": "image/svg+xml",
+            ".jpg": "image/jpeg",
           }[extname(file)] || "application/octet-stream",
         "Cache-Control": "no-store",
       });

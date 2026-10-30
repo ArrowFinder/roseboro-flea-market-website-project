@@ -37,3 +37,12 @@ Date: October 30, 2026. Scope: static prototype and five-step vendor flow. Tests
 - Independent human code/security review before production release.
 
 No production-readiness claim is made. Keep this record aligned with actual tests; do not mark an item verified because code appears to implement it.
+
+## Photo and countdown update
+
+- 12 automated tests now pass (six vendor, six calendar). Calendar cases cover 120 monthly dates, October→November, both daylight-saving offsets, exact opening, local midnight and year rollover.
+- Browser verified loaded hero/gallery assets and a ticking countdown targeting November 8, 2026. Desktop composition inspected.
+- 390px iframe viewport used to inspect phone layout and exercise expanding navigation; this is a browser viewport check, not a physical-device or full cross-browser audit.
+- Core palette contrast ratios recorded in DESIGN.md; font sizes, assistive-technology behavior and other component pairs still require a complete audit.
+- Image derivatives total approximately 1.4 MB; hero loads eagerly and gallery images lazily. Originals are untouched.
+- Local preview kept running at the owner's explicit request.

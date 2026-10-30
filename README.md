@@ -28,14 +28,17 @@ No runtime dependencies. Prettier is a pinned development dependency. Google Fon
 - Vendor Application, Space Options, Requirements, Policies & FAQs subtabs.
 - Vendor flow: event/area → seller details → contact → payment process → review/edit.
 - Required-field validation and contextual guidance; entries remain only in page memory.
-- Ticket buttons use the exact owner-supplied November 8, 2026 Eventbrite URL.
+- Photo-led homepage with signage-inspired yellow, red, ink and cream palette.
+- Live countdown to 9 a.m. Pacific on the next second Sunday, with daylight-saving and month rollover handling.
+- Ticket buttons use the exact owner-supplied November 8, 2026 Eventbrite URL, with a guard against linking future markets to that expired event.
 
 ## Prototype boundaries
 
-No live vendor submission, document upload, reservation, payment, or email delivery. Final submission is disabled. Event/area choices do not indicate availability. Complete seller certification and verified space pricing are pending. Use sample information only. Temporary illustration and proposed copy are labeled. No website has been deployed and the existing website is untouched.
+No live vendor submission, document upload, reservation, payment, or email delivery. Final submission is disabled. Event/area choices do not indicate availability. Complete seller certification and verified space pricing are pending. Use sample information only. Owner-supplied photography now replaces the temporary illustration; marketing copy remains proposed. No website has been deployed and the existing website is untouched.
 
 ## Handoff documents
 
+- [Design and asset register](docs/DESIGN.md): palette, photograph provenance and countdown behavior.
 - [Engineering handoff](docs/HANDOFF.md): architecture, responsibilities, integration boundaries and release blockers.
 - [Source review](docs/SOURCE-REVIEW.md): existing business process, source links and conflicts.
 - [Decisions](docs/DECISIONS.md): confirmed facts and missing information.

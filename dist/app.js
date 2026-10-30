@@ -5,7 +5,6 @@ const business = {
 };
 // Route templates contain trusted static copy only. Form values are handled in vendor.js.
 const main = document.querySelector("main");
-const art = `<div class="art" role="img" aria-label="Temporary illustration of a market stall, plants, and secondhand finds"><svg viewBox="0 0 550 520" aria-hidden="true"><rect width="550" height="520" fill="#dfc698"/><circle cx="420" cy="100" r="65" fill="#f5deb0"/><path d="M0 400Q120 320 270 390T550 365V520H0Z" fill="#b1b79a"/><path d="M65 185H490L455 110H110Z" fill="#f4e8c9"/><path d="M110 110H162L140 185H65ZM213 110H265V185H225ZM316 110H368L395 185H310ZM420 110H455L490 185H450Z" fill="#ae4c35"/><path d="M80 186V420M472 186V420" stroke="#354c3b" stroke-width="10"/><rect x="60" y="330" width="435" height="30" fill="#a76943"/><path d="M88 360V470M465 360V470" stroke="#72553c" stroke-width="14"/><path d="M290 310Q245 230 297 217Q345 225 308 310Z" fill="#58734b"/><path d="M298 310Q345 235 370 270Q375 310 310 320" fill="#3b5b3f"/><path d="M275 305H330L320 350H285Z" fill="#bb6547"/><rect x="120" y="285" width="95" height="45" rx="4" fill="#e5a84d"/><rect x="130" y="274" width="75" height="10" fill="#334f43"/><path d="M380 330V270Q405 250 428 270V330Z" fill="#f1e4c6"/><path d="M389 265Q405 235 420 265" fill="none" stroke="#b5794d" stroke-width="7"/><circle cx="230" cy="399" r="28" fill="#c47948"/><path d="M160 477L175 402H220L235 477Z" fill="#f3e6c8"/><path d="M180 410Q140 345 161 335Q200 345 198 409M199 409Q210 345 240 355Q260 380 210 416" fill="#4c6747"/></svg><span class="art-label">TEMPORARY ILLUSTRATION · PHOTOGRAPHY TO COME</span></div>`;
 const ticket = '<button class="button ticket">Buy Tickets ↗</button>';
 const visit = `<div class="visit"><section class="content"><p class="eyebrow">Make a day of it</p><h2>Plan your visit.</h2><div class="grid">${[
   ["Location", "1001 Rose Bowl Drive, Pasadena, CA 91103"],
@@ -15,16 +14,24 @@ const visit = `<div class="visit"><section class="content"><p class="eyebrow">Ma
   ],
   [
     "Admission",
-    "See the November 8 Eventbrite listing for current tickets and fees.",
+    "See the linked Eventbrite listing for current tickets and fees.",
   ],
   ["Parking", "Free parking available; preferred paid parking also offered."],
 ]
   .map(([x, y]) => `<div><h3>${x}</h3><p>${y}</p></div>`)
   .join("")}</div></section></div>`;
-const event = `<div class="event"><div class="date">NOV<br><small>08</small></div><div><h3>Sunday, November 8, 2026</h3><p class="muted">Rose Bowl Flea Market · Pasadena, California</p></div><a class="button secondary" href="#calendar">Event Calendar →</a></div>`;
+// Schedule repeats monthly; a ticket URL belongs only to its supplied event date.
+const ticketEventDate = "2026-11-08";
+const event = () => {
+  const next = MarketCalendar.schedule();
+  return `<div class="event"><div class="date">2nd<br><small>SUNDAY</small></div><div><h3>${next.label}</h3><p class="muted">Rose Bowl Flea Market · Pasadena, California</p></div>${next.key === ticketEventDate ? ticket : '<span class="muted">Ticket link coming soon</span>'}</div>`;
+};
+let stopCountdown = () => {};
+const countdown = `<section class="countdown" aria-label="Countdown to the next flea market"><div class="countdown-inner"><div class="countdown-copy"><p class="eyebrow">Every second Sunday. Always a discovery.</p><h2 data-countdown-heading>The next treasure hunt starts in</h2><p data-market-date></p><p class="countdown-note" data-countdown-note></p></div><div class="countdown-units" data-countdown-units>${["days", "hours", "minutes", "seconds"].map((unit) => `<div><strong data-unit="${unit}">00</strong><span>${unit}</span></div>`).join("")}</div></div></section>`;
 const intro = (label, title, text) =>
   `<section class="content"><div class="page-intro"><p class="eyebrow">${label}</p><h1>${title}</h1><p>${text}</p></div>`;
 function render() {
+  stopCountdown();
   let route = location.hash.slice(1) || "home";
   if (
     ![
@@ -43,20 +50,27 @@ function render() {
   document.title =
     (route === "home" ? "" : route[0].toUpperCase() + route.slice(1) + " | ") +
     "Rose Bowl Flea Market";
-  if (route === "home")
-    main.innerHTML = `<section class="hero"><div><p class="eyebrow">Welcome to Rose Bowl Flea Market</p><h1>Come curious.<br>Leave with<br><em>a little story.</em></h1><p>A place to browse, discover, and connect. Come explore Rose Bowl Flea Market.</p><div class="actions">${ticket}<a href="#calendar">Plan your visit →</a></div><p class="muted">Introductory copy proposed for review.</p></div>${art}</section><div class="strip"><span>A LITTLE DISCOVERY</span><span>✳</span><span>A LITTLE CONNECTION</span><span>✳</span><span>ROOM FOR SOMETHING SPECIAL</span></div><section class="content"><div class="section-head"><div><p class="eyebrow">See you at the market</p><h2>Your next good find awaits.</h2></div><a href="#calendar">View Event Calendar ↗</a></div>${event}</section>${visit}<section class="content"><p class="eyebrow">Before you go</p><h2>A few helpful details.</h2><details><summary>How do I buy tickets?</summary><p>Buy Tickets opens the owner-supplied Eventbrite listing for November 8, 2026. Check that listing for ticket availability and current prices.</p></details><details><summary>What can I find at the market?</summary><p>Browse antiques, collectibles, vintage clothing, and general merchandise. The illustration is a visual placeholder.</p></details><div class="vendor-link"><div><h3>Have something to share?</h3><p>Explore selling at Rose Bowl Flea Market.</p></div><a href="#vendors">Visit the Vendors section →</a></div></section>`;
+  if (route === "home") {
+    main.innerHTML = `
+      <section class="photo-hero">
+        <div class="hero-copy"><p class="eyebrow">Pasadena, California · Every second Sunday</p><h1>The thrill<br>of the <em>find.</em></h1><p>Vintage treasures. Unexpected favorites. A whole Sunday of discovery at the Rose Bowl Flea Market.</p><div class="actions">${ticket}<a class="hero-plan" href="#calendar">Plan your visit ↗</a></div><p class="hero-footnote">A little curiosity goes a long way.</p></div>
+        <figure class="hero-photo"><img src="assets/market-entrance.jpg" width="2000" height="1333" alt="Shoppers arriving at the Rose Bowl beneath the yellow and red flea market entrance banner" fetchpriority="high"><figcaption>Meet us at the Rose Bowl.</figcaption></figure>
+      </section>
+      ${countdown}
+      <section class="content discoveries"><div class="section-head"><div><p class="eyebrow">Go looking. Find something unexpected.</p><h2>Old favorites.<br>New stories.</h2></div><p>Take a closer look. The good stuff<br>is in the details.</p></div><div class="photo-grid"><figure><img src="assets/vintage-finds.jpg" width="1000" height="667" loading="lazy" alt="Vintage chair, wooden furniture and framed signs at a market stall"><figcaption><span>01 /</span> Pieces with a past</figcaption></figure><figure><img src="assets/records-and-style.jpg" width="1000" height="667" loading="lazy" alt="Red vinyl record, disco balls and a vintage Dolly Parton T-shirt"><figcaption><span>02 /</span> A style all your own</figcaption></figure><figure><img src="assets/one-of-a-kind.jpg" width="1000" height="667" loading="lazy" alt="White bicycle beside vintage luggage, clothing and a wooden sled"><figcaption><span>03 /</span> The unexpected find</figcaption></figure></div></section>
+      ${visit}
+      <section class="content"><div class="section-head"><div><p class="eyebrow">Save your Sunday</p><h2>See you at the market.</h2></div><a href="#calendar">Event Calendar ↗</a></div>${event()}<details><summary>How do I buy tickets?</summary><p>Buy Tickets links to the supplied Eventbrite event. Check that listing for availability and current prices.</p></details><details><summary>When is the flea market?</summary><p>Every second Sunday of the month, at the Rose Bowl in Pasadena. General admission begins at 9 a.m. Pacific.</p></details><div class="vendor-link"><div><h3>Have something to share?</h3><p>Find your place on the other side of the table.</p></div><a href="#vendors">Explore selling at the market →</a></div></section>`;
+    stopCountdown = MarketCalendar.mount(document.querySelector(".countdown"));
+  }
   if (route === "calendar")
     main.innerHTML =
       intro(
         "Event Calendar",
         "Make room for market day.",
-        "Confirmed upcoming dates and individual Eventbrite listings will appear here.",
+        "Every second Sunday of the month. General admission from 9 a.m. Pacific.",
       ) +
-      event.replace(
-        '<a class="button secondary" href="#calendar">Event Calendar →</a>',
-        ticket,
-      ) +
-      '<p class="note">November 8 is the event in the owner-supplied ticket link. Further dates and current ticket availability remain to be verified.</p></section>' +
+      event() +
+      '<p class="note">Dates follow the monthly schedule. Each Eventbrite link is specific to its event; future ticket listings will be added when available.</p></section>' +
       visit;
   if (route === "about")
     main.innerHTML =
@@ -118,7 +132,11 @@ document.querySelector("#menu").addEventListener("click", (e) => {
 });
 document.addEventListener("click", (e) => {
   if (e.target.closest(".ticket")) {
-    if (business.eventbriteUrl) window.location.assign(business.eventbriteUrl);
+    if (
+      business.eventbriteUrl &&
+      MarketCalendar.schedule().key === ticketEventDate
+    )
+      window.location.assign(business.eventbriteUrl);
     else document.querySelector("#ticket-dialog").showModal();
   }
 });
