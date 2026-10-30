@@ -15,3 +15,7 @@ Build a maintainable, local-only replacement for Rose Bowl Flea Market. The priv
 ## Design
 
 Shopper-first homepage. Navigation order: Event Calendar, About Us, Vendors, Contact, Buy Tickets. Tickets link to the owner-supplied Eventbrite listing. Vendor Application is the primary vendor subpage. Photography/logo must be approved assets; temporary imagery is labeled.
+
+## Approved palette
+
+Locked by the owner on October 30, 2026: primary red `#BF2C25`, secondary black `#111111`, yellow accents `#F9D827`, and white base `#FFFFFF`. Preserve these exact colors and their hierarchy unless the owner requests a change. Neutral gray borders/panels and documented interaction shades may support this palette. See docs/DESIGN.md.

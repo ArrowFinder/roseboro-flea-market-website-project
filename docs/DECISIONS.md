@@ -4,6 +4,8 @@ Updated October 30, 2026.
 
 ## Established
 
+- Owner approved and locked the palette on October 30, 2026: primary red #BF2C25, secondary black #111111, yellow accents #F9D827, white base #FFFFFF.
+
 - Owner confirmed second-Sunday monthly recurrence; countdown labels its 9 a.m. Pacific general-admission target.
 - Owner confirmed visible brand: **Rose Bowl Flea Market**.
 - Original requested repository slug retained: `roseboro-flea-market-website-project`; private under verified account ArrowFinder.

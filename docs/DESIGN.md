@@ -2,7 +2,7 @@
 
 Updated October 30, 2026. Owner supplied nine photographs in chat and requested a palette drawn from them. These are visually selected, web-ready approximations of the photographed colors, not certified original logo ink values. The actual vector logo/brand standards remain pending.
 
-Owner revision: red is primary, black secondary, yellow is limited to accents, and the base is crisp white.
+**Approved and locked by the owner on October 30, 2026.** Red is primary, black secondary, yellow is limited to accents, and the base is crisp white. Preserve these values and roles in future work; changing them requires a new owner request.
 
 | Priority  | Color         | Hex     | Purpose                                                                |
 | --------- | ------------- | ------- | ---------------------------------------------------------------------- |
