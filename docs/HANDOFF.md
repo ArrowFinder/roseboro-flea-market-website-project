@@ -25,6 +25,8 @@ See DESIGN.md for photo provenance, palette and countdown semantics. `MarketCale
 ## Implemented behavior
 
 - Shopper homepage, Calendar, About, Vendors, Contact and vendor subpages.
+- Shared linked visitor cards route to Location, Hours, Admission and Parking. Content is trusted static copy in `visitorPages`; event-date ticket guards remain in effect.
+- Footer reproduces current public office/contact/legal content. Office service hours are distinct from public market hours; never infer market closing time from footer hours.
 - Exact owner-supplied November 8 Eventbrite destination; no custom shopper checkout.
 - Five-step vendor preview: event/area, selling details, contact, payment explanation, review.
 - Required inputs, email/phone/select/length validation, inline errors, focus on first error, progress, Back and section Edit controls.

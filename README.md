@@ -25,6 +25,8 @@ No runtime dependencies. Prettier is a pinned development dependency. Google Fon
 ## Current experience
 
 - Home, Event Calendar, About Us, Vendors and Contact.
+- Connected market-date and visitor-detail cards, with Location, Hours, Admission and Parking routes.
+- Live-site footer content, office details, social and legal links.
 - Vendor Application, Space Options, Requirements, Policies & FAQs subtabs.
 - Vendor flow: event/area → seller details → contact → payment process → review/edit.
 - Required-field validation and contextual guidance; entries remain only in page memory.

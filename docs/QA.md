@@ -54,3 +54,12 @@ Owner requested primary red, secondary black, yellow accents and crisp white. Up
 ## Official header logo
 
 Replaced the provisional top-left wordmark with the owner-supplied logo. Resized derivative preserves aspect ratio and original colors; alt text and home-link label are explicit. Shared responsive sizing covers desktop and mobile.
+
+## Homepage simplification and footer
+
+- Syntax checks and all 12 existing calendar/vendor tests pass after routing changes.
+- Browser clicked all four visitor cards and confirmed correct route, heading and detail content; return-to-market link works.
+- Desktop homepage inspected: hero caption, gallery and vendor prompt absent; event row and visitor cards joined directly below countdown. Footer logo loads and both office columns render.
+- 390px iframe viewport inspected: visitor cards form two columns; footer stacks cleanly. This is not a physical-device test.
+- Footer destinations copied from the inspected live-site links; no phone call, social action or purchase performed.
+- This update does not establish market closing time or replace the outstanding full accessibility and cross-browser audit.

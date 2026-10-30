@@ -25,3 +25,7 @@ Updated October 30, 2026.
 - Replacement domain and hosting plan after the local design is approved.
 
 Refer to HANDOFF.md for engineering release blockers and QA.md for checks completed.
+
+## October 30 homepage refinement
+
+Owner requested the hero caption, product-story gallery and vendor prompt be removed; market event section moves directly below countdown with attached clickable visitor details. Footer should match the existing live site. Approved palette remains unchanged. Public office hours in footer are not market opening/closing hours.

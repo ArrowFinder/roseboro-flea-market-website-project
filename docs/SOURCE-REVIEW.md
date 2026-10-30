@@ -35,3 +35,9 @@ The current five-step form implements event/area, selling details, contact, paym
 - Show only area- and status-relevant questions; place price and policy review before signature; reuse entered contact data in review.
 
 Full policy text, actual select options/pricing, uploads, signature controls, backend validation, and payment integrations remain to be audited and implemented. Source links are retained so no requirements are silently discarded.
+
+## Visitor details and footer refresh — October 30, 2026
+
+Source: https://www.rgcshows.com/rose-bowl/ (page and footer inspected in browser). Carried over both office blocks, market/social links and legal links. Social links point to `rgcshows` accounts and YouTube channel `UCJ8xKt-YaEA7eBlMc2fWCQw`. Legal text remains hosted on the current site.
+
+Visitor routes use public address, general admission at 9 a.m., VIP 5–8:45 a.m., children under 12 free with adult, Gate C rideshare, free parking, preferred parking listed at $20 cash/card, accessible parking/restrooms and no wheelchair/stroller rentals. Prices and rules need pre-launch reconfirmation. Closing time remains explicitly unresolved. Footer event-day 3 a.m.–3 p.m. is office service time, not established market hours. Copyright year range preserved from source.

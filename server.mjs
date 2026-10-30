@@ -20,6 +20,7 @@ http
             ".js": "text/javascript",
             ".svg": "image/svg+xml",
             ".jpg": "image/jpeg",
+            ".png": "image/png",
           }[extname(file)] || "application/octet-stream",
         "Cache-Control": "no-store",
       });
