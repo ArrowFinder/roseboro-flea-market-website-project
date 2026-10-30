@@ -123,3 +123,7 @@ Added the owner-supplied quoted line “The Flea market to the Stars” immediat
 ### Returning-vendor sequence — October 30, 2026
 
 Returning vendors now follow Seller / Business Contact → Space / Plot Request → Selling Details → Permit Verification → Payment Preference → Review & Submit. The same editable fields and validation are used for both paths; returning vendors receive synthetic saved contact/merchandise values for convenience, not a bypass. Each section must be completed. Real authenticated profiles remain unconnected; event choices, payment preference and signature consent are never preselected from an earlier event. Syntax, formatting and all 19 tests passed.
+
+### Returning application navigation — October 30, 2026
+
+Removed the underlined vendor-section navigation above the returning application, matching the focused new-vendor form. Main site navigation and application steps remain. Syntax and formatting checks passed.
