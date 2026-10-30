@@ -62,3 +62,5 @@ Vendor landing refinement: removed the four underlined subpage links below the e
 Owner-specified source: https://www.rgcshows.com/wp-content/uploads/rose-bowl-General-map-09-24-26.jpg. Downloaded unchanged to `dist/assets/vendor-map.jpg` (1800×1867). Code-drawn SVG overlays use a proportional 1542×1600 viewBox; original image is not modified. Selected zones receive a translucent white fill and dark outline, with descriptive selection text. The form sits left and map right on wide screens; below 950px the map follows the form. No motion or pulsing. Full-size map link preserves legibility.
 
 Blue/Gold numbered sections are mapped using the inspected price page. Orange/Pearl individual plots and services placement are not defined on this overview; highlights remain at area/side level and explicitly state that limitation.
+
+Map refinement: removed the Space location eyebrow; heading is now Rose Bowl Flea Market Vendor Map. Highlight fill opacity increased from 25% to 44% and outline from 5 to 9 SVG units. Removed the requested-space estimate panel from Space Request; existing estimate remains in review (and returning payment preference).

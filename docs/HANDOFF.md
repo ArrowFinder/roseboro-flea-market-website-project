@@ -76,3 +76,5 @@ Path-specific step definitions now map visual order to stable section IDs in ven
 `vendor-map.js` loads before vendor.js and exposes a pure `selection` mapping plus static markup rendering. Space Request uses the map instead of the usual sidebar in both paths. Area changes redraw the form/map and clear stale space choices; space changes update the map without recreating form controls. Quantity affects pricing only. Overlay paths are visual approximations for orientation, not precise boundaries or inventory. Labels are exclusively static catalog strings. SVG is decorative; adjacent live text conveys the selection. Re-trace paths if source image changes.
 
 Maintain explicit Blue/Gold price-to-section mappings when updating the catalog. Orange/Pearl subtype mappings require a more detailed owner-approved map before exact plots can be highlighted.
+
+Space Request no longer mounts #space-quote. Selection changes continue updating the map; estimated pricing is still computed for review and returning payment preference. Do not restore the removed estimate DOM update without restoring its target.

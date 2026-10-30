@@ -276,8 +276,7 @@ const VendorFlow = (() => {
     return `<div class="field"><label for="${f.id}">${f.label} <span class="field-requirement">${f.required ? "(required)" : "(optional)"}</span></label>${control}<p class="field-help" id="${f.id}-help">${f.help}</p><span class="error" id="${f.id}-error"></span></div>`;
   }
   function guidance() {
-    if (sectionIndex() === 0)
-      return `<div id="space-quote" aria-live="polite">${estimate()}</div>`;
+    if (sectionIndex() === 0) return "";
     if (sectionIndex() === 1) {
       const descriptions = {
         permit:
@@ -354,7 +353,6 @@ const VendorFlow = (() => {
     ["space", "quantity"].forEach((id) =>
       document.getElementById(id)?.addEventListener("change", () => {
         capture();
-        document.querySelector("#space-quote").innerHTML = estimate();
         if (id === "space")
           document.querySelector("#vendor-map-panel").innerHTML = mapMarkup();
       }),

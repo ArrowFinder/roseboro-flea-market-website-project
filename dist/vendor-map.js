@@ -66,7 +66,7 @@ const VendorMap = (() => {
   function render(area, space, label = "") {
     const selected = selection(area, space);
     // Labels originate only from the static space catalog, never user-entered text.
-    return `<aside class="vendor-map" aria-label="Space request map"><p class="eyebrow">Space location</p><h3>Rose Bowl vendor map</h3><div class="vendor-map-image"><img src="assets/vendor-map.jpg" width="1800" height="1867" alt="General Rose Bowl vendor map: Pearl west of the canal, Orange beside the canal, and Blue and Gold sections around the stadium."><svg viewBox="0 0 1542 1600" aria-hidden="true" focusable="false">${Object.entries(
+    return `<aside class="vendor-map" aria-label="Space request map"><h3>Rose Bowl Flea Market Vendor Map</h3><div class="vendor-map-image"><img src="assets/vendor-map.jpg" width="1800" height="1867" alt="General Rose Bowl vendor map: Pearl west of the canal, Orange beside the canal, and Blue and Gold sections around the stadium."><svg viewBox="0 0 1542 1600" aria-hidden="true" focusable="false">${Object.entries(
       shapes,
     )
       .map(

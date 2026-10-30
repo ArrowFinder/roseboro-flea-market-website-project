@@ -87,3 +87,7 @@ Contact-first flow: all 16 tests and syntax checks pass. Browser completed all f
 ## Interactive space map
 
 17 tests pass, including numbered section selection, area-only fallback, service-side fallback and empty selection. Syntax/format checks pass. Browser inspected map beside form and verified Blue 700 → Gold 800 → Orange transitions, with space reset on area change and selected labels matching the form. Full-size link supplied. Mobile stacking is implemented via CSS; physical-device and full accessibility testing remain pending.
+
+Map refinement: syntax, formatting and existing regression suite checked after removing the Space Request estimate panel and its DOM update. Map title simplified and selected outline/fill strengthened.
+
+Browser confirmed revised map heading, stronger Gold 800 highlight, absent Space Request estimate panel, and working space/quantity selection after panel removal. All 17 regression tests pass.

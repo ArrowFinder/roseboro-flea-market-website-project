@@ -1020,9 +1020,9 @@ footer a:focus-visible {
   stroke: transparent;
 }
 .vendor-map-image path.selected {
-  fill: #ffffff40;
+  fill: #ffffff70;
   stroke: #111111;
-  stroke-width: 5;
+  stroke-width: 9;
   stroke-linejoin: round;
   paint-order: stroke fill;
 }
