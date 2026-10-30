@@ -90,3 +90,7 @@ Stable section ID 1 now displays Permit Verification in both paths. Guidance is 
 ### Seller certification — October 30, 2026
 
 Both paths now end with required signer full name, position/title, and two unchecked certifications using the owner's supplied wording. New vendors see an explicit note that no payment instructions are selected. Consent is cleared when leaving review to edit earlier answers; signer details remain in tab memory. Checkbox validation accepts only explicit boolean consent. Submission stays disabled; no signature is transmitted, stored persistently, or legally validated. Production must validate the complete application server-side and record the event, final answers, certification version, signer and consent evidence together.
+
+### Homepage vendor entry — October 30, 2026
+
+Removed the homepage hero location/frequency eyebrow. Replaced its Plan your visit link with Become a Vendor, targeting #vendors and the existing new/returning choice. Syntax and formatting checks passed.

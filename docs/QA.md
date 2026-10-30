@@ -107,3 +107,7 @@ Browser verified step 4 Permit Verification, both Orange documentation options, 
 Both paths now end with required signer full name, position/title, and two unchecked certifications using the owner's supplied wording. New vendors see an explicit note that no payment instructions are selected. Consent is cleared when leaving review to edit earlier answers; signer details remain in tab memory. Checkbox validation accepts only explicit boolean consent. Submission stays disabled; no signature is transmitted, stored persistently, or legally validated. Production must validate the complete application server-side and record the event, final answers, certification version, signer and consent evidence together.
 
 Validation for this change: syntax and formatting checks passed; all 19 automated tests passed. Browser walkthrough confirmed the new-vendor final review shows both signer fields and unchecked certifications immediately above the disabled submission control. Tested using synthetic information only.
+
+### Homepage vendor entry — October 30, 2026
+
+Removed the homepage hero location/frequency eyebrow. Replaced its Plan your visit link with Become a Vendor, targeting #vendors and the existing new/returning choice. Syntax and formatting checks passed.
