@@ -80,3 +80,7 @@ This adapter is for local preview, not a portable production upload service. Pro
 Validation: Swift compilation, JavaScript syntax, formatting and 23 tests passed. Browser test with a synthetic image extracted `123456789-001` and the complete Rose Bowl address; review remained unchecked. No real vendor permit used. Real-world OCR accuracy has not been measured; unusual permit layouts may require manual entry.
 
 The shared FAQs header menu links to separate attendee and vendor FAQ pages. It supports mouse hover and native keyboard/tap disclosure.
+
+### Submission confirmation preview — October 30, 2026
+
+Both application paths now offer Submit application (preview) on final review. All required sections and certification fields are revalidated before opening a native modal receipt. The modal says Application submitted and explains that the team will contact the applicant shortly using the provided contact information. A prominent preview-only notice states that no application has been sent. Close window (or Escape) dismisses the modal and restores the form; this closes the confirmation window rather than the browser tab. No network submission, office notification, payment or persisted signature is performed. This supersedes earlier notes that the final button is disabled. Production must show the receipt only after successful durable backend submission, and handle errors/retries without duplicate applications.

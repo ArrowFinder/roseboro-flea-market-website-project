@@ -142,3 +142,7 @@ Added shared-header FAQs disclosure with Attendees and Vendors destinations. Ope
 ### Returning-vendor simplification — October 30, 2026
 
 Removed the profile gateway, sample identity and prefilled values. Returning Vendor now opens the blank contact step directly; the old #returning-vendor link is an alias for the same form. Both paths retain their separate in-memory in-progress drafts. Payment Preference is the only extra step. Vendor FAQ copy updated. Automatic permit extraction remains user-initiated in both paths. Syntax, formatting and all 24 tests passed, including field parity between the two paths.
+
+### Submission confirmation preview — October 30, 2026
+
+Both application paths now offer Submit application (preview) on final review. All required sections and certification fields are revalidated before opening a native modal receipt. The modal says Application submitted and explains that the team will contact the applicant shortly using the provided contact information. A prominent preview-only notice states that no application has been sent. Close window (or Escape) dismisses the modal and restores the form; this closes the confirmation window rather than the browser tab. No network submission, office notification, payment or persisted signature is performed. This supersedes earlier notes that the final button is disabled. Production must show the receipt only after successful durable backend submission, and handle errors/retries without duplicate applications.
