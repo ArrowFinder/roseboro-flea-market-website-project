@@ -1091,3 +1091,19 @@ section.calendar-content {
   font-weight: 600;
   margin: 0 0 18px;
 }
+
+.visit-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background: var(--white);
+  color: var(--red);
+  border-bottom: 3px solid var(--yellow);
+}
+.visit-icon svg {
+  width: 32px;
+  height: 32px;
+}

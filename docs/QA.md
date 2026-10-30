@@ -127,3 +127,7 @@ Returning vendors now follow Seller / Business Contact → Space / Plot Request 
 ### Returning application navigation — October 30, 2026
 
 Removed the underlined vendor-section navigation above the returning application, matching the focused new-vendor form. Main site navigation and application steps remain. Syntax and formatting checks passed.
+
+### Visitor card icons — October 30, 2026
+
+Added consistent inline outline map, clock, ticket and car icons to the shared visitor cards (homepage, calendar and visitor details). Decorative SVGs are hidden from assistive technology; text labels and full-card links remain accessible. Red linework and yellow accents use the approved palette. Syntax and formatting checks passed.

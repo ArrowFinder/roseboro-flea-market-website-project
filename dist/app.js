@@ -6,6 +6,16 @@ const business = {
 // Route templates contain trusted static copy only. Form values are handled in vendor.js.
 const main = document.querySelector("main");
 const ticket = '<button class="button ticket">Buy Tickets ↗</button>';
+// Decorative inline icons keep visitor cards crisp at every screen size.
+const visitorIcons = {
+  location:
+    '<path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15M15 6v15"/>',
+  hours: '<circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/>',
+  admission:
+    '<path d="M3 7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a2 2 0 0 0 0 4v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a2 2 0 0 0 0-4Z"/><path d="M15 6v2m0 3v2m0 3v2"/>',
+  parking:
+    '<path d="m5 10 2-5h10l2 5M3 16v-4l2-2h14l2 2v4H3Zm2 0v3m14-3v3M5 13h2m10 0h2"/>',
+};
 // Shared linked visitor details keep home and calendar navigation consistent.
 const visit = `<div class="visit-grid" aria-label="Plan your visit">${[
   ["location", "Location", "1001 Rose Bowl Drive, Pasadena, CA 91103"],
@@ -15,7 +25,7 @@ const visit = `<div class="visit-grid" aria-label="Plan your visit">${[
 ]
   .map(
     ([route, title, description]) =>
-      `<a class="visit-card" href="#${route}"><h3>${title} <span aria-hidden="true">↗</span></h3><p>${description}</p><span class="visit-more">View details</span></a>`,
+      `<a class="visit-card" href="#${route}"><span class="visit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">${visitorIcons[route]}</svg></span><h3>${title} <span aria-hidden="true">↗</span></h3><p>${description}</p><span class="visit-more">View details</span></a>`,
   )
   .join("")}</div>`;
 const visitorPages = {
