@@ -403,6 +403,14 @@ const VendorFlow = (() => {
           "checkbox",
           true,
         ),
+        field(
+          "autoRenewalInterest",
+          "I would like staff to contact me about Permanent Vendor Auto-Renewal.",
+          "checkbox",
+          false,
+          [],
+          "If approved for auto-renewal, staff will provide a link to enroll for your space. Checking this box requests information only; it does not enroll you or authorize recurring payments.",
+        ),
       ];
     return [];
   }
@@ -412,7 +420,9 @@ const VendorFlow = (() => {
         ? ""
         : "Upload your permit before continuing.";
     if (f.type === "checkbox")
-      return value === true ? "" : "This confirmation is required.";
+      return !f.required || value === true
+        ? ""
+        : "This confirmation is required.";
     const v = String(value || "").trim();
     if (f.required && !v) return `Enter ${f.label.toLowerCase()}.`;
     if (!v) return "";
@@ -444,7 +454,7 @@ const VendorFlow = (() => {
     if (f.type === "file")
       return `<div class="field"><label for="${f.id}">${f.label} <span class="field-requirement">(required)</span></label><input ${attrs} type="file" accept="application/pdf,image/jpeg,image/png" hidden><button type="button" class="button" id="permit-upload-button" aria-describedby="${f.id}-help ${f.id}-error">Upload CA Seller's Permit</button><p class="field-help" id="${f.id}-help">${f.help}</p><p id="permit-file-name"></p><p id="permit-read-status" role="status"></p><span class="error" id="${f.id}-error"></span></div>`;
     if (f.type === "checkbox")
-      return `<div class="field certification-check"><label for="${f.id}"><input ${attrs} type="checkbox"> <span>${f.label} <span class="field-requirement">(required)</span></span></label><p class="field-help" id="${f.id}-help">${f.help}</p><span class="error" id="${f.id}-error"></span></div>`;
+      return `<div class="field certification-check"><label for="${f.id}"><input ${attrs} type="checkbox"> <span>${f.label} <span class="field-requirement">${f.required ? "(required)" : "(optional)"}</span></span></label><p class="field-help" id="${f.id}-help">${f.help}</p><span class="error" id="${f.id}-error"></span></div>`;
     const control =
       f.type === "select"
         ? `<select ${attrs}><option value="">Choose an option</option>${f.options.map(([value, label]) => `<option value="${value}">${label}</option>`).join("")}</select>`

@@ -150,10 +150,12 @@ test("final certification is required and checkbox consent must be explicit", ()
     ["returning", 5],
   ]) {
     flow.selectPath(path);
-    const fields = flow.fields(index);
+    const fields = flow.fields(index).filter((field) => field.required);
     assert.equal(fields.length, 4);
     for (const field of fields) assert.ok(flow.validate(field, ""));
-    for (const field of fields.filter((f) => f.type === "checkbox")) {
+    for (const field of fields.filter(
+      (f) => f.type === "checkbox" && f.required,
+    )) {
       for (const value of [false, undefined, "true", "on"])
         assert.ok(flow.validate(field, value));
       assert.equal(flow.validate(field, true), "");
@@ -179,4 +181,25 @@ test("both application paths share blank fields; only returning adds payment pre
   assert.deepEqual(returningFields, newFields);
   assert.doesNotMatch(flow.render(), /Sample profile|prefilled|saved details/);
   assert.equal(flow.fields(4)[0].id, "paymentPreference");
+});
+
+test("auto-renewal interest is optional, unchecked, and shared by both review steps", () => {
+  for (const [path, review] of [
+    ["new", 4],
+    ["returning", 5],
+  ]) {
+    flow.selectPath(path);
+    const field = flow
+      .fields(review)
+      .find((f) => f.id === "autoRenewalInterest");
+    assert.equal(field.required, false);
+    assert.equal(field.type, "checkbox");
+    for (const value of [undefined, false, true])
+      assert.equal(flow.validate(field, value), "");
+    assert.equal(flow.snapshot().data.autoRenewalInterest, undefined);
+    assert.match(
+      field.help,
+      /does not enroll you or authorize recurring payments/,
+    );
+  }
 });

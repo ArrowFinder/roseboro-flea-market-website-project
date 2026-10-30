@@ -197,3 +197,5 @@ Mobile vendor header: hide the top Buy Tickets action at 850px and below on Vend
 Typography consistency: regular-weight text now uses the shared DM Sans font token, including section/page headings, countdown heading, vendor hero, date numerals and italic home-hero text. Bold home display lettering retains Georgia; the unused Libre Caslon font download is removed.
 
 Verified regular-weight rendered text resolves to DM Sans on home, calendar, vendor landing, new-vendor application, and Vendor FAQs at 390px and 1280px; no horizontal overflow. Syntax and formatting checks passed.
+
+Permanent Vendor Auto-Renewal interest: both final review steps include an optional, initially unchecked staff-contact request. It uses the shared in-memory draft and does not enroll or authorize payment. Staff provide the enrollment link only if approved for auto-renewal. Production handoff must include `autoRenewalInterest` in the application payload/staff view; live submission and staff notifications remain unconnected.
