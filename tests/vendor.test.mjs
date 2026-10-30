@@ -117,7 +117,11 @@ test("new vendor sequence is contact, space request, selling details, required f
     /Vendor sections|Let’s find your place|Start fresh/,
   );
   flow.selectPath("returning");
-  assert.equal(flow.fields(0)[0].id, "event");
+  assert.equal(flow.fields(0)[0].id, "first");
+  assert.equal(flow.fields(1)[0].id, "event");
+  assert.equal(flow.fields(2)[0].id, "category");
+  assert.equal(flow.fields(3)[0].id, "status");
+  assert.doesNotMatch(flow.render(), /readonly|disabled/);
   assert.equal(flow.fields(4)[0].id, "paymentPreference");
 });
 

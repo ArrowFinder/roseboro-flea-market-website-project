@@ -119,3 +119,7 @@ Moved visitor detail cards into the calendar content section directly after the 
 ### Homepage tagline — October 30, 2026
 
 Added the owner-supplied quoted line “The Flea market to the Stars” immediately above the homepage hero heading. Syntax and formatting checks passed.
+
+### Returning-vendor sequence — October 30, 2026
+
+Returning vendors now follow Seller / Business Contact → Space / Plot Request → Selling Details → Permit Verification → Payment Preference → Review & Submit. The same editable fields and validation are used for both paths; returning vendors receive synthetic saved contact/merchandise values for convenience, not a bypass. Each section must be completed. Real authenticated profiles remain unconnected; event choices, payment preference and signature consent are never preselected from an earlier event. Syntax, formatting and all 19 tests passed.
