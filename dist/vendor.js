@@ -19,7 +19,35 @@ const VendorFlow = (() => {
     ["exempt", "Retail product sales not subject to tax"],
     ["retailer", "Section 6015 retailer representative"],
   ];
-  const data = {};
+  let data = {};
+  let mode = "new";
+  // Synthetic fixture only. Production profiles must come from an authenticated service.
+  const sampleProfile = Object.freeze({
+    goods: "Vintage homewares, framed artwork, and small furniture",
+    status: "permit",
+    registered: "yes",
+    first: "Alex",
+    last: "Morgan",
+    email: "alex@example.com",
+    phone: "323-555-0142",
+    business: "Sample Vintage Co.",
+  });
+  const drafts = {
+    new: { data: {}, step: 0 },
+    returning: { data: { ...sampleProfile }, step: 0 },
+  };
+  function selectPath(nextMode) {
+    if (!["new", "returning"].includes(nextMode))
+      throw new Error("Unknown vendor path");
+    drafts[mode] = { data, step };
+    mode = nextMode;
+    data = drafts[mode].data;
+    step = drafts[mode].step;
+  }
+  // A copied snapshot supports regression checks without exposing mutable profile state.
+  function snapshot() {
+    return { mode, step, data: { ...data } };
+  }
   let step = 0;
   const nav = () =>
     `<nav class="vendor-nav" aria-label="Vendor sections"><a href="#apply" aria-current="page">Vendor Application</a><a href="#spaces">Space Options</a><a href="#requirements">Requirements</a><a href="#policies">Policies & FAQs</a></nav>`;
@@ -146,7 +174,7 @@ const VendorFlow = (() => {
       )}<div class="note"><strong>Draft review only</strong><p>No request has been sent and no space is reserved. Verified space pricing, full seller certification, private documentation, and a submission service are still required before this application can accept requests.</p></div>`;
   }
   function render() {
-    return `<section class="content">${nav()}<div class="page-intro"><p class="eyebrow">Vendors · Application preview</p><h1 class="application-title">Let’s find your place<br>at the market.</h1><p>Short steps, with a chance to review everything. This is a working design preview—use sample information only.</p></div><ol class="steps">${steps.map((name, i) => `<li class="${i === step ? "current" : ""}" ${i === step ? 'aria-current="step"' : ""}><span>${i + 1}</span> ${name}</li>`).join("")}</ol><div class="application-layout"><form class="formbox" id="vendor-form" novalidate><p class="eyebrow">Step ${step + 1} of ${steps.length}</p><h2 tabindex="-1" id="step-title">${steps[step]}</h2><p class="muted">Your entries stay in this tab’s memory and clear when you reload.</p><div id="error-summary" role="alert"></div>${step === 4 ? review() : fields().map(fieldMarkup).join("") + guidance()}<div class="actions">${step > 0 ? '<button type="button" class="button secondary" id="back">← Back</button>' : ""}${step < 4 ? '<button type="submit" class="button">Continue →</button>' : '<button class="button" type="button" disabled>Submission not connected</button>'}</div></form><aside class="application-aside"><p class="eyebrow">Good to know</p><h3>A request comes first.</h3><p>Your space is confirmed after office review, availability checks, and payment.</p><hr><h3>Need a hand?</h3><p>Event information and vendor assistance</p><a href="tel:+13235607469">(323) 560-7469</a><p class="muted">Contact number from the existing RGC Shows website.</p></aside></div></section>`;
+    return `<section class="content">${nav()}<div class="page-intro"><p class="eyebrow">${mode === "returning" ? "Returning vendor · Sample profile" : "New vendor · Start fresh"}</p><h1 class="application-title">Let’s find your place<br>at the market.</h1><p>${mode === "returning" ? "Your sample selling and contact details are filled in. Review them, make any changes, and choose the event and area for this request." : "Start with a blank application. We’ll guide you through your selling details and contact information."} This is a working design preview—use sample information only.</p></div><ol class="steps">${steps.map((name, i) => `<li class="${i === step ? "current" : ""}" ${i === step ? 'aria-current="step"' : ""}><span>${i + 1}</span> ${name}</li>`).join("")}</ol><div class="application-layout"><form class="formbox" id="vendor-form" novalidate><p class="eyebrow">Step ${step + 1} of ${steps.length}</p><h2 tabindex="-1" id="step-title">${steps[step]}</h2><p class="muted">Your entries stay in this tab’s memory and clear when you reload.</p><div id="error-summary" role="alert"></div>${step === 4 ? review() : fields().map(fieldMarkup).join("") + guidance()}<div class="actions">${step > 0 ? '<button type="button" class="button secondary" id="back">← Back</button>' : ""}${step < 4 ? '<button type="submit" class="button">Continue →</button>' : '<button class="button" type="button" disabled>Submission not connected</button>'}</div></form><aside class="application-aside"><p class="eyebrow">Good to know</p><h3>A request comes first.</h3><p>Your space is confirmed after office review, availability checks, and payment.</p><hr><h3>Need a hand?</h3><p>Event information and vendor assistance</p><a href="tel:+13235607469">(323) 560-7469</a><p class="muted">Contact number from the existing RGC Shows website.</p></aside></div></section>`;
   }
   function capture() {
     document
@@ -219,5 +247,5 @@ const VendorFlow = (() => {
       if (step < 4) move(step + 1);
     });
   }
-  return { render, bind, validate, fields };
+  return { render, bind, validate, fields, selectPath, snapshot };
 })();

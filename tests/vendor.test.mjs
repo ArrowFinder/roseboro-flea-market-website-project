@@ -55,3 +55,18 @@ test("length limits apply even if client input constraints are bypassed", () => 
   assert.ok(flow.validate(required, "a".repeat(201)));
   assert.ok(flow.validate({ ...required, type: "textarea" }, "a".repeat(1501)));
 });
+
+test("new and returning paths keep separate drafts and never reuse event choices", () => {
+  flow.selectPath("returning");
+  const returning = flow.snapshot();
+  assert.equal(returning.data.email, "alex@example.com");
+  assert.equal(returning.data.event, undefined);
+  assert.equal(returning.data.area, undefined);
+  returning.data.email = "changed@example.com";
+  assert.equal(flow.snapshot().data.email, "alex@example.com");
+  flow.selectPath("new");
+  assert.equal(Object.keys(flow.snapshot().data).length, 0);
+  flow.selectPath("returning");
+  assert.equal(flow.snapshot().data.first, "Alex");
+  assert.throws(() => flow.selectPath("invalid"));
+});

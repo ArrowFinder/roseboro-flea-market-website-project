@@ -63,3 +63,11 @@ Replaced the provisional top-left wordmark with the owner-supplied logo. Resized
 - 390px iframe viewport inspected: visitor cards form two columns; footer stacks cleanly. This is not a physical-device test.
 - Footer destinations copied from the inspected live-site links; no phone call, social action or purchase performed.
 - This update does not establish market closing time or replace the outstanding full accessibility and cross-browser audit.
+
+## Vendor path update
+
+- Syntax checks and 13 tests pass, including path isolation, empty new draft, sample returning profile, absent event/area defaults and copy isolation.
+- Browser verified new-vendor empty event/area and selling fields; returning-vendor gateway and sample selling/contact prefills; edited sample first name persisted through Back/Continue.
+- No real data submitted or saved. Actual authentication, durable profile retrieval and cross-account authorization still require implementation and testing.
+
+Vendor entry visually checked on desktop and in a 390px iframe viewport; hero loads and both path buttons stack on phones. No physical-device or complete accessibility audit was performed.

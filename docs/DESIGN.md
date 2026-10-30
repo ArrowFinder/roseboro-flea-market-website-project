@@ -50,3 +50,7 @@ Owner requested removal of the hero caption, “Old favorites. New stories.” g
 Footer follows the live site’s dark three-column layout, company mark, L.A./Beaumont office details, market/social links and legal strip. Social destinations have explicit text labels for clarity. Footer text uses a lighter gray for readability. The original 1995–2023 copyright range is preserved to match the source; owner review of that range is pending. Newsletter above the live footer is outside this change and has not been implemented.
 
 Footer mark: `dist/assets/rg-canning-footer.png`, original 358×115 PNG from https://www.rgcshows.com/wp-content/uploads/2018/10/Logo-RGCanning-White-01.png, retrieved October 30, 2026. Artwork remains unchanged.
+
+## Vendor hero and entry choices
+
+Owner supplied Aerial_2.JPG, Aerial_4.JPG and Product_027 as options. Selected Aerial_2.JPG because it shows the stadium and scale of the vendor area. `dist/assets/vendor-aerial.jpg` is a 2000px derivative made with sips; original untouched. Full-width cover image with readable title overlay, followed by New Vendor (primary red) and Returning Vendor (outlined black). Choices stack on phones. The locked palette is retained.

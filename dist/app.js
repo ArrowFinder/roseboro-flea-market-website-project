@@ -61,6 +61,9 @@ function render() {
       "vendors",
       "contact",
       "apply",
+      "new-vendor",
+      "returning-vendor",
+      "returning-application",
       "spaces",
       "requirements",
       "policies",
@@ -69,8 +72,12 @@ function render() {
   )
     route = "home";
   document.title =
-    (route === "home" ? "" : route[0].toUpperCase() + route.slice(1) + " | ") +
-    "Rose Bowl Flea Market";
+    (route === "home"
+      ? ""
+      : route
+          .split("-")
+          .map((word) => word[0].toUpperCase() + word.slice(1))
+          .join(" ") + " | ") + "Rose Bowl Flea Market";
   if (route === "home") {
     main.innerHTML = `
       <section class="photo-hero">
@@ -113,14 +120,16 @@ function render() {
         "Contact details and directions will be added once confirmed.",
       ) +
       '<div class="grid"><div><h3>Email</h3><p>Awaiting confirmation</p></div><div><h3>Phone</h3><p>Awaiting confirmation</p></div><div><h3>Address</h3><p>Awaiting confirmation</p></div></div><p class="note">There is no contact form or message delivery integration in this preview.</p></section>';
-  if (route === "vendors")
+  if (["vendors", "apply"].includes(route))
+    main.innerHTML = `<section class="vendor-hero" aria-label="Sell at the Rose Bowl"><img src="assets/vendor-aerial.jpg" width="2000" height="1498" alt="Aerial view of vendor stalls surrounding the Rose Bowl stadium and the Pasadena hills" fetchpriority="high"><div class="vendor-hero-title"><p class="eyebrow">Every second Sunday · Pasadena, California</p><h1>Your finds.<br>Their next favorite.</h1></div></section><section class="content vendor-entry"><p class="eyebrow">Sell at the Rose Bowl</p><h2>Let’s get you to the market.</h2><p>First time here or ready for another market day?</p><div class="vendor-paths"><a class="button" href="#new-vendor">New Vendor →</a><a class="button secondary" href="#returning-vendor">Returning Vendor →</a></div><nav class="vendor-nav" aria-label="Vendor sections"><a href="#apply" aria-current="page">Vendor Application</a><a href="#spaces">Space Options</a><a href="#requirements">Requirements</a><a href="#policies">Policies & FAQs</a></nav></section>`;
+  if (route === "returning-vendor")
     main.innerHTML =
       intro(
-        "Vendors",
-        "Bring your finds.<br>Find your people.",
-        "Explore selling at Rose Bowl Flea Market. The application below demonstrates a guided experience; actual requirements will follow the current business process.",
+        "Returning vendor",
+        "Welcome back.",
+        "Pick up with your selling and contact details, then choose your next market.",
       ) +
-      '<nav class="vendor-nav" aria-label="Vendor sections"><a class="button" href="#apply">Vendor Application →</a><a href="#spaces">Space Options</a><a href="#requirements">Requirements</a><a href="#policies">Policies & FAQs</a></nav><p class="note">Request → Office review and availability check → Payment → Confirmed reservation and emailed vendor tickets. This preview does not submit requests.</p><div class="grid"><div><h3>Space options</h3><p>Sizes, availability, and pricing awaiting confirmation.</p></div><div><h3>Requirements</h3><p>Approved goods and selling requirements awaiting review.</p></div><div><h3>Policies</h3><p>Payment, cancellation, and reservation rules awaiting review.</p></div><div><h3>Next steps</h3><p>Office review and payment precede confirmation; vendor tickets are emailed.</p></div></div><a class="button" href="#apply">Explore application preview →</a><p class="muted">Preview only. No application, reservation, or payment will be processed.</p></section>';
+      `<div class="returning-preview"><h2>Your vendor profile</h2><p>In the finished website, you’ll sign in securely to access information from your previous application.</p><p class="note">Design preview: no account or saved application is connected. The next screen uses fictional sample details that you can review and edit.</p><a class="button" href="#returning-application">Preview with sample profile →</a><p><a class="back-link" href="#apply">← Choose a different path</a></p></div></section>`;
   if (["spaces", "requirements", "policies"].includes(route)) {
     const text = {
       spaces: [
@@ -140,7 +149,8 @@ function render() {
       intro("Vendors", text[route][0], text[route][1]) +
       '<nav class="vendor-nav" aria-label="Vendor sections"><a class="button" href="#apply">Vendor Application →</a><a href="#spaces">Space Options</a><a href="#requirements">Requirements</a><a href="#policies">Policies & FAQs</a><a href="#vendors">Vendor overview</a></nav><p class="note">Details under review. No application, reservation, or payment is processed here.</p></section>';
   }
-  if (route === "apply") {
+  if (["new-vendor", "returning-application"].includes(route)) {
+    VendorFlow.selectPath(route === "new-vendor" ? "new" : "returning");
     main.innerHTML = VendorFlow.render();
     VendorFlow.bind(render);
   }

@@ -29,3 +29,7 @@ Refer to HANDOFF.md for engineering release blockers and QA.md for checks comple
 ## October 30 homepage refinement
 
 Owner requested the hero caption, product-story gallery and vendor prompt be removed; market event section moves directly below countdown with attached clickable visitor details. Footer should match the existing live site. Approved palette remains unchanged. Public office hours in footer are not market opening/closing hours.
+
+## Vendor entry split
+
+Owner requested a hero and New Vendor / Returning Vendor paths with reusable previous information for returning vendors. Interpreted “entirely black” as “entirely blank” in context and stated that assumption to the owner. New drafts start empty; returning preview uses explicitly labeled fictional information. Durable profile storage and authentication remain production work, not implemented by this UX iteration.

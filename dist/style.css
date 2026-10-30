@@ -887,3 +887,86 @@ footer a:focus-visible {
     flex-direction: column;
   }
 }
+
+/* Vendor entry uses the full-width venue image, with choices below the photograph. */
+.vendor-hero {
+  position: relative;
+  max-width: 1600px;
+  margin: auto;
+  height: clamp(340px, 40vw, 560px);
+  background: var(--ink);
+}
+.vendor-hero > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 52%;
+  display: block;
+}
+.vendor-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #0009, transparent 80%);
+}
+.vendor-hero-title {
+  position: absolute;
+  z-index: 1;
+  left: 5%;
+  bottom: 12%;
+  color: white;
+}
+.vendor-hero-title h1 {
+  font:
+    400 clamp(44px, 5vw, 78px) / 1.05 Georgia,
+    serif;
+  margin: 18px 0 0;
+  letter-spacing: -2px;
+}
+.vendor-entry {
+  text-align: center;
+}
+.vendor-paths {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 28px 0 35px;
+}
+.vendor-paths .button {
+  min-width: 230px;
+}
+.vendor-entry .vendor-nav {
+  justify-content: center;
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+}
+.returning-preview {
+  max-width: 720px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  margin-top: 32px;
+}
+.returning-preview h2 {
+  font-size: 32px;
+}
+@media (max-width: 580px) {
+  .vendor-hero {
+    height: 350px;
+  }
+  .vendor-hero > img {
+    object-position: 64% 50%;
+  }
+  .vendor-hero-title {
+    right: 5%;
+  }
+  .vendor-hero-title .eyebrow {
+    font-size: 9px;
+  }
+  .vendor-paths {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .returning-preview {
+    padding: 22px;
+  }
+}

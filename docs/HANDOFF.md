@@ -52,3 +52,9 @@ See DESIGN.md for photo provenance, palette and countdown semantics. `MarketCale
 Repository: https://github.com/ArrowFinder/roseboro-flea-market-website-project (private). The original requested slug is retained; visible branding is Rose Bowl. No website deployment is configured. The local preview is intentionally left running when the owner requests a review link. Fonts load from Google Fonts with local fallbacks. Replace remote fonts if offline rendering or privacy requirements demand it. No analytics or third-party scripts are installed.
 
 Development commits and dependency audit are not an independent engineering/security audit. A human engineer should review policy fidelity, server design, handling of sensitive data, accessibility and release readiness before launch.
+
+## New and returning vendor paths
+
+`#apply` now selects a path; `#new-vendor` opens the blank draft. `#returning-vendor` explains the prototype and `#returning-application` opens a synthetic profile. `VendorFlow.selectPath` saves/restores independent in-memory drafts and steps. Re-entering a path resumes its current tab draft; reload clears edits. Profile defaults exclude event and area, which must be selected for each request. `snapshot` returns a copy for regression tests.
+
+Production requirement: authenticated vendor identity and authorized server-side profile retrieval/update; never retrieve a profile using only an unverified email. Define which previously submitted fields can be reused and require renewed event-specific declarations. No browser persistence, backend, real login or real profile saving was added. Replace the sample gateway and fixture only once secure storage, retention, recovery and submission rules are approved.

@@ -48,3 +48,7 @@ No live vendor submission, document upload, reservation, payment, or email deliv
 - [Working agreement](AGENTS.md): maintenance and documentation expectations.
 
 Keep these documents current with each meaningful implementation change. Never commit credentials, real vendor data or payment information. `.gitignore` excludes common sensitive files; review staged changes before pushing.
+
+## Vendor entry paths
+
+`#vendors` and `#apply` open the aerial hero and New Vendor / Returning Vendor choices. New vendors start blank; returning vendors explicitly open a fictional sample profile for UX review. Both paths use the existing five-step flow with separate in-memory drafts. No real account, previous submission lookup or durable storage is connected.
