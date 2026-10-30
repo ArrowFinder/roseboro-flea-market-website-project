@@ -70,3 +70,28 @@ test("new and returning paths keep separate drafts and never reuse event choices
   assert.equal(flow.snapshot().data.first, "Alex");
   assert.throws(() => flow.selectPath("invalid"));
 });
+
+test("payment preference is required only for returning vendors and is never preselected", () => {
+  flow.selectPath("new");
+  assert.equal(flow.fields(3).length, 0);
+  assert.match(flow.render(), /No payment is collected during the application/);
+  flow.selectPath("returning");
+  const preference = flow.fields(3)[0];
+  assert.equal(preference.id, "paymentPreference");
+  assert.equal(flow.snapshot().data.paymentPreference, undefined);
+  assert.ok(flow.validate(preference, ""));
+  assert.ok(flow.validate(preference, "charge-now"));
+  assert.equal(flow.validate(preference, "on-file"), "");
+  assert.equal(flow.validate(preference, "new-after-acceptance"), "");
+  flow.selectPath("new");
+  assert.equal(flow.fields(3).length, 0);
+});
+
+test("space estimates use live-form prices and reject invalid cross-area choices", () => {
+  assert.equal(flow.quote("orange", "orange-3", "2").total, 25000);
+  assert.equal(flow.quote("pearl", "pearl-6", "5").total, 50000);
+  assert.equal(flow.quote("stadium", "stadium-6", "1").total, 50000);
+  assert.equal(flow.quote("orange", "pearl-6", "1"), null);
+  for (const quantity of ["", "0", "6", "1.5", "invalid"])
+    assert.equal(flow.quote("orange", "orange-3", quantity), null);
+});

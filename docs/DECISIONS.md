@@ -33,3 +33,9 @@ Owner requested the hero caption, product-story gallery and vendor prompt be rem
 ## Vendor entry split
 
 Owner requested a hero and New Vendor / Returning Vendor paths with reusable previous information for returning vendors. Interpreted “entirely black” as “entirely blank” in context and stated that assumption to the owner. New drafts start empty; returning preview uses explicitly labeled fictional information. Durable profile storage and authentication remain production work, not implemented by this UX iteration.
+
+## Payment-path rules confirmed by owner
+
+New vendors apply without payment information, see an estimated total based on space choice, and are contacted by email or phone after acceptance to finalize the space and collect payment. Returning vendors choose existing payment method on file or a new method upon acceptance. Neither path collects credentials or charges during application. Preference is not a charge authorization.
+
+Owner directed use of existing website pricing. Live application rates and quantity options retrieved October 30, 2026 now replace the unpriced area-only prototype. Availability and price changes remain subject to staff confirmation.

@@ -970,3 +970,22 @@ footer a:focus-visible {
     padding: 22px;
   }
 }
+
+.space-estimate {
+  border: 1px solid var(--line);
+  padding: 24px;
+  margin: 28px 0;
+  background: var(--panel);
+}
+.estimate-total {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+  padding-top: 18px;
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.estimate-total strong {
+  color: var(--red);
+}

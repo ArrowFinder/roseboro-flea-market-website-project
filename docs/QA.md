@@ -71,3 +71,9 @@ Replaced the provisional top-left wordmark with the owner-supplied logo. Resized
 - No real data submitted or saved. Actual authentication, durable profile retrieval and cross-account authorization still require implementation and testing.
 
 Vendor entry visually checked on desktop and in a 390px iframe viewport; hero loads and both path buttons stack on phones. No physical-device or complete accessibility audit was performed.
+
+## Payment-path and space estimate update
+
+15 automated tests pass, with new checks for returning-only required preference, missing/invalid preferences, valid option values, estimate multiplication, invalid quantities, and cross-area choices. Browser verified Orange North End × 2 = $250; returning preference blocks Continue when empty and displays selected new-method choice on review. Neither path contains payment credential controls. Formatting and syntax checks pass. No application, charge, or contact message sent.
+
+New-vendor browser journey also verified through step 4 using synthetic contact data: Pearl rear non-corner × 1 = $100, with zero payment preference/credential fields. Returning preference persisted when reopening its Edit section.

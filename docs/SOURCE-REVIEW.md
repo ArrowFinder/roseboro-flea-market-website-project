@@ -41,3 +41,11 @@ Full policy text, actual select options/pricing, uploads, signature controls, ba
 Source: https://www.rgcshows.com/rose-bowl/ (page and footer inspected in browser). Carried over both office blocks, market/social links and legal links. Social links point to `rgcshows` accounts and YouTube channel `UCJ8xKt-YaEA7eBlMc2fWCQw`. Legal text remains hosted on the current site.
 
 Visitor routes use public address, general admission at 9 a.m., VIP 5–8:45 a.m., children under 12 free with adult, Gate C rideshare, free parking, preferred parking listed at $20 cash/card, accessible parking/restrooms and no wheelchair/stroller rentals. Prices and rules need pre-launch reconfirmation. Closing time remains explicitly unresolved. Footer event-day 3 a.m.–3 p.m. is office service time, not established market hours. Copyright year range preserved from source.
+
+## Space price source — October 30, 2026
+
+Primary: https://www.rgcshows.com/rose-bowl-order/ — inspected selectable space choices and quantity 1–5. Current form uses `data-rgc-surcharge-bps="0"`; its quote calculation adds no surcharge. Prototype estimates use space rate × quantity with no added fee. Reverify before launch; any higher amount/additional fee requires approval.
+
+Cross-checks: https://www.rgcshows.com/rose-bowl-blue-area/, https://www.rgcshows.com/rose-bowl-orange-area/, https://www.rgcshows.com/rose-bowl-pearl-area/. Blue and Gold each offer $125/$150/$175/$250/$300/$500 options. Orange form offers middle corner $300, middle non-corner $250, north $125, south $180. Pearl form offers front corner $150, front non-corner $135, perimeter $150, premium $300, rear corner $125, rear non-corner $100.
+
+Differences: Orange overview additionally lists exit/Arroyo $250 and services $500; these are not selectable in the live application, so are not introduced here. Pearl overview describes premium as $250–$300, but form offers $300; estimator follows the form. No inferred discounts or permanent-vendor rates. Returning status alone does not establish discount eligibility. Existing legal/payment authorization language remains subject to production review; the requested preference-only UX does not authorize charges.

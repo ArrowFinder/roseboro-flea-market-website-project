@@ -58,3 +58,11 @@ Development commits and dependency audit are not an independent engineering/secu
 `#apply` now selects a path; `#new-vendor` opens the blank draft. `#returning-vendor` explains the prototype and `#returning-application` opens a synthetic profile. `VendorFlow.selectPath` saves/restores independent in-memory drafts and steps. Re-entering a path resumes its current tab draft; reload clears edits. Profile defaults exclude event and area, which must be selected for each request. `snapshot` returns a copy for regression tests.
 
 Production requirement: authenticated vendor identity and authorized server-side profile retrieval/update; never retrieve a profile using only an unverified email. Define which previously submitted fields can be reused and require renewed event-specific declarations. No browser persistence, backend, real login or real profile saving was added. Replace the sample gateway and fixture only once secure storage, retention, recovery and submission rules are approved.
+
+## Space estimates and path-specific payment
+
+`spaceOptions` in vendor.js snapshots selectable live application rates. Pure `quote(area, space, quantity)` validates the area/space relationship and integer quantity 1–5, then calculates integer cents. Missing/invalid choices produce no quote, never zero. Changing area clears the space choice. Estimate updates on space/quantity change and appears in step 4 and final review. Server must recompute rates and verify availability before production acceptance.
+
+Step 4 is Space estimate for new vendors, with no payment field. Returning vendors get Payment preference, a required select with no default; choices are `on-file` and `new-after-acceptance`. Review includes the chosen preference and allows editing. Preferences remain isolated with each in-memory draft. This is intent only: no payment token, account lookup, card details or authorization is collected. Production must verify an existing method through the authenticated customer record and obtain appropriate post-acceptance authorization before charging. All payment collection is outside the application phase.
+
+The new owner instruction supersedes generic legacy payment-process copy. Historical release blockers about pricing now concern price freshness, inventory, and unresolved source differences, rather than absence of base rates.
