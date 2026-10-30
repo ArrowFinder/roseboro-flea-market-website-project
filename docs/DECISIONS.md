@@ -12,7 +12,7 @@ Updated October 30, 2026.
 
 - Owner confirmed second-Sunday monthly recurrence; countdown labels its 9 a.m. Pacific general-admission target.
 - Owner confirmed visible brand: **Rose Bowl Flea Market**.
-- Original requested repository slug retained: `roseboro-flea-market-website-project`; private under verified account ArrowFinder.
+- Repository renamed at owner request to `rose-bowl-flea-market` under ArrowFinder on October 30, 2026; public repository and GitHub Pages preview.
 - Owner supplied current site, November 8, 2026 Eventbrite link and Google Drive asset folder. See SOURCE-REVIEW.md for source links.
 - Shopper-first homepage; vendor details and application stay in Vendors with subnavigation.
 - Current application establishes staff review and availability check → payment → confirmed reservation → emailed tickets. Request alone reserves nothing.

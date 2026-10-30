@@ -2,7 +2,7 @@
 
 # Rose Bowl Flea Market Website Project
 
-A shopper-focused website and guided vendor application **prototype**. Private repository: [ArrowFinder/roseboro-flea-market-website-project](https://github.com/ArrowFinder/roseboro-flea-market-website-project).
+A shopper-focused website and guided vendor application **prototype**. Public repository: [ArrowFinder/rose-bowl-flea-market](https://github.com/ArrowFinder/rose-bowl-flea-market).
 
 ## Local setup
 

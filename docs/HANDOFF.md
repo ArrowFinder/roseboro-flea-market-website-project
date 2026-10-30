@@ -53,7 +53,7 @@ See DESIGN.md for photo provenance, palette and countdown semantics. `MarketCale
 
 ## Operational notes
 
-Repository: https://github.com/ArrowFinder/roseboro-flea-market-website-project (private). The original requested slug is retained; visible branding is Rose Bowl. No website deployment is configured. The local preview is intentionally left running when the owner requests a review link. Fonts load from Google Fonts with local fallbacks. Replace remote fonts if offline rendering or privacy requirements demand it. No analytics or third-party scripts are installed.
+Repository: https://github.com/ArrowFinder/rose-bowl-flea-market (public). GitHub Pages publishes the design preview at https://arrowfinder.github.io/rose-bowl-flea-market/. The local preview is intentionally left running when the owner requests a review link. Fonts load from Google Fonts with local fallbacks. Replace remote fonts if offline rendering or privacy requirements demand it. No analytics or third-party scripts are installed.
 
 Development commits and dependency audit are not an independent engineering/security audit. A human engineer should review policy fidelity, server design, handling of sensitive data, accessibility and release readiness before launch.
 
@@ -170,3 +170,5 @@ Removed directional arrows from action labels. Shared buttons now use 8px corner
 - Remaining verification: physical iOS Safari/Android Chrome keyboards, native file pickers, VoiceOver/TalkBack, and landscape keyboard overlap. Browser viewport testing is not physical-device certification.
 
 Navigation alignment correction: top-level links now share the FAQ disclosure’s 44px target and vertical centering, fixing the desktop baseline regression from the mobile pass.
+
+Repository/name correction: public source is https://github.com/ArrowFinder/rose-bowl-flea-market and preview is https://arrowfinder.github.io/rose-bowl-flea-market/. The old Pages URL should not be shared. Deployment now versions CSS/JS asset URLs by commit to prevent stale cached styles; the live old URL reproduced the FAQ offset with block-layout links while local corrected links were flex-centered.
