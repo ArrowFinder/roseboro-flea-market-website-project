@@ -94,10 +94,10 @@ function render() {
         "Event Calendar",
         "Make room for market day.",
         "Every second Sunday of the month. General admission from 9 a.m. Pacific.",
-      ) +
+      ).replace('class="content"', 'class="content calendar-content"') +
       event() +
-      '<p class="note">Dates follow the monthly schedule. Each Eventbrite link is specific to its event; future ticket listings will be added when available.</p></section>' +
-      `<section class="content">${visit}</section>`;
+      '<p class="note">Dates follow the monthly schedule. Each Eventbrite link is specific to its event; future ticket listings will be added when available.</p>' +
+      `${visit}</section>`;
   if (visitorPages[route]) {
     const [title, description, details] = visitorPages[route];
     main.innerHTML =

@@ -1076,3 +1076,12 @@ footer a:focus-visible {
   margin-top: 0.25rem;
   accent-color: #111111;
 }
+
+/* Keep calendar details together without stacked section padding. */
+section.calendar-content {
+  padding-top: 36px;
+  padding-bottom: 40px;
+}
+.calendar-content > .note {
+  margin: 16px 0;
+}

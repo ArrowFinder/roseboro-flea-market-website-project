@@ -94,3 +94,7 @@ Both paths now end with required signer full name, position/title, and two unche
 ### Homepage vendor entry — October 30, 2026
 
 Removed the homepage hero location/frequency eyebrow. Replaced its Plan your visit link with Become a Vendor, targeting #vendors and the existing new/returning choice. Syntax and formatting checks passed.
+
+### Calendar spacing — October 30, 2026
+
+Moved visitor detail cards into the calendar content section directly after the schedule note, removing stacked section padding. Calendar top/bottom padding is now 36/40px; existing responsive card layout and destinations are preserved. Syntax and formatting checks passed.
