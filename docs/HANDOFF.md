@@ -150,3 +150,7 @@ Both application paths now offer Submit application (preview) on final review. A
 ### Attendee animal FAQ — October 30, 2026
 
 Added the owner-confirmed policy: service animals are welcome; personal pets are not permitted. Appears under Are pets allowed? on Attendee FAQs. Syntax and formatting checks passed.
+
+### Event date tile — October 30, 2026
+
+Shared calendar/home event tile now shows the actual upcoming month, large ordinal date and Sunday rather than the generic 2nd Sunday label. Uses the existing Pasadena-time schedule and semantic time element. Syntax and formatting checks passed.

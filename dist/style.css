@@ -298,10 +298,15 @@ h3 {
   margin-top: 25px;
 }
 .date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  min-height: 95px;
   background: var(--red);
   color: var(--white);
   text-align: center;
-  padding: 17px;
+  padding: 10px 6px;
   font:
     26px Georgia,
     serif;
@@ -1167,4 +1172,17 @@ section.calendar-content {
     border: 0;
     padding: 0 0 0 16px;
   }
+}
+
+.date strong {
+  font:
+    36px/1 Georgia,
+    serif;
+}
+.date sup {
+  font-size: 17px;
+}
+.date small {
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }

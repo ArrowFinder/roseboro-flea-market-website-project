@@ -54,7 +54,13 @@ const visitorPages = {
 const ticketEventDate = "2026-11-08";
 const event = () => {
   const next = MarketCalendar.schedule();
-  return `<div class="event"><div class="date">2nd<br><small>SUNDAY</small></div><div><h3>${next.label}</h3><p class="muted">Rose Bowl Flea Market · Pasadena, California</p></div>${next.key === ticketEventDate ? ticket : '<span class="muted">Ticket link coming soon</span>'}</div>`;
+  const month = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    timeZone: "America/Los_Angeles",
+  }).format(next.target);
+  // Second Sundays always fall on the 8th–14th, all of which use “th”.
+  const day = Number(next.key.slice(-2));
+  return `<div class="event"><time class="date" datetime="${next.key}"><small>${month}</small><strong>${day}<sup>th</sup></strong><small>Sunday</small></time><div><h3>${next.label}</h3><p class="muted">Rose Bowl Flea Market · Pasadena, California</p></div>${next.key === ticketEventDate ? ticket : '<span class="muted">Ticket link coming soon</span>'}</div>`;
 };
 let stopCountdown = () => {};
 const countdown = `<section class="countdown" aria-label="Countdown to the next flea market"><div class="countdown-inner"><div class="countdown-copy"><p class="eyebrow">Every second Sunday. Always a discovery.</p><h2 data-countdown-heading>The next treasure hunt starts in</h2><p data-market-date></p><p class="countdown-note" data-countdown-note></p></div><div class="countdown-units" data-countdown-units>${["days", "hours", "minutes", "seconds"].map((unit) => `<div><strong data-unit="${unit}">00</strong><span>${unit}</span></div>`).join("")}</div></div></section>`;
