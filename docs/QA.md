@@ -193,3 +193,7 @@ Navigation alignment correction: top-level links now share the FAQ disclosure’
 Repository/name correction: public source is https://github.com/ArrowFinder/rose-bowl-flea-market and preview is https://arrowfinder.github.io/rose-bowl-flea-market/. The old Pages URL should not be shared. Deployment now versions CSS/JS asset URLs by commit to prevent stale cached styles; the live old URL reproduced the FAQ offset with block-layout links while local corrected links were flex-centered.
 
 Mobile vendor header: hide the top Buy Tickets action at 850px and below on Vendors (including #apply alias) and Vendor FAQs. Other routes and desktop retain it.
+
+Typography consistency: regular-weight text now uses the shared DM Sans font token, including section/page headings, countdown heading, vendor hero, date numerals and italic home-hero text. Bold home display lettering retains Georgia; the unused Libre Caslon font download is removed.
+
+Verified regular-weight rendered text resolves to DM Sans on home, calendar, vendor landing, new-vendor application, and Vendor FAQs at 390px and 1280px; no horizontal overflow. Syntax and formatting checks passed.

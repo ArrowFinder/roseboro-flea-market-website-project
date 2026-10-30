@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
 /* Photo-derived palette. See docs/DESIGN.md for source references and usage. */
 :root {
+  --font-text: "DM Sans", sans-serif;
   --yellow: #f9d827;
   --red: #bf2c25;
   --ink: #111111;
@@ -16,9 +17,7 @@ body {
   margin: 0;
   background: var(--white);
   color: var(--ink);
-  font:
-    16px/1.6 "DM Sans",
-    sans-serif;
+  font: 16px/1.6 var(--font-text);
 }
 a {
   color: inherit;
@@ -170,6 +169,8 @@ main {
   font-weight: 700;
 }
 .hero-copy h1 em {
+  font-family: var(--font-text);
+  letter-spacing: -0.04em;
   color: var(--ink);
   font-weight: 400;
 }
@@ -221,7 +222,7 @@ main {
   align-items: center;
 }
 .countdown h2 {
-  font-family: Georgia, serif;
+  font-family: var(--font-text);
   font-size: 28px;
   font-weight: 400;
   margin: 8px 0;
@@ -271,7 +272,7 @@ section.content {
   padding: 65px 5%;
 }
 h2 {
-  font-family: "Libre Caslon Display", Georgia, serif;
+  font-family: var(--font-text);
   font-size: 48px;
   line-height: 1.1;
   font-weight: 400;
@@ -313,9 +314,7 @@ h3 {
   color: var(--white);
   text-align: center;
   padding: 10px 6px;
-  font:
-    26px Georgia,
-    serif;
+  font: 26px var(--font-text);
 }
 .date small {
   font:
@@ -344,7 +343,7 @@ h3 {
   max-width: 780px;
 }
 .page-intro h1 {
-  font-family: "Libre Caslon Display", Georgia, serif;
+  font-family: var(--font-text);
   font-size: 68px;
   font-weight: 400;
   line-height: 1.05;
@@ -485,7 +484,7 @@ dialog::backdrop {
   text-underline-offset: 7px;
 }
 .application-title {
-  font-family: "Libre Caslon Display", Georgia, serif;
+  font-family: var(--font-text);
   font-size: 64px;
   line-height: 1.05;
   font-weight: 400;
@@ -937,9 +936,7 @@ footer a:focus-visible {
   color: white;
 }
 .vendor-hero-title h1 {
-  font:
-    400 clamp(44px, 5vw, 78px) / 1.05 Georgia,
-    serif;
+  font: 400 clamp(44px, 5vw, 78px) / 1.05 var(--font-text);
   margin: 18px 0 0;
   letter-spacing: -2px;
 }
@@ -1181,9 +1178,7 @@ section.calendar-content {
 }
 
 .date strong {
-  font:
-    36px/1 Georgia,
-    serif;
+  font: 36px/1 var(--font-text);
 }
 .date sup {
   font-size: 17px;

@@ -76,3 +76,5 @@ Removed directional arrows from action labels. Shared buttons now use 8px corner
 ## Mobile behavior
 
 Compact numbered progress on phones keeps the current step title near the fields; full labels remain accessible. The map becomes part of the space-request form before navigation actions. White panels use subtle rounded corners; palette remains unchanged. Controls stay at readable 16px text with generous touch targets. Short screens scroll within confirmation dialogs.
+
+Typography consistency: regular-weight text now uses the shared DM Sans font token, including section/page headings, countdown heading, vendor hero, date numerals and italic home-hero text. Bold home display lettering retains Georgia; the unused Libre Caslon font download is removed.
