@@ -70,3 +70,9 @@ The new owner instruction supersedes generic legacy payment-process copy. Histor
 Vendor landing (#vendors and #apply) now exposes only the two entry paths beneath the hero. Existing application subnavigation and information routes are unchanged.
 
 Path-specific step definitions now map visual order to stable section IDs in vendor.js. New-vendor order is contact (2), space (0), requirements (1), review (4). Returning sequence retains IDs 0/1/2/3/4. Review ordering, Edit targets, guidance, validation and navigation use this mapping rather than hard-coded visible step numbers. No new vendor payment step. This change reorganizes the current prototype; it does not complete missing address/identity fields, event-specific certifications or secure document uploads. Those remain explicitly documented release blockers.
+
+## Vendor map integration
+
+`vendor-map.js` loads before vendor.js and exposes a pure `selection` mapping plus static markup rendering. Space Request uses the map instead of the usual sidebar in both paths. Area changes redraw the form/map and clear stale space choices; space changes update the map without recreating form controls. Quantity affects pricing only. Overlay paths are visual approximations for orientation, not precise boundaries or inventory. Labels are exclusively static catalog strings. SVG is decorative; adjacent live text conveys the selection. Re-trace paths if source image changes.
+
+Maintain explicit Blue/Gold price-to-section mappings when updating the catalog. Orange/Pearl subtype mappings require a more detailed owner-approved map before exact plots can be highlighted.

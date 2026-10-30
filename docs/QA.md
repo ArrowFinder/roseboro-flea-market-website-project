@@ -83,3 +83,7 @@ Vendor landing simplification: removed the four underlined links from the shared
 Browser verified the vendor landing main content contains only the two path links beneath the hero; screenshot inspected.
 
 Contact-first flow: all 16 tests and syntax checks pass. Browser completed all four new-vendor stages with synthetic entries, verified $100 Pearl estimate in review, then reopened contact Edit and verified retained name. No new-vendor subnavigation or marketing introduction. Submission remains disabled. Returning section mapping and payment preference covered by regression tests.
+
+## Interactive space map
+
+17 tests pass, including numbered section selection, area-only fallback, service-side fallback and empty selection. Syntax/format checks pass. Browser inspected map beside form and verified Blue 700 → Gold 800 → Orange transitions, with space reset on area change and selected labels matching the form. Full-size link supplied. Mobile stacking is implemented via CSS; physical-device and full accessibility testing remain pending.

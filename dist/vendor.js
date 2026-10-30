@@ -314,8 +314,18 @@ const VendorFlow = (() => {
         "",
       )}${estimate()}${nextSteps()}<div class="note"><strong>Draft review only</strong><p>No request has been sent and no space is reserved. Final availability, full seller certification, private documentation, and a submission service are still required before this application can accept requests.</p></div>`;
   }
+  function mapMarkup() {
+    const option = spaceOptions[data.area]?.find(
+      (item) => item.id === data.space,
+    );
+    return VendorMap.render(
+      data.area,
+      data.space,
+      option ? option.label + " — " + money(option.cents) : "",
+    );
+  }
   function render() {
-    return `<section class="content">${mode === "returning" ? nav() : ""}<div class="page-intro"><p class="eyebrow">${mode === "returning" ? "Returning vendor · Sample profile" : "New vendor"}</p><h1 class="application-title">Vendor Application</h1><p class="muted">Design preview. Use sample information only. Submission is not connected.</p></div><ol class="steps">${paths[mode].map((item, i) => `<li class="${i === step ? "current" : ""}" ${i === step ? 'aria-current="step"' : ""}><span>${i + 1}</span> ${stepName(i)}</li>`).join("")}</ol><div class="application-layout"><form class="formbox" id="vendor-form" novalidate><p class="eyebrow">Step ${step + 1} of ${paths[mode].length}</p><h2 tabindex="-1" id="step-title">${stepName(step)}</h2><p class="muted">Your entries stay in this tab’s memory and clear when you reload.</p><div id="error-summary" role="alert"></div>${isReview() ? review() : fields().map(fieldMarkup).join("") + guidance()}<div class="actions">${step > 0 ? '<button type="button" class="button secondary" id="back">← Back</button>' : ""}${!isReview() ? '<button type="submit" class="button">Continue →</button>' : '<button class="button" type="button" disabled>Submission not connected</button>'}</div></form><aside class="application-aside"><p class="eyebrow">Application status</p><h3>Payment after acceptance</h3><p>No payment is collected during the application. If accepted, we’ll contact you by email or phone to finalize your space and arrange payment. Your space is confirmed once payment is collected.</p><hr><h3>Vendor assistance</h3><p>Event information and vendor assistance</p><a href="tel:+13235607469">(323) 560-7469</a><p class="muted">Contact number from the existing RGC Shows website.</p></aside></div></section>`;
+    return `<section class="content">${mode === "returning" ? nav() : ""}<div class="page-intro"><p class="eyebrow">${mode === "returning" ? "Returning vendor · Sample profile" : "New vendor"}</p><h1 class="application-title">Vendor Application</h1><p class="muted">Design preview. Use sample information only. Submission is not connected.</p></div><ol class="steps">${paths[mode].map((item, i) => `<li class="${i === step ? "current" : ""}" ${i === step ? 'aria-current="step"' : ""}><span>${i + 1}</span> ${stepName(i)}</li>`).join("")}</ol><div class="application-layout ${sectionIndex() === 0 ? "space-request-layout" : ""}"><form class="formbox" id="vendor-form" novalidate><p class="eyebrow">Step ${step + 1} of ${paths[mode].length}</p><h2 tabindex="-1" id="step-title">${stepName(step)}</h2><p class="muted">Your entries stay in this tab’s memory and clear when you reload.</p><div id="error-summary" role="alert"></div>${isReview() ? review() : fields().map(fieldMarkup).join("") + guidance()}<div class="actions">${step > 0 ? '<button type="button" class="button secondary" id="back">← Back</button>' : ""}${!isReview() ? '<button type="submit" class="button">Continue →</button>' : '<button class="button" type="button" disabled>Submission not connected</button>'}</div></form>${sectionIndex() === 0 ? `<div id="vendor-map-panel">${mapMarkup()}</div>` : `<aside class="application-aside"><p class="eyebrow">Application status</p><h3>Payment after acceptance</h3><p>No payment is collected during the application. If accepted, we’ll contact you by email or phone to finalize your space and arrange payment. Your space is confirmed once payment is collected.</p><hr><h3>Vendor assistance</h3><p>Event information and vendor assistance</p><a href="tel:+13235607469">(323) 560-7469</a><p class="muted">Contact number from the existing RGC Shows website.</p></aside>`}</div></section>`;
   }
   function capture() {
     document
@@ -345,6 +355,8 @@ const VendorFlow = (() => {
       document.getElementById(id)?.addEventListener("change", () => {
         capture();
         document.querySelector("#space-quote").innerHTML = estimate();
+        if (id === "space")
+          document.querySelector("#vendor-map-panel").innerHTML = mapMarkup();
       }),
     );
     document.querySelector("#status")?.addEventListener("change", () => {

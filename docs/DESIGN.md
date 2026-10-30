@@ -56,3 +56,9 @@ Footer mark: `dist/assets/rg-canning-footer.png`, original 358×115 PNG from htt
 Owner supplied Aerial_2.JPG, Aerial_4.JPG and Product_027 as options. Selected Aerial_2.JPG because it shows the stadium and scale of the vendor area. `dist/assets/vendor-aerial.jpg` is a 2000px derivative made with sips; original untouched. Full-width cover image with readable title overlay, followed by New Vendor (primary red) and Returning Vendor (outlined black). Choices stack on phones. The locked palette is retained.
 
 Vendor landing refinement: removed the four underlined subpage links below the entry buttons. The landing section now presents only New Vendor and Returning Vendor to keep the journey focused. Application subnavigation and existing information routes remain available within the application.
+
+## Interactive vendor map
+
+Owner-specified source: https://www.rgcshows.com/wp-content/uploads/rose-bowl-General-map-09-24-26.jpg. Downloaded unchanged to `dist/assets/vendor-map.jpg` (1800×1867). Code-drawn SVG overlays use a proportional 1542×1600 viewBox; original image is not modified. Selected zones receive a translucent white fill and dark outline, with descriptive selection text. The form sits left and map right on wide screens; below 950px the map follows the form. No motion or pulsing. Full-size map link preserves legibility.
+
+Blue/Gold numbered sections are mapped using the inspected price page. Orange/Pearl individual plots and services placement are not defined on this overview; highlights remain at area/side level and explicitly state that limitation.
