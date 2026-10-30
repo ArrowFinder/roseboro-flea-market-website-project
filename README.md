@@ -1,3 +1,5 @@
+> Public preview authorized October 30, 2026: GitHub source and a GitHub Pages design preview may be public. This supersedes earlier local-only/private-repository notes. Live vendor submissions, payments and business-domain changes remain out of scope. See docs/AUDIT.md for checks and limitations.
+
 # Rose Bowl Flea Market Website Project
 
 A shopper-focused website and guided vendor application **prototype**. Private repository: [ArrowFinder/roseboro-flea-market-website-project](https://github.com/ArrowFinder/roseboro-flea-market-website-project).

@@ -265,7 +265,7 @@ const VendorFlow = (() => {
                 "file",
                 true,
                 [],
-                "PDF, JPG or PNG · Up to 5 MB; PDFs up to 5 pages. Read locally on this computer and kept only for this preview session. Not sent to the market office.",
+                "PDF, JPG or PNG · Up to 5 MB; PDFs up to 5 pages. Files remain temporary. Automatic reading is available only in the local Mac preview; the public preview uses manual entry. Nothing is sent to the market office.",
               ),
               field(
                 "permitNumber",
@@ -522,7 +522,9 @@ const VendorFlow = (() => {
         : "No permit selected.";
       document.querySelector("#permit-read-status").textContent =
         data.permitReadStatus ||
-        "Select a document to fill the fields below automatically. Review all results.";
+        (PermitExtraction.supportsLocalReading(location.origin)
+          ? "Select a document to fill the fields below automatically. Review all results."
+          : "Public preview: choose a sample document, then enter its details manually. Files stay in this tab and are not uploaded.");
       upload.addEventListener("change", async () => {
         const file = upload.files[0];
         if (!file) return;
@@ -542,6 +544,13 @@ const VendorFlow = (() => {
         draft.permitFile = file;
         draft.permitNumber = "";
         draft.registered = "";
+        // Static hosting must never receive permit bytes or attempt the local endpoint.
+        if (!PermitExtraction.supportsLocalReading(location.origin)) {
+          draft.permitReadStatus =
+            "Sample document selected. Automatic reading is available only in the local Mac preview. Enter the details manually; this file has not been uploaded.";
+          redraw();
+          return;
+        }
         draft.permitReadStatus = "Reading permit…";
         redraw();
         const numberBefore = draft.permitNumber;

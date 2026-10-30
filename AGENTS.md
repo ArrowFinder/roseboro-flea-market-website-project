@@ -1,6 +1,6 @@
 # Project working agreement
 
-Build a maintainable, local-only replacement for Rose Bowl Flea Market. The private GitHub repository is source control, not permission to publish a website. Do not change the existing site, domains, or activate live payments/submissions without explicit instruction.
+Build a maintainable replacement for Rose Bowl Flea Market. The owner authorized making the GitHub repository public and publishing a GitHub Pages design preview on October 30, 2026. Do not change the existing site, domains, or activate live payments/submissions without explicit instruction.
 
 ## Every meaningful change
 

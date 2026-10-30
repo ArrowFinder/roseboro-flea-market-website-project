@@ -34,3 +34,18 @@ test("does not guess from unrelated numbers or incomplete addresses", () => {
   );
   assert.equal(parse("Unreadable document").registered, "");
 });
+
+test("public preview cannot send permits to the local reader", () => {
+  const supports = vm.runInContext(
+    "PermitExtraction.supportsLocalReading",
+    context,
+  );
+  assert.equal(supports("http://127.0.0.1:4173"), true);
+  for (const origin of [
+    "https://arrowfinder.github.io",
+    "http://localhost:4173",
+    "https://example.com",
+    "http://127.0.0.1:4173.example.com",
+  ])
+    assert.equal(supports(origin), false);
+});

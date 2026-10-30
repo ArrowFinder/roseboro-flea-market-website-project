@@ -23,5 +23,6 @@ const PermitExtraction = (() => {
       registered: roseBowl ? "yes" : "",
     };
   }
-  return { parse };
+  const supportsLocalReading = (origin) => origin === "http://127.0.0.1:4173";
+  return { parse, supportsLocalReading };
 })();

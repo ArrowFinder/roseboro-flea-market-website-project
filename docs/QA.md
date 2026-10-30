@@ -1,3 +1,5 @@
+> Public preview authorized October 30, 2026: GitHub source and a GitHub Pages design preview may be public. This supersedes earlier local-only/private-repository notes. Live vendor submissions, payments and business-domain changes remain out of scope. See docs/AUDIT.md for checks and limitations.
+
 > Current returning-vendor requirement (October 30, 2026): no login, saved profile, or prefilled vendor information. Both paths start blank and use identical fields; returning adds only Payment Preference. This supersedes earlier profile-related notes below.
 
 # Verification record
