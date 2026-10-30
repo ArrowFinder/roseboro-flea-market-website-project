@@ -2,18 +2,20 @@
 
 Updated October 30, 2026. Owner supplied nine photographs in chat and requested a palette drawn from them. These are visually selected, web-ready approximations of the photographed colors, not certified original logo ink values. The actual vector logo/brand standards remain pending.
 
-| Priority  | Color         | Hex     | Origin and purpose                                                                                                         |
-| --------- | ------------- | ------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Primary   | Market yellow | #F9D827 | Flea market banners and brochure lettering; ticket buttons, countdown numerals, photo caption                              |
-| Secondary | Sign red      | #BF2C25 | Brochure title, rose and entrance banner; headline accent, focus and selection accents. Darkened for readable use on cream |
-| Third     | Ink           | #142522 | Near-black lettering, silhouettes and vintage objects; body type, header details, countdown background                     |
-| Fourth    | Paper cream   | #F3EDDF | Brochure paper, white tents in warm light, vintage paper; main background                                                  |
+Owner revision: red is primary, black secondary, yellow is limited to accents, and the base is crisp white.
 
-Supporting muted text and borders are neutral shades, not extra brand accents. Calculated WCAG contrast for solid pairs: ink/yellow 11.29:1, ink/cream 13.66:1, red/cream 4.99:1. These checks do not constitute a full accessibility audit.
+| Priority  | Color         | Hex     | Purpose                                                                |
+| --------- | ------------- | ------- | ---------------------------------------------------------------------- |
+| Primary   | Sign red      | #BF2C25 | Primary buttons, headline, photo caption, event badge, focus/selection |
+| Secondary | Black         | #111111 | Body type, countdown band, footer and secondary controls               |
+| Third     | Market yellow | #F9D827 | Countdown eyebrow and narrow divider accents                           |
+| Base      | Crisp white   | #FFFFFF | Page/form surfaces, primary-button text, countdown numbers             |
+
+Supporting panels and borders use neutral grays. Contrast ratios: black/white 18.88:1; red/white 5.83:1; yellow/black 13.38:1. These checks do not constitute a full accessibility audit.
 
 ## Photography
 
-The wide entrance image is the hero: it establishes the venue and shows shoppers and the original colorful signage. The desktop layout gives it 62% of the hero width. Phone layout puts the photo first. The countdown sits immediately below the hero in a separate dark band with large yellow numbers, deliberately subordinate to the photograph.
+The wide entrance image is the hero: it establishes the venue and shows shoppers and the original colorful signage. The desktop layout gives it 62% of the hero width. Phone layout puts the photo first. The countdown sits immediately below the hero in a separate black band with large white numbers and restrained yellow accents, deliberately subordinate to the photograph.
 
 Original files remain unchanged in the owner's Downloads directory. Web derivatives were resized with macOS sips; no AI imagery or retouching was used. No standalone logo was extracted from the photos. Text wordmark remains provisional.
 

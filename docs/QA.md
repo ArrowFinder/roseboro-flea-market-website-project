@@ -46,3 +46,7 @@ No production-readiness claim is made. Keep this record aligned with actual test
 - Core palette contrast ratios recorded in DESIGN.md; font sizes, assistive-technology behavior and other component pairs still require a complete audit.
 - Image derivatives total approximately 1.4 MB; hero loads eagerly and gallery images lazily. Originals are untouched.
 - Local preview kept running at the owner's explicit request.
+
+## Palette refinement
+
+Owner requested primary red, secondary black, yellow accents and crisp white. Updated all shared surfaces and controls, including secondary-button text for contrast. Calculated solid-pair ratios are recorded in DESIGN.md. This is a styling-only change; existing behavior tests remain unchanged.

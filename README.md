@@ -28,7 +28,7 @@ No runtime dependencies. Prettier is a pinned development dependency. Google Fon
 - Vendor Application, Space Options, Requirements, Policies & FAQs subtabs.
 - Vendor flow: event/area → seller details → contact → payment process → review/edit.
 - Required-field validation and contextual guidance; entries remain only in page memory.
-- Photo-led homepage with signage-inspired yellow, red, ink and cream palette.
+- Photo-led homepage with signage-inspired primary red, secondary black, yellow accents and crisp white palette.
 - Live countdown to 9 a.m. Pacific on the next second Sunday, with daylight-saving and month rollover handling.
 - Ticket buttons use the exact owner-supplied November 8, 2026 Eventbrite URL, with a guard against linking future markets to that expired event.
 
