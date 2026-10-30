@@ -1,18 +1,24 @@
-# Pending decisions and content
+# Decisions and outstanding information
 
-1. Current site URL and current application: audit all requirements and confusing/repeated steps; preserve verified policies and rules; flag conflicts.
-2. Existing Eventbrite URL and individual event listings; never create custom shopper ticketing.
-3. Approved logo, brand colors, licensed photographs, story, merchandise categories, and marketing copy.
-4. Confirmed address, hours, admission, parking, accessibility, contact details, event dates and weather information.
-5. Vendor approval before payment versus immediate booking; space types, prices, availability source, reservation holds, cancellations/refunds, confirmation delivery, and who administers applications.
-6. Actual application fields, required documents, eligibility and consent text. Current preview fields are provisional and must not become assumed requirements.
-7. Submission destination, secure persistence and retention, email/notifications, payment provider if required; all integrations remain unconnected.
-8. Private GitHub owner/account and connection. Replacement domain later. Do not alter existing domain or publish without explicit instruction.
+Updated October 30, 2026.
 
-# Review checklist
+## Established
 
-- Desktop, tablet, and phone navigation; visible ticket action; keyboard skip link and form focus.
-- All routes and unknown route fallback; ticket dialog without fabricated destination.
-- Required empty/whitespace fields and invalid email prevent advancement; errors beside fields; Back/Edit retain data; review renders plain text.
-- No browser storage, network submission, booking/payment claims, or enabled final submission.
-- Browser rendering and real device accessibility must be reviewed; no live integrations can be verified before supplied.
+- Owner confirmed visible brand: **Rose Bowl Flea Market**.
+- Original requested repository slug retained: `roseboro-flea-market-website-project`; private under verified account ArrowFinder.
+- Owner supplied current site, November 8, 2026 Eventbrite link and Google Drive asset folder. See SOURCE-REVIEW.md for source links.
+- Shopper-first homepage; vendor details and application stay in Vendors with subnavigation.
+- Current application establishes staff review and availability check → payment → confirmed reservation → emailed tickets. Request alone reserves nothing.
+- Local prototype only; publication and production integrations are not authorized.
+
+## Still needed
+
+- Access to approved Drive photos/logo and final brand treatment.
+- Actual space inventory, dates, sizes, quantities, pricing, preferred-space behavior and administrative source of truth.
+- Resolution of conflicting move-in and vehicle/trailer instructions and legacy mail-versus-email delivery information.
+- Full conditional seller requirements and certification mapped to the new form and reviewed by the business owner.
+- Submission/admin integration, privacy/retention requirements, notifications, payment arrangement and confirmation failure handling.
+- Remaining shopper content and Eventbrite availability verification. Known event date must not remain the primary ticket destination indefinitely.
+- Replacement domain and hosting plan after the local design is approved.
+
+Refer to HANDOFF.md for engineering release blockers and QA.md for checks completed.

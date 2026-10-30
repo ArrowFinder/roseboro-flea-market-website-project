@@ -3,11 +3,12 @@
 Brand confirmed by owner: Rose Bowl Flea Market. Original requested repository slug remains unchanged pending a separate instruction.
 
 Sources reviewed:
+
 - https://www.rgcshows.com/rose-bowl/
 - https://www.rgcshows.com/sell-at-the-rose-bowl-flea-market/
 - https://www.rgcshows.com/rose-bowl-order/
 
-Owner-supplied Eventbrite link is configured exactly, including affiliate parameter. Automated retrieval failed; availability and checkout have not been verified. Drive folder could not be read by the web tool. Google Drive and GitHub plugin connections have been suggested.
+Owner-supplied Eventbrite link is configured exactly, including affiliate parameter. Automated retrieval failed; availability and checkout have not been verified. Drive folder could not be read by the web tool. Google Drive access is pending. GitHub command-line access was subsequently verified as ArrowFinder and the private repository was created.
 
 ## Booking sequence established by current application
 
@@ -22,7 +23,7 @@ Request → staff documentation review and availability check → payment → re
 5. Review, event-specific certification, signature, and request-only acknowledgment.
 6. On real successful submission only: request receipt, next steps, 48-hour guidance, and explicit no-reservation-yet message.
 
-The current four-step form remains a provisional interaction demo, not a replacement for this complete set of business requirements.
+The current five-step form implements event/area, selling details, contact, payment-process explanation, and review/edit. It remains an interaction prototype, not a replacement for the full conditional certifications and business requirements above.
 
 ## Conflicts and simplification opportunities
 

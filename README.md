@@ -1,33 +1,45 @@
 # Rose Bowl Flea Market Website Project
 
-Local-only first version. No publication, production domain changes, live payments, application delivery, or reservations.
+A shopper-focused website and guided vendor application **prototype**. Private repository: [ArrowFinder/roseboro-flea-market-website-project](https://github.com/ArrowFinder/roseboro-flea-market-website-project).
 
-## Development
+## Local setup
 
-Requires Node.js 20+. No dependencies or build step.
+Requires Node.js 20 or later.
 
-- `npm run dev` starts http://127.0.0.1:4173
-- `npm run check` checks JavaScript syntax.
-- Serve `dist/` as static files when a destination is approved.
+```sh
+npm ci
+npm run dev
+```
 
-Plain HTML/CSS/JavaScript keeps the brochure site lightweight and makes integrations replaceable. Hash routes work with basic static hosting. Google Fonts are optional external requests, with local font fallbacks. The temporary illustration is embedded SVG; replace it with approved photography and logo. All written marketing copy is proposed for review.
+Open http://127.0.0.1:4173. The server binds to loopback only. `dist/` contains editable static source; there is no build step. The site also opens directly from `dist/index.html`.
 
-## Site structure
+```sh
+npm run check          # JavaScript syntax
+npm test               # Validation regressions
+npm run format:check   # Formatting consistency
+npm run format         # Apply formatting
+```
 
-Home (shopper focused), Event Calendar, About Us, Vendors, Contact. Buy Tickets is always prominent and uses the owner-supplied Eventbrite listing for November 8, 2026. Ticket availability and checkout have not been verified. Update the URL in `dist/app.js` for later events.
+No runtime dependencies. Prettier is a pinned development dependency. Google Fonts has system fallbacks.
 
-Vendor preview: Contact → Selling details → Space & policies → Review. Provisional fields only; each required field validates before advancing, inline errors identify issues, Back and Edit preserve page-memory entries. Nothing is stored in browser storage or transmitted. Reload clears entries. Final submission is disabled; no success claim is shown. Before launching, implement approved server-side validation, secure delivery, approved policies and consent, retention controls, failure handling, and a truthful confirmation based on actual submission success.
+## Current experience
 
-## Repository
+- Home, Event Calendar, About Us, Vendors and Contact.
+- Vendor Application, Space Options, Requirements, Policies & FAQs subtabs.
+- Vendor flow: event/area → seller details → contact → payment process → review/edit.
+- Required-field validation and contextual guidance; entries remain only in page memory.
+- Ticket buttons use the exact owner-supplied November 8, 2026 Eventbrite URL.
 
-Requested private repository: `roseboro-flea-market-website-project`. Existing GitHub command-line authentication has been verified as ArrowFinder. The requested private remote is ArrowFinder/roseboro-flea-market-website-project. Never commit vendor records, credentials, or payment information; `.gitignore` excludes typical secret files but does not replace review.
+## Prototype boundaries
 
-See docs/DECISIONS.md for pending information and review checks.
+No live vendor submission, document upload, reservation, payment, or email delivery. Final submission is disabled. Event/area choices do not indicate availability. Complete seller certification and verified space pricing are pending. Use sample information only. Temporary illustration and proposed copy are labeled. No website has been deployed and the existing website is untouched.
 
-## Source review update
+## Handoff documents
 
-Brand is now confirmed as Rose Bowl Flea Market. Ticket buttons use the exact owner-supplied November 8, 2026 Eventbrite URL; ticket availability has not been verified. Vendors now has Application, Space Options, Requirements, and Policies & FAQs subnavigation. See docs/SOURCE-REVIEW.md for the actual booking sequence, source conflicts, and the proposed complete flow. 
+- [Engineering handoff](docs/HANDOFF.md): architecture, responsibilities, integration boundaries and release blockers.
+- [Source review](docs/SOURCE-REVIEW.md): existing business process, source links and conflicts.
+- [Decisions](docs/DECISIONS.md): confirmed facts and missing information.
+- [QA record](docs/QA.md): checks performed and remaining verification.
+- [Working agreement](AGENTS.md): maintenance and documentation expectations.
 
-## Verification completed
-
-JavaScript syntax checks passed. Browser review confirmed desktop and tablet rendering, vendor subnavigation, empty required-field errors and progression with valid contact details. Full phone/device checks, all conditional application rules, back/edit persistence, and external Eventbrite checkout remain to be verified. Preview server was stopped after review; reopen `dist/index.html` directly or run `npm run dev`.
+Keep these documents current with each meaningful implementation change. Never commit credentials, real vendor data or payment information. `.gitignore` excludes common sensitive files; review staged changes before pushing.
