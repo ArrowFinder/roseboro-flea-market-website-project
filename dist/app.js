@@ -213,6 +213,12 @@ function render() {
     main.innerHTML = VendorFlow.render();
     VendorFlow.bind(render);
   }
+  document
+    .querySelector("header")
+    .classList.toggle(
+      "vendor-mobile-header",
+      ["vendors", "apply", "vendor-faqs"].includes(route),
+    );
   document.querySelectorAll("nav a").forEach((a) => {
     if (a.hash === "#" + route) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");

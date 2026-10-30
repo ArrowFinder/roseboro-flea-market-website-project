@@ -191,3 +191,5 @@ Completed both new and returning occasional-seller flows with synthetic contact 
 Navigation alignment correction: top-level links now share the FAQ disclosure’s 44px target and vertical centering, fixing the desktop baseline regression from the mobile pass.
 
 Repository/name correction: public source is https://github.com/ArrowFinder/rose-bowl-flea-market and preview is https://arrowfinder.github.io/rose-bowl-flea-market/. The old Pages URL should not be shared. Deployment now versions CSS/JS asset URLs by commit to prevent stale cached styles; the live old URL reproduced the FAQ offset with block-layout links while local corrected links were flex-centered.
+
+Mobile vendor header: hide the top Buy Tickets action at 850px and below on Vendors (including #apply alias) and Vendor FAQs. Other routes and desktop retain it.

@@ -1461,3 +1461,10 @@ dialog {
     flex-direction: column-reverse;
   }
 }
+
+/* Vendor entry and help pages prioritize the vendor task in compact navigation. */
+@media (max-width: 850px) {
+  header.vendor-mobile-header > .ticket {
+    display: none;
+  }
+}
