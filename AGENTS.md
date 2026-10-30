@@ -8,7 +8,7 @@ Build a maintainable, local-only replacement for Rose Bowl Flea Market. The priv
 - Update README if setup or implemented behavior changes. Update docs/HANDOFF.md and docs/QA.md for changed limitations, integrations, or verification.
 - Keep confirmed facts and unresolved conflicts in docs/DECISIONS.md and docs/SOURCE-REVIEW.md. Do not silently convert assumptions into business rules.
 - Run syntax checks, relevant tests, and formatting checks. Document checks actually run and any gaps; never describe an automated dependency check as a comprehensive security audit.
-- Keep vendor values out of browser storage, logs, source control, and telemetry. Use synthetic data for tests. Do not collect documents, identity numbers, or payment credentials in the prototype.
+- Keep vendor values out of browser storage, logs, source control, and telemetry. Use synthetic data for tests. Owner-authorized permit files may be read by the loopback-only OCR service in memory; never persist them or send them to external services. Do not collect other identity documents or payment credentials in the prototype.
 - Insert user-entered review values through `textContent`, not HTML templates.
 - Preserve all required legacy business rules before enabling production submission; partial prototypes must clearly state what is incomplete.
 

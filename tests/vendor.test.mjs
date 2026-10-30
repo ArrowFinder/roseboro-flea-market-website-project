@@ -161,3 +161,10 @@ test("final certification is required and checkbox consent must be explicit", ()
     }
   }
 });
+
+test("permit upload is required independently of entered permit details", () => {
+  const field = { id: "permitFile", type: "file", required: true };
+  assert.ok(flow.validate(field, undefined));
+  assert.ok(flow.validate(field, "file-name-only"));
+  assert.equal(flow.validate(field, { name: "synthetic.png" }), "");
+});

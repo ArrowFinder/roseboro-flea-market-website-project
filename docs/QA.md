@@ -135,3 +135,15 @@ Added consistent inline outline map, clock, ticket and car icons to the shared v
 ### Compact visitor icons — October 30, 2026
 
 Moved each decorative icon into its card heading in place of the arrow. Removed the separate icon row and badge spacing to reduce tile height. Syntax and formatting checks passed.
+
+### Local permit upload and extraction — October 30, 2026
+
+Owner authorized permit upload with automatic field filling. Both paths now require a PDF/JPG/PNG (5 MB maximum, PDFs up to 5 pages) when permit-holder is selected. A local macOS Vision/PDFKit adapter reads the document; conservative parsing fills a labeled permit/account number and selects the venue-address option only when the complete address is found together. Missing/ambiguous values require manual entry. All extracted values stay editable and the vendor must explicitly confirm reviewing them. OCR is not proof of permit validity or location registration; staff/CDTFA verification remains necessary.
+
+`npm run dev` now compiles `scripts/permit-ocr.swift` into ignored `.local/permit-ocr` before starting. Requires macOS and Swift command-line tools. `permit-ocr.mjs` exposes only a same-origin loopback POST endpoint, accepts supported MIME types and file signatures, caps input at 5 MB, limits extraction to one request at a time and terminates the reader after 30 seconds. Documents travel to this computer's local server only, via stdin to the OCR process, with no app disk storage or content logging. Browser File objects remain in the path's in-memory draft until replaced, seller area/status changes, or page reload; no browser persistent storage. Helper binaries, caches and synthetic fixtures are not committed.
+
+This adapter is for local preview, not a portable production upload service. Production still needs authenticated storage, document retention/deletion rules, malware scanning, access control, rate limiting, server-side revalidation, and a supported OCR adapter for the hosting environment. File reading failures allow manual field completion with review; this does not mean the attached document has been validated. Final submission remains disabled.
+
+Validation: Swift compilation, JavaScript syntax, formatting and 23 tests passed. Browser test with a synthetic image extracted `123456789-001` and the complete Rose Bowl address; review remained unchecked. No real vendor permit used. Real-world OCR accuracy has not been measured; unusual permit layouts may require manual entry.
+
+Browser verification also confirmed unchecked review blocks progression, confirmation allows progression, Back retains the attachment, and editing the permit number clears confirmation. Endpoint tests cover cross-origin, unsupported type, invalid file signature and oversized body rejection. PDF extraction is implemented but has not yet been exercised with representative permit PDFs.

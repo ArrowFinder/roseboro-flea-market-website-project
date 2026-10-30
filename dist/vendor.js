@@ -1,4 +1,4 @@
-/* In-memory prototype only. No requests, uploads, browser storage, or payments. */
+/* In-memory prototype. Permit OCR uses the local-only service; no durable uploads or payments. */
 const VendorFlow = (() => {
   // Step order is path-specific; section keys keep validation and review independent of order.
   const paths = {
@@ -271,12 +271,20 @@ const VendorFlow = (() => {
         ...(data.status === "permit"
           ? [
               field(
+                "permitFile",
+                "Upload California Seller’s Permit",
+                "file",
+                true,
+                [],
+                "PDF, JPG or PNG · Up to 5 MB; PDFs up to 5 pages. Read locally on this computer and kept only for this preview session. Not sent to the market office.",
+              ),
+              field(
                 "permitNumber",
                 "California Seller’s Permit number",
                 "text",
                 true,
                 [],
-                "Preview: use a sample number only. Include the location suffix if shown.",
+                "Check the extracted number or enter it manually. Include the location suffix if shown.",
               ),
               field(
                 "registered",
@@ -288,6 +296,12 @@ const VendorFlow = (() => {
                   ["pending", "Not yet / update pending"],
                 ],
                 "A valid California Seller’s Permit showing this address is required to continue. Staff must verify the permit before approval.",
+              ),
+              field(
+                "permitReviewed",
+                "I have checked the permit number and selling location against my uploaded document.",
+                "checkbox",
+                true,
               ),
             ]
           : []),
@@ -404,6 +418,10 @@ const VendorFlow = (() => {
     return [];
   }
   function validate(f, value) {
+    if (f.type === "file")
+      return value && typeof value.name === "string"
+        ? ""
+        : "Upload your permit before continuing.";
     if (f.type === "checkbox")
       return value === true ? "" : "This confirmation is required.";
     const v = String(value || "").trim();
@@ -434,6 +452,8 @@ const VendorFlow = (() => {
   }
   function fieldMarkup(f) {
     const attrs = `id="${f.id}" name="${f.id}" ${f.required ? "required" : ""} aria-describedby="${f.id}-help ${f.id}-error"`;
+    if (f.type === "file")
+      return `<div class="field"><label for="${f.id}">${f.label} <span class="field-requirement">(required)</span></label><input ${attrs} type="file" accept="application/pdf,image/jpeg,image/png"><p class="field-help" id="${f.id}-help">${f.help}</p><p id="permit-file-name"></p><p id="permit-read-status" role="status"></p><span class="error" id="${f.id}-error"></span></div>`;
     if (f.type === "checkbox")
       return `<div class="field certification-check"><label for="${f.id}"><input ${attrs} type="checkbox"> <span>${f.label} <span class="field-requirement">(required)</span></span></label><p class="field-help" id="${f.id}-help">${f.help}</p><span class="error" id="${f.id}-error"></span></div>`;
     const control =
@@ -447,7 +467,7 @@ const VendorFlow = (() => {
   function guidance() {
     if (sectionIndex() === 0) return "";
     if (sectionIndex() === 1)
-      return `<aside class="note" aria-live="polite">${data.area === "stadium" ? "Blue/Gold requires a valid California Seller’s Permit showing 1001 Rose Bowl Drive, Pasadena, CA 91103. Occasional-seller verification is not available for this area." : `<strong>${data.area === "orange" ? "Orange" : "Pearl"} Area — two verification options</strong><ul><li><strong>California Seller’s Permit:</strong> provide details of a valid permit showing 1001 Rose Bowl Drive, Pasadena, CA 91103 as a selling location.</li><li><strong>Occasional-seller verification:</strong> for qualifying sales of your own personal used belongings. Items must have been acquired for personal use, not for resale or as retail business inventory. Complete the eligibility confirmations and selling-history questions, including the limit of two qualifying selling occasions in any 12-month period.</li></ul><p>Select the option that accurately describes your selling activity. Choosing occasional-seller verification does not by itself establish eligibility; staff must review your information.</p>`}<p>Preview only: these answers are not a permit validation or signed certification. Secure document upload and staff verification are not connected.</p></aside>`;
+      return `<aside class="note" aria-live="polite">${data.area === "stadium" ? "Blue/Gold requires a valid California Seller’s Permit showing 1001 Rose Bowl Drive, Pasadena, CA 91103. Occasional-seller verification is not available for this area." : `<strong>${data.area === "orange" ? "Orange" : "Pearl"} Area — two verification options</strong><ul><li><strong>California Seller’s Permit:</strong> provide details of a valid permit showing 1001 Rose Bowl Drive, Pasadena, CA 91103 as a selling location.</li><li><strong>Occasional-seller verification:</strong> for qualifying sales of your own personal used belongings. Items must have been acquired for personal use, not for resale or as retail business inventory. Complete the eligibility confirmations and selling-history questions, including the limit of two qualifying selling occasions in any 12-month period.</li></ul><p>Select the option that accurately describes your selling activity. Choosing occasional-seller verification does not by itself establish eligibility; staff must review your information.</p>`}<p>Preview only: these answers are not a permit validation or signed certification. Document reading runs locally; secure submission to the office and staff verification are not connected.</p></aside>`;
     if (sectionIndex() === 3) return estimate() + nextSteps();
     return "";
   }
@@ -488,6 +508,7 @@ const VendorFlow = (() => {
         "#vendor-form input, #vendor-form select, #vendor-form textarea",
       )
       .forEach((el) => {
+        if (el.type === "file") return;
         data[el.name] = el.type === "checkbox" ? el.checked : el.value;
       });
   }
@@ -497,10 +518,77 @@ const VendorFlow = (() => {
         "#vendor-form input, #vendor-form select, #vendor-form textarea",
       )
       .forEach((el) => {
+        if (el.type === "file") return;
         if (el.type === "checkbox") el.checked = data[el.name] === true;
         else el.value = data[el.name] || "";
         el.addEventListener("input", capture);
       });
+    const upload = document.querySelector("#permitFile");
+    if (upload) {
+      document.querySelector("#permit-file-name").textContent = data.permitFile
+        ? "Selected permit: " + data.permitFile.name
+        : "No permit selected.";
+      document.querySelector("#permit-read-status").textContent =
+        data.permitReadStatus ||
+        "Select a document to fill the fields below automatically. Review all results.";
+      upload.addEventListener("change", async () => {
+        const file = upload.files[0];
+        if (!file) return;
+        capture();
+        const draft = data;
+        delete draft.permitFile;
+        delete draft.permitReviewed;
+        if (
+          !["application/pdf", "image/jpeg", "image/png"].includes(file.type) ||
+          file.size > 5 * 1024 * 1024 ||
+          !file.size
+        ) {
+          draft.permitReadStatus = "Choose a PDF, JPG or PNG up to 5 MB.";
+          redraw();
+          return;
+        }
+        draft.permitFile = file;
+        draft.permitNumber = "";
+        draft.registered = "";
+        draft.permitReadStatus = "Reading permit…";
+        redraw();
+        const numberBefore = draft.permitNumber;
+        const locationBefore = draft.registered;
+        try {
+          const response = await fetch("/api/permit-extract", {
+            method: "POST",
+            headers: { "Content-Type": file.type },
+            body: file,
+            signal: AbortSignal.timeout(35000),
+          });
+          const result = await response.json();
+          if (!response.ok)
+            throw new Error(result.error || "Document reading is unavailable.");
+          if (draft.permitFile !== file) return;
+          delete draft.permitReviewed; // Extraction changes require a fresh human review.
+          const extracted = PermitExtraction.parse(result.text);
+          if (draft.permitNumber === numberBefore)
+            draft.permitNumber = extracted.number;
+          if (draft.registered === locationBefore)
+            draft.registered = extracted.registered;
+          draft.permitReadStatus =
+            extracted.number && extracted.registered
+              ? "Details filled from your document. Check both fields and confirm below. This is not permit verification."
+              : "Document read. Some details could not be identified confidently. Check or complete both fields manually, then confirm below.";
+        } catch (error) {
+          if (draft.permitFile !== file) return;
+          draft.permitReadStatus =
+            "Automatic reading could not complete. Enter the details manually and confirm them against your document. PDFs must be unlocked and no more than 5 pages.";
+        }
+        if (data === draft && sectionIndex() === 1) redraw();
+      });
+      ["permitNumber", "registered"].forEach((id) =>
+        document.getElementById(id)?.addEventListener("input", () => {
+          delete data.permitReviewed;
+          document.getElementById("permitReviewed").checked = false;
+        }),
+      );
+    }
     document.querySelector("#area")?.addEventListener("change", () => {
       capture();
       delete data.space; // Dependent choices must be made again after an area change.
@@ -509,6 +597,9 @@ const VendorFlow = (() => {
       [
         "permitNumber",
         "registered",
+        "permitFile",
+        "permitReviewed",
+        "permitReadStatus",
         "occasionalExempt",
         "personalUse",
         "notResale",
@@ -531,6 +622,9 @@ const VendorFlow = (() => {
       [
         "permitNumber",
         "registered",
+        "permitFile",
+        "permitReviewed",
+        "permitReadStatus",
         "occasionalExempt",
         "personalUse",
         "notResale",
@@ -553,9 +647,15 @@ const VendorFlow = (() => {
         .find((f) => f.id === el.dataset.review);
       const value = data[f.id];
       el.textContent =
-        f.options.find(([key]) => key === value)?.[1] ||
-        value ||
-        "Not provided";
+        f.type === "file"
+          ? value?.name || "Not provided"
+          : f.type === "checkbox"
+            ? value === true
+              ? "Confirmed"
+              : "Not confirmed"
+            : f.options.find(([key]) => key === value)?.[1] ||
+              value ||
+              "Not provided";
     });
     function move(index) {
       capture();
@@ -579,6 +679,11 @@ const VendorFlow = (() => {
     document.querySelector("#vendor-form").addEventListener("submit", (e) => {
       e.preventDefault();
       capture();
+      if (data.permitReadStatus === "Reading permit…") {
+        document.querySelector("#error-summary").textContent =
+          "Please wait for document reading to finish.";
+        return;
+      }
       const errors = fields()
         .map((f) => [f, validate(f, data[f.id])])
         .filter(([, error]) => error);

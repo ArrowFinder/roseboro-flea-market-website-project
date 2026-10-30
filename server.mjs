@@ -1,9 +1,11 @@
+import { readPermit } from "./permit-ocr.mjs";
 import http from "node:http";
 import { readFile } from "node:fs/promises";
 import { resolve, extname } from "node:path";
 const root = resolve("dist");
 http
   .createServer(async (req, res) => {
+    if (req.url === "/api/permit-extract") return readPermit(req, res);
     try {
       const path = resolve(
         root,
