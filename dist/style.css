@@ -1085,3 +1085,9 @@ section.calendar-content {
 .calendar-content > .note {
   margin: 16px 0;
 }
+
+.hero-copy .hero-tagline {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 18px;
+}

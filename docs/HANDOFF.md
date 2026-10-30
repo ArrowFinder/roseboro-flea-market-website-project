@@ -98,3 +98,7 @@ Removed the homepage hero location/frequency eyebrow. Replaced its Plan your vis
 ### Calendar spacing — October 30, 2026
 
 Moved visitor detail cards into the calendar content section directly after the schedule note, removing stacked section padding. Calendar top/bottom padding is now 36/40px; existing responsive card layout and destinations are preserved. Syntax and formatting checks passed.
+
+### Homepage tagline — October 30, 2026
+
+Added the owner-supplied quoted line “The Flea market to the Stars” immediately above the homepage hero heading. Syntax and formatting checks passed.

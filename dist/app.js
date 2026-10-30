@@ -81,7 +81,7 @@ function render() {
   if (route === "home") {
     main.innerHTML = `
       <section class="photo-hero">
-        <div class="hero-copy"><h1>The thrill<br>of the <em>find.</em></h1><p>Vintage treasures. Unexpected favorites. A whole Sunday of discovery at the Rose Bowl Flea Market.</p><div class="actions">${ticket}<a class="hero-plan" href="#vendors">Become a Vendor ↗</a></div><p class="hero-footnote">A little curiosity goes a long way.</p></div>
+        <div class="hero-copy"><p class="hero-tagline">“The Flea market to the Stars”</p><h1>The thrill<br>of the <em>find.</em></h1><p>Vintage treasures. Unexpected favorites. A whole Sunday of discovery at the Rose Bowl Flea Market.</p><div class="actions">${ticket}<a class="hero-plan" href="#vendors">Become a Vendor ↗</a></div><p class="hero-footnote">A little curiosity goes a long way.</p></div>
         <figure class="hero-photo"><img src="assets/market-entrance.jpg" width="2000" height="1333" alt="Shoppers arriving at the Rose Bowl beneath the yellow and red flea market entrance banner" fetchpriority="high"></figure>
       </section>
       ${countdown}
