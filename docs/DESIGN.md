@@ -72,3 +72,7 @@ Renamed the documentation step to Permit Verification. Its gray guidance box exp
 ### Button and map refinement — October 30, 2026
 
 Removed directional arrows from action labels. Shared buttons now use 8px corners, hover lift/shadow, pressed feedback and distinct secondary hover states. Reduced-motion users receive color feedback without movement. Vendor map uses a grayscale/faded base with a full-color image clipped to selected section geometry, retaining the existing 44% white fill and black outline. No selection leaves the full map unchanged; whole-area rules for Orange/Pearl remain.
+
+## Mobile behavior
+
+Compact numbered progress on phones keeps the current step title near the fields; full labels remain accessible. The map becomes part of the space-request form before navigation actions. White panels use subtle rounded corners; palette remains unchanged. Controls stay at readable 16px text with generous touch targets. Short screens scroll within confirmation dialogs.

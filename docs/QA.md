@@ -181,3 +181,9 @@ Shared calendar/home event tile now shows the actual upcoming month, large ordin
 ### Button and map refinement — October 30, 2026
 
 Removed directional arrows from action labels. Shared buttons now use 8px corners, hover lift/shadow, pressed feedback and distinct secondary hover states. Reduced-motion users receive color feedback without movement. Vendor map uses a grayscale/faded base with a full-color image clipped to selected section geometry, retaining the existing 44% white fill and black outline. No selection leaves the full map unchanged; whole-area rules for Orange/Pearl remain.
+
+## Mobile pass — October 30, 2026
+
+Verified in the in-app browser at 320, 390, 768, and 1024 CSS pixels: homepage, calendar, vendor landing, returning application entry, attendee FAQs, and vendor FAQs had no horizontal document overflow. Visually inspected phone homepage, contact form, selected map, FAQ navigation, and confirmation.
+
+Completed both new and returning occasional-seller flows with synthetic contact details through preview confirmation at phone sizes; returning included its payment preference. Checked 320×568 confirmation, 390×844 form/map, and 1024px map restoration after resize. Selection and draft survived breakpoint changes. Mobile menu/FAQ submenu tested after correcting hover/tap interference. All 25 existing tests, syntax checks, and formatting checks passed. Physical-device/assistive-technology testing remains outstanding; no live submission was made.

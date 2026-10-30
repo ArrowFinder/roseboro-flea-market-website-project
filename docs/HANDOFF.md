@@ -160,3 +160,11 @@ Shared calendar/home event tile now shows the actual upcoming month, large ordin
 ### Button and map refinement — October 30, 2026
 
 Removed directional arrows from action labels. Shared buttons now use 8px corners, hover lift/shadow, pressed feedback and distinct secondary hover states. Reduced-motion users receive color feedback without movement. Vendor map uses a grayscale/faded base with a full-color image clipped to selected section geometry, retaining the existing 44% white fill and black outline. No selection leaves the full map unchanged; whole-area rules for Orange/Pearl remain.
+
+## Mobile pass — October 30, 2026
+
+- At 580px and below, application titles/progress are compact; full step names remain in the accessibility tree. Inputs remain 16px with 48px minimum height. Certification labels, edit actions, FAQs, and footer links have expanded touch areas.
+- One matchMedia listener in vendor.js moves the existing map before form actions at 950px and below, restoring it to the desktop sidebar above that breakpoint. It does not duplicate map IDs, rebuild fields, or clear draft values.
+- Dialogs use bounded dynamic viewport height and scrolling. At 360px and below, form actions stack with the primary action visually first.
+- FAQ hover opening is restricted to desktop hover-capable layouts; compact navigation uses the native disclosure tap interaction.
+- Remaining verification: physical iOS Safari/Android Chrome keyboards, native file pickers, VoiceOver/TalkBack, and landscape keyboard overlap. Browser viewport testing is not physical-device certification.

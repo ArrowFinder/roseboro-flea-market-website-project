@@ -223,7 +223,11 @@ function render() {
 }
 const faqMenu = document.querySelector("#faq-menu");
 faqMenu.addEventListener("pointerenter", (event) => {
-  if (event.pointerType === "mouse") faqMenu.open = true;
+  if (
+    event.pointerType === "mouse" &&
+    window.matchMedia("(min-width: 851px) and (hover: hover)").matches
+  )
+    faqMenu.open = true;
 });
 faqMenu.addEventListener("pointerleave", () => {
   if (!faqMenu.contains(document.activeElement)) faqMenu.open = false;

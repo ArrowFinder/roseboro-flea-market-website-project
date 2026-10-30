@@ -489,7 +489,7 @@ const VendorFlow = (() => {
     );
   }
   function render() {
-    return `<section class="content"><div class="page-intro"><p class="eyebrow">${mode === "returning" ? "Returning vendor" : "New vendor"}</p><h1 class="application-title">Vendor Application</h1><p class="muted">Design preview. Use sample information only. Submission is not connected.</p></div><ol class="steps">${paths[mode].map((item, i) => `<li class="${i === step ? "current" : ""}" ${i === step ? 'aria-current="step"' : ""}><span>${i + 1}</span> ${stepName(i)}</li>`).join("")}</ol><div class="application-layout ${sectionIndex() === 0 ? "space-request-layout" : ""}"><form class="formbox" id="vendor-form" novalidate><p class="eyebrow">Step ${step + 1} of ${paths[mode].length}</p><h2 tabindex="-1" id="step-title">${stepName(step)}</h2><p class="muted">Your entries stay in this tab’s memory and clear when you reload.</p><div id="error-summary" role="alert"></div>${isReview() ? review() : fields().map(fieldMarkup).join("") + guidance()}<div class="actions">${step > 0 ? '<button type="button" class="button secondary" id="back">Back</button>' : ""}${!isReview() ? '<button type="submit" class="button">Continue</button>' : '<button class="button" type="submit">Submit application (preview)</button>'}</div></form><dialog id="application-confirmation" aria-labelledby="confirmation-heading" aria-describedby="confirmation-message confirmation-preview"><p class="eyebrow" id="confirmation-preview">Preview only — no application has been sent</p><h2 id="confirmation-heading">Application submitted</h2><p id="confirmation-message">You’ll hear from our team shortly about the status of your application at the contact information you provided.</p><p>Your space is not confirmed until your application is accepted and payment is collected.</p><form method="dialog"><button type="submit" class="button" autofocus>Close window</button></form></dialog>${sectionIndex() === 0 ? `<div id="vendor-map-panel">${mapMarkup()}</div>` : `<aside class="application-aside"><p class="eyebrow">Application status</p><h3>Payment after acceptance</h3><p>No payment is collected during the application. If accepted, we’ll contact you by email or phone to finalize your space and arrange payment. Your space is confirmed once payment is collected.</p><hr><h3>Vendor assistance</h3><p>Event information and vendor assistance</p><a href="tel:+13235607469">(323) 560-7469</a><p class="muted">Contact number from the existing RGC Shows website.</p></aside>`}</div></section>`;
+    return `<section class="content application-content"><div class="page-intro"><p class="eyebrow">${mode === "returning" ? "Returning vendor" : "New vendor"}</p><h1 class="application-title">Vendor Application</h1><p class="muted">Design preview. Use sample information only. Submission is not connected.</p></div><ol class="steps">${paths[mode].map((item, i) => `<li class="${i === step ? "current" : ""}" ${i === step ? 'aria-current="step"' : ""}><span>${i + 1}</span> <span class="step-label">${stepName(i)}</span></li>`).join("")}</ol><div class="application-layout ${sectionIndex() === 0 ? "space-request-layout" : ""}"><form class="formbox" id="vendor-form" novalidate><p class="eyebrow">Step ${step + 1} of ${paths[mode].length}</p><h2 tabindex="-1" id="step-title">${stepName(step)}</h2><p class="muted">Your entries stay in this tab’s memory and clear when you reload.</p><div id="error-summary" role="alert"></div>${isReview() ? review() : fields().map(fieldMarkup).join("") + guidance()}<div class="actions">${step > 0 ? '<button type="button" class="button secondary" id="back">Back</button>' : ""}${!isReview() ? '<button type="submit" class="button">Continue</button>' : '<button class="button" type="submit">Submit application (preview)</button>'}</div></form><dialog id="application-confirmation" aria-labelledby="confirmation-heading" aria-describedby="confirmation-message confirmation-preview"><p class="eyebrow" id="confirmation-preview">Preview only — no application has been sent</p><h2 id="confirmation-heading">Application submitted</h2><p id="confirmation-message">You’ll hear from our team shortly about the status of your application at the contact information you provided.</p><p>Your space is not confirmed until your application is accepted and payment is collected.</p><form method="dialog"><button type="submit" class="button" autofocus>Close window</button></form></dialog>${sectionIndex() === 0 ? `<div id="vendor-map-panel">${mapMarkup()}</div>` : `<aside class="application-aside"><p class="eyebrow">Application status</p><h3>Payment after acceptance</h3><p>No payment is collected during the application. If accepted, we’ll contact you by email or phone to finalize your space and arrange payment. Your space is confirmed once payment is collected.</p><hr><h3>Vendor assistance</h3><p>Event information and vendor assistance</p><a href="tel:+13235607469">(323) 560-7469</a><p class="muted">Contact number from the existing RGC Shows website.</p></aside>`}</div></section>`;
   }
   function capture() {
     document
@@ -501,7 +501,22 @@ const VendorFlow = (() => {
         data[el.name] = el.type === "checkbox" ? el.checked : el.value;
       });
   }
+  // Move the same map (not a duplicate) beside desktop fields or before mobile actions.
+  // A single module-level listener also handles rotation without resetting the draft.
+  const compactMap =
+    typeof window !== "undefined" && window.matchMedia
+      ? window.matchMedia("(max-width: 950px)")
+      : null;
+  function positionMap() {
+    const panel = document.querySelector("#vendor-map-panel");
+    const form = document.querySelector("#vendor-form");
+    if (!panel || !form) return;
+    if (compactMap?.matches) form.querySelector(".actions").before(panel);
+    else document.querySelector(".application-layout").append(panel);
+  }
+  compactMap?.addEventListener("change", positionMap);
   function bind(redraw) {
+    positionMap();
     document
       .querySelectorAll(
         "#vendor-form input, #vendor-form select, #vendor-form textarea",

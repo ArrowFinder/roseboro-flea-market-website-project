@@ -86,3 +86,7 @@ The shared FAQs header menu links to separate attendee and vendor FAQ pages. It 
 ### Submission confirmation preview — October 30, 2026
 
 Both application paths now offer Submit application (preview) on final review. All required sections and certification fields are revalidated before opening a native modal receipt. The modal says Application submitted and explains that the team will contact the applicant shortly using the provided contact information. A prominent preview-only notice states that no application has been sent. Close window (or Escape) dismisses the modal and restores the form; this closes the confirmation window rather than the browser tab. No network submission, office notification, payment or persisted signature is performed. This supersedes earlier notes that the final button is disabled. Production must show the receipt only after successful durable backend submission, and handle errors/retries without duplicate applications.
+
+### Mobile preview refinement
+
+Phone layouts use compact application progress, larger controls, and an inline space map before Continue. Tablet/desktop layouts restore the side-by-side map without losing entered values. The FAQ navigation supports tap on compact screens.

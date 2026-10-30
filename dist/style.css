@@ -1249,3 +1249,209 @@ section.calendar-content {
     transform: none !important;
   }
 }
+
+/* Mobile refinement: compact orientation, readable controls, and in-flow map.
+   Keep the full step names accessible even when only numbered markers are visible. */
+.application-layout > *,
+.field,
+.event > * {
+  min-width: 0;
+}
+.text-button {
+  min-height: 44px;
+}
+summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+dialog {
+  width: min(460px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  border-radius: 12px;
+}
+@media (max-width: 950px) {
+  #vendor-form > #vendor-map-panel {
+    margin-top: 24px;
+  }
+}
+@media (max-width: 580px) {
+  header {
+    gap: 10px;
+    padding: 12px 4%;
+  }
+  .brand .brand-logo {
+    width: 156px;
+  }
+  header .brand img {
+    width: 156px;
+  }
+  #menu {
+    margin-left: auto;
+    min-height: 44px;
+  }
+  header > .button {
+    padding: 10px 16px;
+    min-height: 44px;
+  }
+  .preview {
+    letter-spacing: 0.7px;
+  }
+  section.application-content {
+    padding: 24px 4% 36px;
+  }
+  .application-content .page-intro {
+    margin-bottom: 20px;
+  }
+  .application-content .application-title {
+    font-size: 36px;
+    margin: 12px 0;
+  }
+  .application-content .page-intro .muted {
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+  .steps {
+    flex-wrap: nowrap;
+    gap: 6px;
+    margin: 20px 0;
+  }
+  .steps li {
+    flex: 1 1 0;
+    text-align: center;
+    padding: 7px 0;
+    border-radius: 5px 5px 0 0;
+  }
+  .steps .current {
+    background: var(--red);
+    color: white;
+  }
+  .steps .step-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .formbox {
+    padding: 20px 16px;
+    border-radius: 10px;
+  }
+  .formbox h2 {
+    font-size: 30px;
+    line-height: 1.15;
+    margin: 12px 0;
+  }
+  .formbox > .muted {
+    font-size: 13px;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+    min-height: 48px;
+    border-radius: 7px;
+  }
+  .certification-check input {
+    min-height: 20px;
+  }
+  .certification-check label {
+    padding: 8px 0;
+  }
+  .actions {
+    display: flex;
+    gap: 12px;
+  }
+  .formbox .actions .button {
+    flex: 1;
+    padding: 12px 10px;
+  }
+  #permit-upload-button {
+    width: 100%;
+    padding: 12px 8px;
+  }
+  .vendor-map {
+    padding: 14px;
+    border-radius: 8px;
+  }
+  .vendor-map h3 {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  .vendor-map > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .application-aside {
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .review-heading {
+    gap: 4px;
+  }
+  .review-heading .text-button {
+    text-align: left;
+  }
+  .review {
+    row-gap: 4px;
+  }
+  .review dd {
+    margin-bottom: 12px;
+  }
+  dialog {
+    padding: 22px;
+  }
+  dialog h2 {
+    font-size: 32px;
+    line-height: 1.15;
+  }
+  dialog .button {
+    width: 100%;
+  }
+  .event {
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 14px;
+  }
+  .event h3 {
+    font-size: 21px;
+    line-height: 1.25;
+  }
+  .hero-buttons {
+    flex-wrap: wrap;
+  }
+  footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+@media (max-width: 360px) {
+  .photo-hero h1 {
+    font-size: 52px;
+  }
+  .countdown-units strong {
+    font-size: 44px;
+  }
+  .visit-grid {
+    grid-template-columns: 1fr;
+  }
+  .visit-card {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 580px) {
+  .formbox .actions .button {
+    min-width: 0;
+  }
+}
+@media (max-width: 360px) {
+  .formbox .actions {
+    flex-direction: column-reverse;
+  }
+}
