@@ -54,3 +54,5 @@ Keep these documents current with each meaningful implementation change. Never c
 `#vendors` and `#apply` open the aerial hero and New Vendor / Returning Vendor choices. New vendors start blank; returning vendors explicitly open a fictional sample profile for UX review. Both paths use the existing five-step flow with separate in-memory drafts. No real account, previous submission lookup or durable storage is connected.
 
 Vendor applications now show live-form space choices, quantity (1–5) and a calculated estimate. New vendors provide no payment information. Returning vendors select an unselected-by-default payment preference (existing method or new method after acceptance). Both paths explain email/phone follow-up and confirmation only after payment.
+
+New-vendor sequence: Seller / Business Contact → Space / Plot Request → Required Forms → Review & Submit. Returning vendors retain their five-step path and payment preference. The required-forms stage currently contains seller-status guidance; complete legacy certifications and secure uploads remain release blockers.

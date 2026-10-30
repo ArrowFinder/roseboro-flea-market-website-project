@@ -68,3 +68,5 @@ Step 4 is Space estimate for new vendors, with no payment field. Returning vendo
 The new owner instruction supersedes generic legacy payment-process copy. Historical release blockers about pricing now concern price freshness, inventory, and unresolved source differences, rather than absence of base rates.
 
 Vendor landing (#vendors and #apply) now exposes only the two entry paths beneath the hero. Existing application subnavigation and information routes are unchanged.
+
+Path-specific step definitions now map visual order to stable section IDs in vendor.js. New-vendor order is contact (2), space (0), requirements (1), review (4). Returning sequence retains IDs 0/1/2/3/4. Review ordering, Edit targets, guidance, validation and navigation use this mapping rather than hard-coded visible step numbers. No new vendor payment step. This change reorganizes the current prototype; it does not complete missing address/identity fields, event-specific certifications or secure document uploads. Those remain explicitly documented release blockers.

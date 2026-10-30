@@ -1,12 +1,21 @@
 /* In-memory prototype only. No requests, uploads, browser storage, or payments. */
 const VendorFlow = (() => {
-  const steps = [
-    "Event & area",
-    "Selling details",
-    "Contact",
-    "Space estimate",
-    "Review",
-  ];
+  // Step order is path-specific; section keys keep validation and review independent of order.
+  const paths = {
+    new: [
+      { section: 2, title: "Seller / Business Contact" },
+      { section: 0, title: "Space / Plot Request" },
+      { section: 1, title: "Required Forms" },
+      { section: 4, title: "Review & Submit" },
+    ],
+    returning: [
+      { section: 0, title: "Event & area" },
+      { section: 1, title: "Selling details" },
+      { section: 2, title: "Contact" },
+      { section: 3, title: "Payment preference" },
+      { section: 4, title: "Review" },
+    ],
+  };
   const areas = [
     ["stadium", "Stadium / Blue–Gold"],
     ["orange", "Orange"],
@@ -59,8 +68,9 @@ const VendorFlow = (() => {
     options = [],
     help = "",
   ) => ({ id, label, type, required, options, help });
-  const stepName = (index) =>
-    index === 3 && mode === "returning" ? "Payment preference" : steps[index];
+  const stepName = (index) => paths[mode][index].title;
+  const sectionIndex = (index = step) => paths[mode][index].section;
+  const isReview = () => sectionIndex() === 4;
   // Snapshot of live application options, 2026-10-30. Source and conflicts: SOURCE-REVIEW.md.
   const spaceOptions = {
     stadium: [
@@ -149,6 +159,9 @@ const VendorFlow = (() => {
     return `<div class="process"><h3>What happens after you apply?</h3><ol><li>Our team reviews your application and checks space availability.</li><li>If accepted, we’ll contact you by email or phone to finalize your space and arrange payment${mode === "returning" ? " using your selected preference" : ""}.</li><li>Your vendor space is confirmed once payment is collected.</li></ol></div>`;
   }
   function fields(index = step) {
+    return sectionFields(sectionIndex(index));
+  }
+  function sectionFields(index) {
     if (index === 0)
       return [
         field(
@@ -263,9 +276,9 @@ const VendorFlow = (() => {
     return `<div class="field"><label for="${f.id}">${f.label} <span class="field-requirement">${f.required ? "(required)" : "(optional)"}</span></label>${control}<p class="field-help" id="${f.id}-help">${f.help}</p><span class="error" id="${f.id}-error"></span></div>`;
   }
   function guidance() {
-    if (step === 0)
+    if (sectionIndex() === 0)
       return `<div id="space-quote" aria-live="polite">${estimate()}</div>`;
-    if (step === 1) {
+    if (sectionIndex() === 1) {
       const descriptions = {
         permit:
           "The existing application requires a permit number and a private permit document showing the Rose Bowl location. Those sensitive fields and uploads are not collected in this preview.",
@@ -280,16 +293,15 @@ const VendorFlow = (() => {
       };
       return `<aside class="note" id="status-guidance" aria-live="polite">${descriptions[data.status] || "Choose your seller status to see which supporting information will be needed."}</aside>`;
     }
-    if (step === 3) return estimate() + nextSteps();
+    if (sectionIndex() === 3) return estimate() + nextSteps();
     return "";
   }
   function review() {
-    return `<p>Review your draft below. Use Edit to return to a section.</p>${[
-      0,
-      1,
-      2,
-      ...(mode === "returning" ? [3] : []),
+    return `<p>Review your draft below. Use Edit to return to a section.</p>${paths[
+      mode
     ]
+      .map((_, i) => i)
+      .filter((i) => paths[mode][i].section !== 4)
       .map(
         (i) =>
           `<section class="review-section"><div class="review-heading"><h3>${stepName(i)}</h3><button type="button" class="text-button" data-edit="${i}">Edit ${stepName(i).toLowerCase()}</button></div><dl class="review">${fields(
@@ -303,7 +315,7 @@ const VendorFlow = (() => {
       )}${estimate()}${nextSteps()}<div class="note"><strong>Draft review only</strong><p>No request has been sent and no space is reserved. Final availability, full seller certification, private documentation, and a submission service are still required before this application can accept requests.</p></div>`;
   }
   function render() {
-    return `<section class="content">${nav()}<div class="page-intro"><p class="eyebrow">${mode === "returning" ? "Returning vendor · Sample profile" : "New vendor · Start fresh"}</p><h1 class="application-title">Let’s find your place<br>at the market.</h1><p>${mode === "returning" ? "Your sample selling and contact details are filled in. Review them, make any changes, and choose the event and area for this request." : "Start with a blank application. We’ll guide you through your selling details and contact information."} This is a working design preview—use sample information only.</p></div><ol class="steps">${steps.map((name, i) => `<li class="${i === step ? "current" : ""}" ${i === step ? 'aria-current="step"' : ""}><span>${i + 1}</span> ${stepName(i)}</li>`).join("")}</ol><div class="application-layout"><form class="formbox" id="vendor-form" novalidate><p class="eyebrow">Step ${step + 1} of ${steps.length}</p><h2 tabindex="-1" id="step-title">${stepName(step)}</h2><p class="muted">Your entries stay in this tab’s memory and clear when you reload.</p><div id="error-summary" role="alert"></div>${step === 4 ? review() : fields().map(fieldMarkup).join("") + guidance()}<div class="actions">${step > 0 ? '<button type="button" class="button secondary" id="back">← Back</button>' : ""}${step < 4 ? '<button type="submit" class="button">Continue →</button>' : '<button class="button" type="button" disabled>Submission not connected</button>'}</div></form><aside class="application-aside"><p class="eyebrow">Good to know</p><h3>Apply now. Pay after acceptance.</h3><p>No payment is collected during the application. If accepted, we’ll contact you by email or phone to finalize your space and arrange payment. Your space is confirmed once payment is collected.</p><hr><h3>Need a hand?</h3><p>Event information and vendor assistance</p><a href="tel:+13235607469">(323) 560-7469</a><p class="muted">Contact number from the existing RGC Shows website.</p></aside></div></section>`;
+    return `<section class="content">${mode === "returning" ? nav() : ""}<div class="page-intro"><p class="eyebrow">${mode === "returning" ? "Returning vendor · Sample profile" : "New vendor"}</p><h1 class="application-title">Vendor Application</h1><p class="muted">Design preview. Use sample information only. Submission is not connected.</p></div><ol class="steps">${paths[mode].map((item, i) => `<li class="${i === step ? "current" : ""}" ${i === step ? 'aria-current="step"' : ""}><span>${i + 1}</span> ${stepName(i)}</li>`).join("")}</ol><div class="application-layout"><form class="formbox" id="vendor-form" novalidate><p class="eyebrow">Step ${step + 1} of ${paths[mode].length}</p><h2 tabindex="-1" id="step-title">${stepName(step)}</h2><p class="muted">Your entries stay in this tab’s memory and clear when you reload.</p><div id="error-summary" role="alert"></div>${isReview() ? review() : fields().map(fieldMarkup).join("") + guidance()}<div class="actions">${step > 0 ? '<button type="button" class="button secondary" id="back">← Back</button>' : ""}${!isReview() ? '<button type="submit" class="button">Continue →</button>' : '<button class="button" type="button" disabled>Submission not connected</button>'}</div></form><aside class="application-aside"><p class="eyebrow">Application status</p><h3>Payment after acceptance</h3><p>No payment is collected during the application. If accepted, we’ll contact you by email or phone to finalize your space and arrange payment. Your space is confirmed once payment is collected.</p><hr><h3>Vendor assistance</h3><p>Event information and vendor assistance</p><a href="tel:+13235607469">(323) 560-7469</a><p class="muted">Contact number from the existing RGC Shows website.</p></aside></div></section>`;
   }
   function capture() {
     document
@@ -342,8 +354,8 @@ const VendorFlow = (() => {
       document.querySelector("#status").focus();
     });
     document.querySelectorAll("[data-review]").forEach((el) => {
-      const f = [0, 1, 2, 3]
-        .flatMap((i) => fields(i))
+      const f = paths[mode]
+        .flatMap((_, i) => fields(i))
         .find((f) => f.id === el.dataset.review);
       const value = data[f.id];
       el.textContent =
@@ -385,7 +397,7 @@ const VendorFlow = (() => {
         document.getElementById(errors[0][0].id).focus();
         return;
       }
-      if (step < 4) move(step + 1);
+      if (!isReview()) move(step + 1);
     });
   }
   return { render, bind, validate, fields, selectPath, snapshot, quote };

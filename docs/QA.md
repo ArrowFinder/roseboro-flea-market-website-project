@@ -81,3 +81,5 @@ New-vendor browser journey also verified through step 4 using synthetic contact 
 Vendor landing simplification: removed the four underlined links from the shared #vendors/#apply template. Syntax and formatting checks run; no form logic changed.
 
 Browser verified the vendor landing main content contains only the two path links beneath the hero; screenshot inspected.
+
+Contact-first flow: all 16 tests and syntax checks pass. Browser completed all four new-vendor stages with synthetic entries, verified $100 Pearl estimate in review, then reopened contact Edit and verified retained name. No new-vendor subnavigation or marketing introduction. Submission remains disabled. Returning section mapping and payment preference covered by regression tests.

@@ -39,3 +39,5 @@ Owner requested a hero and New Vendor / Returning Vendor paths with reusable pre
 New vendors apply without payment information, see an estimated total based on space choice, and are contacted by email or phone after acceptance to finalize the space and collect payment. Returning vendors choose existing payment method on file or a new method upon acceptance. Neither path collects credentials or charges during application. Preference is not a charge authorization.
 
 Owner directed use of existing website pricing. Live application rates and quantity options retrieved October 30, 2026 now replace the unpriced area-only prototype. Availability and price changes remain subject to staff confirmation.
+
+Owner specified a factual business form without introductions: contact first, then space/plot, then required forms, then submit. Implemented a four-step new-vendor sequence and removed its subnavigation and marketing introduction. Submission remains disabled until the existing documented production requirements are completed.

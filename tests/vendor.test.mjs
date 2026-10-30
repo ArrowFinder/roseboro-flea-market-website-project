@@ -95,3 +95,26 @@ test("space estimates use live-form prices and reject invalid cross-area choices
   for (const quantity of ["", "0", "6", "1.5", "invalid"])
     assert.equal(flow.quote("orange", "orange-3", quantity), null);
 });
+
+test("new vendor sequence starts with contact, then space request, required forms, review", () => {
+  flow.selectPath("new");
+  assert.equal(flow.fields(0)[0].id, "first");
+  assert.equal(flow.fields(1)[0].id, "event");
+  assert.equal(flow.fields(2)[0].id, "goods");
+  assert.equal(flow.fields(3).length, 0);
+  const markup = flow.render();
+  assert.ok(
+    markup.indexOf("Seller / Business Contact") <
+      markup.indexOf("Space / Plot Request"),
+  );
+  assert.ok(
+    markup.indexOf("Space / Plot Request") < markup.indexOf("Required Forms"),
+  );
+  assert.doesNotMatch(
+    markup,
+    /Vendor sections|Let’s find your place|Start fresh/,
+  );
+  flow.selectPath("returning");
+  assert.equal(flow.fields(0)[0].id, "event");
+  assert.equal(flow.fields(3)[0].id, "paymentPreference");
+});
