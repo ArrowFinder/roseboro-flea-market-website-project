@@ -14,7 +14,7 @@ Plain HTML/CSS/JavaScript keeps the brochure site lightweight and makes integrat
 
 ## Site structure
 
-Home (shopper focused), Event Calendar, About Us, Vendors, Contact. Buy Tickets is always prominent and opens a clear unavailable notice until the existing Eventbrite URL is confirmed. No fake ticket URL is used. Set the verified URL in `dist/app.js` after owner confirmation.
+Home (shopper focused), Event Calendar, About Us, Vendors, Contact. Buy Tickets is always prominent and uses the owner-supplied Eventbrite listing for November 8, 2026. Ticket availability and checkout have not been verified. Update the URL in `dist/app.js` for later events.
 
 Vendor preview: Contact → Selling details → Space & policies → Review. Provisional fields only; each required field validates before advancing, inline errors identify issues, Back and Edit preserve page-memory entries. Nothing is stored in browser storage or transmitted. Reload clears entries. Final submission is disabled; no success claim is shown. Before launching, implement approved server-side validation, secure delivery, approved policies and consent, retention controls, failure handling, and a truthful confirmation based on actual submission success.
 
@@ -26,4 +26,8 @@ See docs/DECISIONS.md for pending information and review checks.
 
 ## Source review update
 
-Brand is now confirmed as Rose Bowl Flea Market. Ticket buttons use the exact owner-supplied November 8, 2026 Eventbrite URL; ticket availability has not been verified. Vendors now has Application, Space Options, Requirements, and Policies & FAQs subnavigation. See docs/SOURCE-REVIEW.md for the actual booking sequence, source conflicts, and the proposed complete flow. Earlier pending-link descriptions above describe the first scaffold and are superseded by this update.
+Brand is now confirmed as Rose Bowl Flea Market. Ticket buttons use the exact owner-supplied November 8, 2026 Eventbrite URL; ticket availability has not been verified. Vendors now has Application, Space Options, Requirements, and Policies & FAQs subnavigation. See docs/SOURCE-REVIEW.md for the actual booking sequence, source conflicts, and the proposed complete flow. 
+
+## Verification completed
+
+JavaScript syntax checks passed. Browser review confirmed desktop and tablet rendering, vendor subnavigation, empty required-field errors and progression with valid contact details. Full phone/device checks, all conditional application rules, back/edit persistence, and external Eventbrite checkout remain to be verified. Preview server was stopped after review; reopen `dist/index.html` directly or run `npm run dev`.
